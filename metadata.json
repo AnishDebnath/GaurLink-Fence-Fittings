@@ -1,0 +1,6 @@
+{
+  "name": "Gaur Link - Fence & Fittings",
+  "description": "Leading manufacturer and supplier of precision pressed steel, malleable iron, and aluminum fence fittings and gate hardware for American contractors and distributors.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
