@@ -5,6 +5,8 @@ interface LogoProps {
   size?: 'sm' | 'md' | 'lg' | 'xl';
 }
 
+import logo from '../../assets/logo/logo.png';
+
 export const GaurLinkLogo: React.FC<LogoProps> = ({
   className = '',
   size = 'md',
@@ -19,7 +21,7 @@ export const GaurLinkLogo: React.FC<LogoProps> = ({
   return (
     <div className={`flex items-center gap-3 select-none ${className}`}>
       <img
-        src="assets/logo/logo.png"
+        src={logo}
         alt="Gaur Link Fence & Fittings"
         className={sizeClasses}
         loading="lazy"
