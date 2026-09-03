@@ -17,9 +17,10 @@ import { QuoteModal } from './QuoteModal';
 interface HomePageProps {
   onNavigateSection: (sectionId: string) => void;
   onNavigatePage: (page: 'about' | 'contact') => void;
+  currentRoute: string;
 }
 
-export const HomePage: React.FC<HomePageProps> = ({ onNavigateSection, onNavigatePage }) => {
+export const HomePage: React.FC<HomePageProps> = ({ onNavigateSection, onNavigatePage, currentRoute }) => {
   const [scheduleModalOpen, setScheduleModalOpen] = useState(false);
   const [selectedService, setSelectedService] = useState<string | null>(null);
 
@@ -34,6 +35,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigateSection, onNavigat
         onOpenSchedule={() => handleOpenSchedule()}
         onNavigateSection={onNavigateSection}
         onNavigatePage={onNavigatePage}
+        currentRoute={currentRoute}
       />
 
       <main className="flex-1">
