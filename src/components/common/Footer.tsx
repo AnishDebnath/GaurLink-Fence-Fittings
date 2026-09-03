@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Phone, Mail, MapPin, Plus, Minus } from 'lucide-react';
-import { FenceFixLogo } from './FenceFixLogo';
+import logo from '../../assets/logo/logo.png';
 
 interface FooterProps {
   onNavigateSection: (sectionId: string) => void;
@@ -44,7 +44,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigateSection }) => {
           
           {/* Col 1: Brand Mascot, Bio, Socials & Review Badges */}
           <div className="lg:col-span-4 space-y-4">
-            <FenceFixLogo size="lg" />
+            <img src={logo} alt="Gaur Link Fence & Fittings" className="h-14 w-auto object-contain" />
 
             <p className="text-sm text-emerald-100/80 leading-relaxed max-w-[310px] font-normal">
               Construction marketing for contractors and construction companies across the USA. We help builders, remodelers, and service professionals grow in visibility.
