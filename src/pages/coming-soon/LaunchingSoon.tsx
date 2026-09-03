@@ -6,7 +6,7 @@ import { IMAGES } from '../../data/images';
 export const LaunchingSoon: React.FC = () => {
   // 7-Day live countdown timer
   const [timeLeft, setTimeLeft] = useState({
-    days: 7,
+    days: 5,
     hours: 0,
     minutes: 0,
     seconds: 0,
@@ -14,7 +14,7 @@ export const LaunchingSoon: React.FC = () => {
 
   useEffect(() => {
     const targetDate = new Date();
-    targetDate.setDate(targetDate.getDate() + 7);
+    targetDate.setDate(targetDate.getDate() + 5);
 
     const interval = setInterval(() => {
       const now = new Date().getTime();
@@ -38,11 +38,11 @@ export const LaunchingSoon: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-[#071910] text-white flex flex-col justify-between selection:bg-[#E5A912] selection:text-[#071910] relative overflow-hidden font-sans">
-      
+
       {/* Fence Manufacturing Background with Gaur Green Gradient */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <img
-          src={IMAGES.fenceFittings || IMAGES.hardwareCatalog}
+          src={IMAGES.banner}
           alt="Fence and fittings background"
           className="w-full h-full object-cover object-center filter brightness-35 contrast-120 saturate-80"
         />
@@ -60,7 +60,7 @@ export const LaunchingSoon: React.FC = () => {
 
       {/* Center Main Content - Very Minimal */}
       <main className="relative z-10 max-w-2xl mx-auto w-full px-4 py-8 text-center my-auto">
-        
+
         {/* Launching Soon Pill */}
         <div className="inline-flex items-center gap-2 bg-[#0D291B]/90 border border-emerald-500/40 text-[#E5A912] px-4 py-1.5 rounded-full text-xs font-black uppercase tracking-widest mb-6 shadow-md backdrop-blur-xs">
           <Sparkles className="w-3.5 h-3.5" />
@@ -85,7 +85,7 @@ export const LaunchingSoon: React.FC = () => {
             { label: 'MINUTES', value: timeLeft.minutes },
             { label: 'SECONDS', value: timeLeft.seconds },
           ].map((item, idx) => (
-            <div 
+            <div
               key={idx}
               className="bg-[#0A2618]/90 border border-emerald-500/25 rounded-2xl py-3.5 sm:py-4 px-2 text-center shadow-xl backdrop-blur-sm flex flex-col items-center justify-center"
             >
@@ -103,7 +103,7 @@ export const LaunchingSoon: React.FC = () => {
 
       {/* Clean Bottom Copyright */}
       <footer className="relative z-10 border-t border-emerald-900/30 max-w-4xl mx-auto w-full px-4 py-6 text-center text-xs text-emerald-200/50 font-medium">
-        Copyright © 2026 Gaur Link. All Rights Reserved.
+        Copyright © 2026 GaurLink. All Rights Reserved.
       </footer>
 
     </div>
