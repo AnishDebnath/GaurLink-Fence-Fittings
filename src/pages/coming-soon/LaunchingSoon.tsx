@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Sparkles } from 'lucide-react';
 import { GaurLinkLogo } from './GaurLinkLogo';
 import { IMAGES } from '../../data/images';
@@ -44,6 +44,10 @@ export const LaunchingSoon: React.FC = () => {
         <img
           src={IMAGES.banner}
           alt="Fence and fittings background"
+          width={1920}
+          height={1080}
+          fetchPriority="high"
+          decoding="async"
           className="w-full h-full object-cover object-center filter brightness-35 contrast-120 saturate-80"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-[#071910]/90 via-[#071910]/80 to-[#071910]/95" />
