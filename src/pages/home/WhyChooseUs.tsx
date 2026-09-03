@@ -1,6 +1,6 @@
 import React from 'react';
 import { ArrowRight, Check } from 'lucide-react';
-import { IMAGES } from '../data/images';
+import { IMAGES } from '../../data/images';
 
 interface WhyChooseUsProps {
   onOpenSchedule: () => void;

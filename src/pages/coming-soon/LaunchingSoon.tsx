@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Sparkles } from 'lucide-react';
 import { GaurLinkLogo } from './GaurLinkLogo';
-import { IMAGES } from '../data/images';
+import { IMAGES } from '../../data/images';
 
 export const LaunchingSoon: React.FC = () => {
   // 7-Day live countdown timer
@@ -55,7 +55,7 @@ export const LaunchingSoon: React.FC = () => {
 
       {/* Top Header - Centered Gaur Link Logo */}
       <header className="relative z-10 max-w-4xl mx-auto w-full px-4 pt-10 sm:pt-14 flex items-center justify-center">
-        <GaurLinkLogo theme="light" size="lg" showSubtitle={true} />
+        <GaurLinkLogo size="lg" showSubtitle={true} />
       </header>
 
       {/* Center Main Content - Very Minimal */}

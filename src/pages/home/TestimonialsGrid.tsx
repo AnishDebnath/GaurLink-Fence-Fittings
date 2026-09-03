@@ -1,6 +1,6 @@
 import React from 'react';
 import { Star, ArrowRight } from 'lucide-react';
-import { IMAGES } from '../data/images';
+import { IMAGES } from '../../data/images';
 
 export const TestimonialsGrid: React.FC = () => {
   return (

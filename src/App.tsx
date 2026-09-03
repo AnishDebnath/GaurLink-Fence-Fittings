@@ -3,43 +3,35 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useState, useEffect } from 'react';
-import { Navbar } from './components/Navbar';
-import { Hero } from './components/Hero';
-import { WhyChooseUs } from './components/WhyChooseUs';
-import { TrustBar } from './components/TrustBar';
-import { ServicesShowcase } from './components/ServicesShowcase';
-import { MarqueeTicker } from './components/MarqueeTicker';
-import { HowItWorks } from './components/HowItWorks';
-import { CaseStudies } from './components/CaseStudies';
-import { TestimonialsGrid } from './components/TestimonialsGrid';
-import { ServiceAreasMap } from './components/ServiceAreasMap';
-import { FaqSection } from './components/FaqSection';
-import { ConversionBanner } from './components/ConversionBanner';
-import { Footer } from './components/Footer';
-import { QuoteModal } from './components/QuoteModal';
-import { LaunchingSoon } from './components/LaunchingSoon';
+import { useState, useEffect } from 'react';
+import { HomePage } from './pages/home';
+import { LaunchingSoon } from './pages/coming-soon';
+import { AboutPage } from './pages/about';
+import { ContactPage } from './pages/contact';
 
 export default function App() {
-  const [scheduleModalOpen, setScheduleModalOpen] = useState(false);
-  const [selectedService, setSelectedService] = useState<string | null>(null);
-  
-  // Helper to determine if current URL matches '/home'
-  const isHomePath = () => {
+  const isPath = (target: string) => {
     if (typeof window === 'undefined') return false;
     const pathname = window.location.pathname.toLowerCase();
     const hash = window.location.hash.toLowerCase();
-    return pathname === '/home' || pathname === '/home/' || hash === '#/home' || hash.startsWith('#/home');
+    return pathname === target || pathname === target + '/' || hash === `#${target}` || hash.startsWith(`#${target}/`);
   };
 
-  const [currentRoute, setCurrentRoute] = useState<'home' | 'launching-soon'>(() => 
-    isHomePath() ? 'home' : 'launching-soon'
-  );
+  const [currentRoute, setCurrentRoute] = useState<'home' | 'launching-soon' | 'about' | 'contact'>(() => {
+    if (isPath('/home')) return 'home';
+    if (isPath('/about')) return 'about';
+    if (isPath('/contact')) return 'contact';
+    return 'launching-soon';
+  });
 
   useEffect(() => {
     const handleLocationChange = () => {
-      if (isHomePath()) {
+      if (isPath('/home')) {
         setCurrentRoute('home');
+      } else if (isPath('/about')) {
+        setCurrentRoute('about');
+      } else if (isPath('/contact')) {
+        setCurrentRoute('contact');
       } else {
         setCurrentRoute('launching-soon');
       }
@@ -59,15 +51,14 @@ export default function App() {
       window.history.pushState({}, '', path);
       if (path === '/home' || path === '/home/' || path === '#/home') {
         setCurrentRoute('home');
+      } else if (path === '/about' || path === '/about/' || path === '#/about') {
+        setCurrentRoute('about');
+      } else if (path === '/contact' || path === '/contact/' || path === '#/contact') {
+        setCurrentRoute('contact');
       } else {
         setCurrentRoute('launching-soon');
       }
     }
-  };
-
-  const handleOpenSchedule = (serviceName?: string) => {
-    setSelectedService(serviceName || null);
-    setScheduleModalOpen(true);
   };
 
   const handleNavigateSection = (sectionId: string) => {
@@ -85,101 +76,26 @@ export default function App() {
     }
   };
 
-  // Default path ('/') renders the Launching Soon page
+  const handleNavigatePage = (page: 'about' | 'contact') => {
+    navigateTo(`/${page}`);
+  };
+
   if (currentRoute === 'launching-soon') {
     return <LaunchingSoon />;
   }
 
-  // '/home' path renders the main website
+  if (currentRoute === 'about') {
+    return <AboutPage />;
+  }
+
+  if (currentRoute === 'contact') {
+    return <ContactPage />;
+  }
+
   return (
-    <div className="min-h-screen flex flex-col bg-white text-gray-900 font-sans selection:bg-[#0D3823] selection:text-[#E5A912]">
-      {/* 1. Header Navbar */}
-      <Navbar
-        onOpenSchedule={() => handleOpenSchedule()}
-        onNavigateSection={handleNavigateSection}
-      />
-
-      {/* Main Layout */}
-      <main className="flex-1">
-        {/* 2. Hero Section with 3 Rating Badges & Floating Fast Estimate Card */}
-        <Hero
-          onOpenSchedule={() => handleOpenSchedule()}
-          onExploreServices={() => handleNavigateSection('services')}
-        />
-
-        {/* 3. Section 2: Why Choose Us (Experienced Fence Repair Professional) */}
-        <WhyChooseUs onOpenSchedule={() => handleOpenSchedule()} />
-
-        {/* 4. Section 3: Stat Bar in Gaur Link Deep Green & Gold */}
-        <TrustBar />
-
-        {/* 5. Section 4: Service We Provide */}
-        <ServicesShowcase
-          onSelectService={(service) => handleOpenSchedule(service)}
-          onOpenSchedule={() => handleOpenSchedule()}
-        />
-
-        {/* 6. Section 5: Marquee Ticker 1 (Deep Green Ribbon with Gold Stars) */}
-        <MarqueeTicker
-          variant="deep-green"
-          items={[
-            'WITH QUALITY',
-            'RELIABLE FENCE FIXES',
-            'FAST FENCE REPAIR',
-            'FENCE REPAIR EXPERTS',
-            'PREMIUM CRAFTSMANSHIP',
-            'TEXAS LICENSED & INSURED',
-            'FREE ONSITE ESTIMATES',
-            'GUARANTEED WORKMANSHIP',
-          ]}
-        />
-
-        {/* 7. Section 6: How It Works */}
-        <HowItWorks />
-
-        {/* 8. Section 7: Case Studies Gallery (Dark Theme) */}
-        <CaseStudies />
-
-        {/* 9. Section 8: Testimonials Grid */}
-        <TestimonialsGrid />
-
-        {/* 10. Section 9: Marquee Ticker 2 (Same as Upper Marquee Section) */}
-        <MarqueeTicker
-          variant="deep-green"
-          items={[
-            'WITH QUALITY',
-            'RELIABLE FENCE FIXES',
-            'FAST FENCE REPAIR',
-            'FENCE REPAIR EXPERTS',
-            'PREMIUM CRAFTSMANSHIP',
-            'TEXAS LICENSED & INSURED',
-            'FREE ONSITE ESTIMATES',
-            'GUARANTEED WORKMANSHIP',
-          ]}
-        />
-
-        {/* 11. Section 10: Our Service Areas with Regional Texas Map & Floating Card */}
-        <ServiceAreasMap onOpenSchedule={() => handleOpenSchedule()} />
-
-        {/* 12. Section 11: Frequently Asked Questions */}
-        <FaqSection onOpenSchedule={() => handleOpenSchedule()} />
-
-        {/* 13. Section 12: Need Fence Repair Fast? CTA Banner */}
-        <ConversionBanner onOpenSchedule={() => handleOpenSchedule()} />
-      </main>
-
-      {/* 14. Section 13: 4-Column Dark Footer */}
-      <Footer
-        onNavigateSection={handleNavigateSection}
-        onOpenSchedule={() => handleOpenSchedule()}
-      />
-
-      {/* Interactive Schedule / Free Estimate Modal */}
-      <QuoteModal
-        isOpen={scheduleModalOpen}
-        onClose={() => setScheduleModalOpen(false)}
-        initialService={selectedService}
-      />
-    </div>
+    <HomePage
+      onNavigateSection={handleNavigateSection}
+      onNavigatePage={handleNavigatePage}
+    />
   );
 }

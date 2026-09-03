@@ -1,6 +1,6 @@
 import React from 'react';
 import { Phone, ArrowRight } from 'lucide-react';
-import { IMAGES } from '../data/images';
+import { IMAGES } from '../../data/images';
 
 interface ConversionBannerProps {
   onOpenSchedule: () => void;

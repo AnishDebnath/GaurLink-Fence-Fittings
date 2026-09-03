@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { ArrowRight } from 'lucide-react';
-import { IMAGES } from '../data/images';
+import { IMAGES } from '../../data/images';
 
 export const CaseStudies: React.FC = () => {
   const [activeSlide, setActiveSlide] = useState(2); // Center card (Hero) is active by default

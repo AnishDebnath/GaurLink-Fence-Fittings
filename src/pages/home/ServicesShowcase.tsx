@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { ChevronLeft, ChevronRight, Wrench, Shield, Drill, Hammer, Lock, Layers } from 'lucide-react';
-import { IMAGES } from '../data/images';
+import { IMAGES } from '../../data/images';
 
 interface ServicesShowcaseProps {
   onSelectService?: (serviceName: string) => void;

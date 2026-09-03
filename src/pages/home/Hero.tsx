@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { PhoneCall, ArrowRight, ShieldCheck, CheckCircle2, Award, Star, Check, ChevronDown } from 'lucide-react';
-import { IMAGES } from '../data/images';
+import { IMAGES } from '../../data/images';
 
 interface HeroProps {
   onOpenSchedule: () => void;
   onExploreServices: () => void;
 }
 
-export const Hero: React.FC<HeroProps> = ({ onOpenSchedule, onExploreServices }) => {
+export const Hero: React.FC<HeroProps> = ({ onOpenSchedule }) => {
   const [formData, setFormData] = useState({
     fullName: '',
     phone: '',

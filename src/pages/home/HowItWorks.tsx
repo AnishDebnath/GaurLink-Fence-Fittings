@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { IMAGES } from '../data/images';
+import { IMAGES } from '../../data/images';
 
 export const HowItWorks: React.FC = () => {
   const [activeStep, setActiveStep] = useState(0);

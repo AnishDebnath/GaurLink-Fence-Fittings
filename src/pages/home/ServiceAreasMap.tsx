@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ArrowRight, MapPin, Navigation } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
 interface ServiceAreasMapProps {
   onOpenSchedule: () => void;

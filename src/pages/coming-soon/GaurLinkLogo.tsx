@@ -3,6 +3,7 @@ import React from 'react';
 interface LogoProps {
   className?: string;
   size?: 'sm' | 'md' | 'lg' | 'xl';
+  showSubtitle?: boolean;
 }
 
 import logo from '../../assets/logo/logo.png';

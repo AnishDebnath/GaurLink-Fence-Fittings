@@ -5,11 +5,13 @@ import { FenceFixLogo } from './FenceFixLogo';
 interface NavbarProps {
   onOpenSchedule: () => void;
   onNavigateSection: (sectionId: string) => void;
+  onNavigatePage: (page: 'about' | 'contact') => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
   onOpenSchedule,
   onNavigateSection,
+  onNavigatePage,
 }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [showMenus, setShowMenus] = useState(true);
@@ -202,11 +204,27 @@ export const Navbar: React.FC<NavbarProps> = ({
             </div>
 
             <button
+              onClick={() => onNavigatePage('about')}
+              className="text-[14px] font-semibold text-gray-800 hover:text-[#0D3823] transition-colors whitespace-nowrap"
+              id="nav-link-about"
+            >
+              About Us
+            </button>
+
+            <button
               onClick={() => handleNavClick('case-studies')}
               className="text-[14px] font-semibold text-gray-800 hover:text-[#0D3823] transition-colors whitespace-nowrap"
               id="nav-link-projects"
             >
               Supply Projects
+            </button>
+
+            <button
+              onClick={() => onNavigatePage('contact')}
+              className="text-[14px] font-semibold text-gray-800 hover:text-[#0D3823] transition-colors whitespace-nowrap"
+              id="nav-link-contact"
+            >
+              Contact
             </button>
           </nav>
 
@@ -306,6 +324,18 @@ export const Navbar: React.FC<NavbarProps> = ({
               className="block w-full text-left py-2 font-bold text-gray-800 hover:text-[#0D3823] transition-colors"
             >
               Supply Projects
+            </button>
+            <button
+              onClick={() => { setMobileMenuOpen(false); onNavigatePage('about'); }}
+              className="block w-full text-left py-2 font-bold text-gray-800 hover:text-[#0D3823] transition-colors"
+            >
+              About Us
+            </button>
+            <button
+              onClick={() => { setMobileMenuOpen(false); onNavigatePage('contact'); }}
+              className="block w-full text-left py-2 font-bold text-gray-800 hover:text-[#0D3823] transition-colors"
+            >
+              Contact
             </button>
 
             <div className="pt-3 border-t border-gray-100 flex flex-col gap-3">
