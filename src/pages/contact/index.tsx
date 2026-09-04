@@ -5,11 +5,15 @@ import {
   Send, 
   ChevronRight, 
   Check,
-  Building2
+  Building2,
+  MessageSquare,
+  FileText
 } from 'lucide-react';
 import { Navbar } from '../../components/common/Navbar';
 import { Footer } from '../../components/common/Footer';
 import { MarqueeTicker } from '../home/MarqueeTicker';
+import { ServiceAreasMap } from '../home/ServiceAreasMap';
+import { FaqSection } from '../home/FaqSection';
 import { ConversionBanner } from '../home/ConversionBanner';
 import { PRODUCTS_DATA } from '../../data/products';
 import { IMAGES } from '../../data/images';
@@ -26,7 +30,10 @@ export const ContactPage: React.FC<ContactPageProps> = ({
   onNavigateSection,
   onNavigatePage,
 }) => {
-  const [formData, setFormData] = useState({
+  const [contactType, setContactType] = useState<'wholesale' | 'general'>('wholesale');
+
+  // Wholesale form state
+  const [wholesaleForm, setWholesaleForm] = useState({
     companyName: '',
     contactName: '',
     phone: '',
@@ -38,33 +45,54 @@ export const ContactPage: React.FC<ContactPageProps> = ({
     customNotes: '',
   });
 
+  // General contact form state
+  const [generalForm, setGeneralForm] = useState({
+    fullName: '',
+    email: '',
+    phone: '',
+    subject: 'General Question',
+    message: '',
+  });
+
   const [submitted, setSubmitted] = useState(false);
-  const [rfqNumber, setRfqNumber] = useState('');
+  const [referenceNumber, setReferenceNumber] = useState('');
 
   useEffect(() => {
     if (initialProductId) {
       const prod = PRODUCTS_DATA.find((p) => p.id === initialProductId);
       if (prod) {
-        setFormData((prev) => ({
+        setWholesaleForm((prev) => ({
           ...prev,
           productLine: prod.name,
         }));
+        setContactType('wholesale');
       }
     }
   }, [initialProductId]);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleWholesaleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!formData.companyName || !formData.contactName || !formData.phone) return;
+    if (!wholesaleForm.companyName || !wholesaleForm.contactName || !wholesaleForm.phone) return;
     const generatedRfq = `RFQ-${Math.floor(100000 + Math.random() * 900000)}`;
-    setRfqNumber(generatedRfq);
+    setReferenceNumber(generatedRfq);
     setSubmitted(true);
-    window.scrollTo({ top: 250, behavior: 'smooth' });
+    const el = document.getElementById('contact-form');
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  const handleGeneralSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!generalForm.fullName || !generalForm.email || !generalForm.message) return;
+    const generatedMsg = `MSG-${Math.floor(100000 + Math.random() * 900000)}`;
+    setReferenceNumber(generatedMsg);
+    setSubmitted(true);
+    const el = document.getElementById('contact-form');
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
   };
 
   const handleReset = () => {
     setSubmitted(false);
-    setFormData({
+    setWholesaleForm({
       companyName: '',
       contactName: '',
       phone: '',
@@ -72,6 +100,13 @@ export const ContactPage: React.FC<ContactPageProps> = ({
       productLine: 'Chain Link Fittings & Post Clamps',
       orderVolume: 'Mixed Pallet Quantity',
       customNotes: '',
+    });
+    setGeneralForm({
+      fullName: '',
+      email: '',
+      phone: '',
+      subject: 'General Question',
+      message: '',
     });
   };
 
@@ -88,12 +123,12 @@ export const ContactPage: React.FC<ContactPageProps> = ({
       />
 
       <main className="flex-1">
-        {/* Simple, Clean Hero */}
-        <section className="relative bg-[#071910] text-white pt-32 sm:pt-36 pb-12 sm:pb-16 overflow-hidden">
+        {/* Simple, Clean Hero - Full Height, No Tag */}
+        <section className="relative bg-[#071910] text-white pt-32 sm:pt-40 lg:pt-44 pb-16 sm:pb-24 lg:pb-28 overflow-hidden">
           <div className="absolute inset-0 z-0 opacity-25">
             <img
               src={IMAGES.installerWork || IMAGES.hero}
-              alt="Gaur Link Wholesale Desk"
+              alt="GaurLink Wholesale Desk"
               className="w-full h-full object-cover"
             />
           </div>
@@ -112,24 +147,19 @@ export const ContactPage: React.FC<ContactPageProps> = ({
               <span className="text-[#E5A912]">Contact</span>
             </div>
 
-            <div className="max-w-3xl space-y-3">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-emerald-500/40 bg-[#0D3823]/70 text-[11px] font-bold tracking-wider text-[#E5A912] uppercase font-sans">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#E5A912]"></span>
-                <span>DIRECT TRADE DESK</span>
-              </div>
-
+            <div className="max-w-3xl space-y-4">
               <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black uppercase text-white tracking-tight leading-tight">
-                WHOLESALE PRICING &amp; INQUIRIES
+                GET IN TOUCH<br className="hidden sm:inline" /> WITH GAURLINK
               </h1>
 
               <p className="text-gray-300 text-sm sm:text-base leading-relaxed max-w-2xl font-normal">
-                Direct container and pallet pricing for fence supply yards and commercial contractors. Responses within 12–24 hours.
+                Direct container and pallet pricing for fence supply yards, or general customer support and technical specifications.
               </p>
             </div>
           </div>
         </section>
 
-        {/* Marquee Ticker */}
+        {/* Marquee Ticker under Hero */}
         <MarqueeTicker
           variant="deep-green"
           items={[
@@ -146,8 +176,37 @@ export const ContactPage: React.FC<ContactPageProps> = ({
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
               
-              {/* Left Column: Simple RFQ Form */}
+              {/* Left Column: Form with Wholesale / Normal Toggle */}
               <div className="lg:col-span-7 bg-white rounded-[28px] p-6 sm:p-8 border-2 border-gray-900 shadow-sm">
+                
+                {/* Toggle Switcher */}
+                <div className="flex items-center p-1.5 bg-gray-100 rounded-2xl mb-6 border border-gray-200/80">
+                  <button
+                    type="button"
+                    onClick={() => { setContactType('wholesale'); setSubmitted(false); }}
+                    className={`flex-1 inline-flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl text-xs font-black uppercase tracking-wider transition-all cursor-pointer ${
+                      contactType === 'wholesale'
+                        ? 'bg-[#0D3823] text-white shadow-sm'
+                        : 'text-gray-600 hover:text-gray-900'
+                    }`}
+                  >
+                    <FileText className="w-4 h-4" />
+                    <span>Wholesale &amp; RFQ</span>
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => { setContactType('general'); setSubmitted(false); }}
+                    className={`flex-1 inline-flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl text-xs font-black uppercase tracking-wider transition-all cursor-pointer ${
+                      contactType === 'general'
+                        ? 'bg-[#0D3823] text-white shadow-sm'
+                        : 'text-gray-600 hover:text-gray-900'
+                    }`}
+                  >
+                    <MessageSquare className="w-4 h-4" />
+                    <span>General Contact</span>
+                  </button>
+                </div>
+
                 {submitted ? (
                   <div className="text-center py-8 space-y-5">
                     <div className="w-14 h-14 rounded-full bg-emerald-50 text-[#0D3823] flex items-center justify-center mx-auto border-2 border-emerald-200">
@@ -156,26 +215,28 @@ export const ContactPage: React.FC<ContactPageProps> = ({
 
                     <div className="space-y-1.5">
                       <span className="text-xs font-black text-[#0D3823] uppercase tracking-wider bg-emerald-100/70 px-3 py-1 rounded-full">
-                        Reference ID: {rfqNumber}
+                        Reference ID: {referenceNumber}
                       </span>
                       <h3 className="text-xl font-black uppercase text-gray-900">
-                        Inquiry Received
+                        {contactType === 'wholesale' ? 'Quote Request Received' : 'Message Received'}
                       </h3>
                       <p className="text-xs sm:text-sm text-gray-600 max-w-sm mx-auto leading-relaxed">
-                        Thank you, <strong>{formData.contactName}</strong>. Our wholesale desk will review your specifications and reply within 12–24 business hours.
+                        Thank you, <strong>{contactType === 'wholesale' ? wholesaleForm.contactName : generalForm.fullName}</strong>. Our team will review your inquiry and reply within 12–24 business hours.
                       </p>
                     </div>
 
-                    <div className="p-3.5 bg-[#FBFBFA] rounded-2xl border border-gray-200 max-w-sm mx-auto text-left text-xs space-y-1">
-                      <div className="flex justify-between">
-                        <span className="text-gray-500">Company:</span>
-                        <span className="font-bold text-gray-900">{formData.companyName}</span>
+                    {contactType === 'wholesale' && (
+                      <div className="p-3.5 bg-[#FBFBFA] rounded-2xl border border-gray-200 max-w-sm mx-auto text-left text-xs space-y-1">
+                        <div className="flex justify-between">
+                          <span className="text-gray-500">Company:</span>
+                          <span className="font-bold text-gray-900">{wholesaleForm.companyName}</span>
+                        </div>
+                        <div className="flex justify-between">
+                          <span className="text-gray-500">Product Line:</span>
+                          <span className="font-bold text-gray-900 truncate max-w-[200px]">{wholesaleForm.productLine}</span>
+                        </div>
                       </div>
-                      <div className="flex justify-between">
-                        <span className="text-gray-500">Product Line:</span>
-                        <span className="font-bold text-gray-900 truncate max-w-[200px]">{formData.productLine}</span>
-                      </div>
-                    </div>
+                    )}
 
                     <div className="pt-2 flex items-center justify-center gap-3">
                       <button
@@ -192,14 +253,15 @@ export const ContactPage: React.FC<ContactPageProps> = ({
                       </button>
                     </div>
                   </div>
-                ) : (
-                  <form onSubmit={handleSubmit} className="space-y-4">
+                ) : contactType === 'wholesale' ? (
+                  /* Wholesale RFQ Form */
+                  <form onSubmit={handleWholesaleSubmit} className="space-y-4">
                     <div>
                       <h2 className="text-lg sm:text-xl font-black uppercase text-gray-900 tracking-tight">
                         Request Wholesale Quote
                       </h2>
                       <p className="text-xs text-gray-500 mt-0.5">
-                        Tell us about your company and product requirements.
+                        Tell us about your company and container or pallet specifications.
                       </p>
                     </div>
 
@@ -211,8 +273,8 @@ export const ContactPage: React.FC<ContactPageProps> = ({
                         <input
                           type="text"
                           required
-                          value={formData.companyName}
-                          onChange={(e) => setFormData({ ...formData, companyName: e.target.value })}
+                          value={wholesaleForm.companyName}
+                          onChange={(e) => setWholesaleForm({ ...wholesaleForm, companyName: e.target.value })}
                           placeholder="e.g. Apex Fence Supply"
                           className="w-full h-[42px] px-3.5 rounded-xl bg-gray-50 border border-gray-300 text-xs font-medium focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#0D3823]"
                         />
@@ -225,8 +287,8 @@ export const ContactPage: React.FC<ContactPageProps> = ({
                         <input
                           type="text"
                           required
-                          value={formData.contactName}
-                          onChange={(e) => setFormData({ ...formData, contactName: e.target.value })}
+                          value={wholesaleForm.contactName}
+                          onChange={(e) => setWholesaleForm({ ...wholesaleForm, contactName: e.target.value })}
                           placeholder="e.g. Robert Davis"
                           className="w-full h-[42px] px-3.5 rounded-xl bg-gray-50 border border-gray-300 text-xs font-medium focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#0D3823]"
                         />
@@ -241,8 +303,8 @@ export const ContactPage: React.FC<ContactPageProps> = ({
                         <input
                           type="tel"
                           required
-                          value={formData.phone}
-                          onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                          value={wholesaleForm.phone}
+                          onChange={(e) => setWholesaleForm({ ...wholesaleForm, phone: e.target.value })}
                           placeholder="(555) 000-0000"
                           className="w-full h-[42px] px-3.5 rounded-xl bg-gray-50 border border-gray-300 text-xs font-medium focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#0D3823]"
                         />
@@ -254,8 +316,8 @@ export const ContactPage: React.FC<ContactPageProps> = ({
                         </label>
                         <input
                           type="email"
-                          value={formData.email}
-                          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                          value={wholesaleForm.email}
+                          onChange={(e) => setWholesaleForm({ ...wholesaleForm, email: e.target.value })}
                           placeholder="procurement@company.com"
                           className="w-full h-[42px] px-3.5 rounded-xl bg-gray-50 border border-gray-300 text-xs font-medium focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#0D3823]"
                         />
@@ -268,8 +330,8 @@ export const ContactPage: React.FC<ContactPageProps> = ({
                           Product Line
                         </label>
                         <select
-                          value={formData.productLine}
-                          onChange={(e) => setFormData({ ...formData, productLine: e.target.value })}
+                          value={wholesaleForm.productLine}
+                          onChange={(e) => setWholesaleForm({ ...wholesaleForm, productLine: e.target.value })}
                           className="w-full h-[42px] px-3 rounded-xl bg-gray-50 border border-gray-300 text-xs font-bold text-gray-800 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#0D3823]"
                         >
                           <option value="Chain Link Fittings & Post Clamps">Chain Link Fittings</option>
@@ -286,8 +348,8 @@ export const ContactPage: React.FC<ContactPageProps> = ({
                           Estimated Volume
                         </label>
                         <select
-                          value={formData.orderVolume}
-                          onChange={(e) => setFormData({ ...formData, orderVolume: e.target.value })}
+                          value={wholesaleForm.orderVolume}
+                          onChange={(e) => setWholesaleForm({ ...wholesaleForm, orderVolume: e.target.value })}
                           className="w-full h-[42px] px-3 rounded-xl bg-gray-50 border border-gray-300 text-xs font-bold text-gray-800 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#0D3823]"
                         >
                           <option value="Mixed Pallet Quantity">Mixed Pallet (LCL)</option>
@@ -304,8 +366,8 @@ export const ContactPage: React.FC<ContactPageProps> = ({
                       </label>
                       <textarea
                         rows={3}
-                        value={formData.customNotes}
-                        onChange={(e) => setFormData({ ...formData, customNotes: e.target.value })}
+                        value={wholesaleForm.customNotes}
+                        onChange={(e) => setWholesaleForm({ ...wholesaleForm, customNotes: e.target.value })}
                         placeholder="Specify post/pipe sizes, quantities, ASTM requirements, or drawing references..."
                         className="w-full p-3 rounded-xl bg-gray-50 border border-gray-300 text-xs font-medium focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#0D3823]"
                       />
@@ -316,7 +378,103 @@ export const ContactPage: React.FC<ContactPageProps> = ({
                       className="w-full h-[48px] inline-flex items-center justify-center gap-2.5 bg-[#0D3823] hover:bg-[#072416] text-white font-black text-xs uppercase tracking-wider rounded-full shadow-md transition-all cursor-pointer"
                     >
                       <Send className="w-3.5 h-3.5" />
-                      <span>Send Request</span>
+                      <span>Request Wholesale Quote</span>
+                    </button>
+                  </form>
+                ) : (
+                  /* General / Normal Contact Form */
+                  <form onSubmit={handleGeneralSubmit} className="space-y-4">
+                    <div>
+                      <h2 className="text-lg sm:text-xl font-black uppercase text-gray-900 tracking-tight">
+                        General Contact &amp; Support
+                      </h2>
+                      <p className="text-xs text-gray-500 mt-0.5">
+                        Have a general question, product inquiry, or customer service need?
+                      </p>
+                    </div>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                      <div>
+                        <label className="text-[11px] font-black text-gray-700 uppercase tracking-wider block mb-1">
+                          Full Name *
+                        </label>
+                        <input
+                          type="text"
+                          required
+                          value={generalForm.fullName}
+                          onChange={(e) => setGeneralForm({ ...generalForm, fullName: e.target.value })}
+                          placeholder="e.g. Sarah Jenkins"
+                          className="w-full h-[42px] px-3.5 rounded-xl bg-gray-50 border border-gray-300 text-xs font-medium focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#0D3823]"
+                        />
+                      </div>
+
+                      <div>
+                        <label className="text-[11px] font-black text-gray-700 uppercase tracking-wider block mb-1">
+                          Email Address *
+                        </label>
+                        <input
+                          type="email"
+                          required
+                          value={generalForm.email}
+                          onChange={(e) => setGeneralForm({ ...generalForm, email: e.target.value })}
+                          placeholder="sarah@example.com"
+                          className="w-full h-[42px] px-3.5 rounded-xl bg-gray-50 border border-gray-300 text-xs font-medium focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#0D3823]"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                      <div>
+                        <label className="text-[11px] font-black text-gray-700 uppercase tracking-wider block mb-1">
+                          Phone Number (Optional)
+                        </label>
+                        <input
+                          type="tel"
+                          value={generalForm.phone}
+                          onChange={(e) => setGeneralForm({ ...generalForm, phone: e.target.value })}
+                          placeholder="(555) 000-0000"
+                          className="w-full h-[42px] px-3.5 rounded-xl bg-gray-50 border border-gray-300 text-xs font-medium focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#0D3823]"
+                        />
+                      </div>
+
+                      <div>
+                        <label className="text-[11px] font-black text-gray-700 uppercase tracking-wider block mb-1">
+                          Topic / Subject
+                        </label>
+                        <select
+                          value={generalForm.subject}
+                          onChange={(e) => setGeneralForm({ ...generalForm, subject: e.target.value })}
+                          className="w-full h-[42px] px-3 rounded-xl bg-gray-50 border border-gray-300 text-xs font-bold text-gray-800 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#0D3823]"
+                        >
+                          <option value="General Question">General Question</option>
+                          <option value="Product Specifications & Catalog">Product Specifications &amp; Catalog</option>
+                          <option value="Distributor Partnerships">Distributor Partnerships</option>
+                          <option value="Order Status & Tracking">Order Status &amp; Tracking</option>
+                          <option value="Feedback & Quality">Feedback &amp; Quality</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div>
+                      <label className="text-[11px] font-black text-gray-700 uppercase tracking-wider block mb-1">
+                        Your Message *
+                      </label>
+                      <textarea
+                        rows={4}
+                        required
+                        value={generalForm.message}
+                        onChange={(e) => setGeneralForm({ ...generalForm, message: e.target.value })}
+                        placeholder="How can our customer service or technical team help you today?"
+                        className="w-full p-3 rounded-xl bg-gray-50 border border-gray-300 text-xs font-medium focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#0D3823]"
+                      />
+                    </div>
+
+                    <button
+                      type="submit"
+                      className="w-full h-[48px] inline-flex items-center justify-center gap-2.5 bg-[#0D3823] hover:bg-[#072416] text-white font-black text-xs uppercase tracking-wider rounded-full shadow-md transition-all cursor-pointer"
+                    >
+                      <Send className="w-3.5 h-3.5" />
+                      <span>Send Message</span>
                     </button>
                   </form>
                 )}
@@ -401,6 +559,33 @@ export const ContactPage: React.FC<ContactPageProps> = ({
             </div>
           </div>
         </section>
+
+        {/* Marquee Ticker right above Map Section */}
+        <MarqueeTicker
+          variant="deep-green"
+          items={[
+            'DIRECT WHOLESALE SUPPLY',
+            'PALLET & CONTAINER VOLUME',
+            'PRECISION PRESSED STEEL',
+            'MALLEABLE IRON GATE HINGES',
+            'NATIONWIDE CONTRACTOR SUPPLY',
+            'CUSTOM OEM TOOLING',
+            '12-24H RFQ TURNAROUND',
+            'ASTM F626 COMPLIANT',
+          ]}
+        />
+
+        {/* Map Location Section */}
+        <ServiceAreasMap onOpenSchedule={() => {
+          const el = document.getElementById('contact-form');
+          if (el) el.scrollIntoView({ behavior: 'smooth' });
+        }} />
+
+        {/* FAQ Section */}
+        <FaqSection onOpenSchedule={() => {
+          const el = document.getElementById('contact-form');
+          if (el) el.scrollIntoView({ behavior: 'smooth' });
+        }} />
 
         {/* Conversion Banner */}
         <ConversionBanner onOpenSchedule={() => {
