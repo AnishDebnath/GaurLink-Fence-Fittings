@@ -12,6 +12,8 @@ import gateHingeObjImg from '../assets/images/gate_hinge_hardware_1788549224564.
 import tensionBandObjImg from '../assets/images/tension_band_hardware_1788549239389.jpg';
 import cantileverRollerObjImg from '../assets/images/cantilever_roller_obj_1788549255147.jpg';
 import barbedArmObjImg from '../assets/images/barbed_arm_obj_1788549272254.jpg';
+import storyDirectorImg from '../assets/images/story_director_1788553634053.jpg';
+import factoryTeamCrewImg from '../assets/images/factory_team_crew_1788553938802.jpg';
 
 export const IMAGES = {
   hero: heroImg,
@@ -28,4 +30,6 @@ export const IMAGES = {
   tensionBandObj: tensionBandObjImg,
   cantileverRollerObj: cantileverRollerObjImg,
   barbedArmObj: barbedArmObjImg,
+  storyDirector: storyDirectorImg,
+  factoryTeamCrew: factoryTeamCrewImg,
 };

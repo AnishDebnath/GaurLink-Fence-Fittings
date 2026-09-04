@@ -42,7 +42,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigateSection, onOpenSchedul
   const handleZoomOut = () => setZoomLevel((prev) => Math.max(prev - 1, 4));
 
   return (
-    <footer className="bg-[#071910] text-gray-300 pt-8 sm:pt-10 pb-10 font-sans select-none border-t border-emerald-900/40">
+    <footer className="bg-[#071910] text-gray-300 pt-8 sm:pt-10 pb-10 font-sans select-none">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Main 4-Column Grid */}
