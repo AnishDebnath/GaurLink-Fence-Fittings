@@ -12,6 +12,7 @@ import { MarqueeTicker } from '../home/MarqueeTicker';
 import { WhyChooseUs } from '../home/WhyChooseUs';
 import { TestimonialsGrid } from '../home/TestimonialsGrid';
 import { ServiceAreasMap } from '../home/ServiceAreasMap';
+import { FaqSection } from '../home/FaqSection';
 import { ConversionBanner } from '../home/ConversionBanner';
 import { IMAGES } from '../../data/images';
 
@@ -323,6 +324,9 @@ export const AboutPage: React.FC<AboutPageProps> = ({
 
         {/* Map Location Section (from Home Page) */}
         <ServiceAreasMap onOpenSchedule={() => onNavigatePage('contact', { quote: true })} />
+
+        {/* FAQ Section (from Home Page) */}
+        <FaqSection onOpenSchedule={() => onNavigatePage('contact', { quote: true })} />
 
         {/* Conversion Banner (CTA from Home Page) */}
         <ConversionBanner onOpenSchedule={() => onNavigatePage('contact', { quote: true })} />
