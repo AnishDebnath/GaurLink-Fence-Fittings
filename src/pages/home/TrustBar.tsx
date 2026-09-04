@@ -5,24 +5,24 @@ export const TrustBar: React.FC = () => {
   const stats = [
     {
       icon: Briefcase,
-      value: '15+',
-      label: 'Years Experience',
+      value: 'USA',
+      label: 'Based Manufacturer',
     },
     {
       icon: Star,
-      value: '5 STAR',
-      label: 'Rated 200+ Review',
+      value: 'ASTM',
+      label: 'A153 Hot-Dip Spec',
       isStar: true,
     },
     {
       icon: FileText,
-      value: 'LICENSED',
-      label: 'Licensed Fully Insured',
+      value: 'WHOLESALE',
+      label: 'Direct Pallet Rates',
     },
     {
       icon: Clock,
-      value: '24/7',
-      label: 'Dispatching',
+      value: 'NATIONWIDE',
+      label: 'Fast US Freight Delivery',
     },
   ];
 
@@ -53,7 +53,7 @@ export const TrustBar: React.FC = () => {
                   <span className="text-xl sm:text-2xl lg:text-[28px] font-black uppercase text-white tracking-tight">
                     {stat.value}
                   </span>
-                  <span className="text-xs sm:text-sm font-normal text-white/90 tracking-normal mt-0.5 whitespace-nowrap">
+                  <span className="text-xs sm:text-sm font-normal text-white/90 tracking-normal mt-0.5">
                     {stat.label}
                   </span>
                 </div>

@@ -15,52 +15,52 @@ export const ServicesShowcase: React.FC<ServicesShowcaseProps> = ({
 
   const services = [
     {
-      id: 'fence-installation',
-      title: 'FENCE INSTALLATION',
-      image: IMAGES.installerWork,
-      icon: Hammer,
-      category: 'Residential & Commercial',
-      desc: 'Complete turnkey installation of perimeter privacy fences, chain link, and industrial security systems.',
-    },
-    {
-      id: 'wood-fence-repair',
-      title: 'WOOD FENCE REPAIR',
-      image: IMAGES.drillRepair,
-      icon: Drill,
-      category: 'Restoration & Reinforcement',
-      desc: 'Precision picket replacement, post realignment, rail reinforcement, and weatherproofing.',
-    },
-    {
-      id: 'gate-fence-repair',
-      title: 'GATE FENCE REPAIR',
-      image: IMAGES.gateRepair,
-      icon: Wrench,
-      category: 'Welding & Hardware',
-      desc: 'Heavy-duty gate hinge restoration, welded frame repair, cantilever rollers, and automatic latch service.',
-    },
-    {
       id: 'chain-link-fittings',
-      title: 'CHAIN LINK SERVICES',
+      title: 'CHAIN LINK FITTINGS',
       image: IMAGES.fenceFittings,
       icon: Layers,
       category: 'Commercial Hardware',
-      desc: 'Factory-direct tension wire, top rail sleeves, barb arms, and galvanized pipe fittings.',
+      desc: 'Hot-dip galvanized post caps, loop caps, tension bands, brace bands, and rail ends manufactured to ASTM F626.',
     },
     {
-      id: 'commercial-gate-hardware',
-      title: 'SECURITY GATE INSTALL',
+      id: 'gate-hardware',
+      title: 'COMMERCIAL GATE HINGES',
       image: IMAGES.hardwareCatalog,
       icon: Lock,
       category: 'Access & Perimeter',
-      desc: 'High-security 180-degree offset hinges, industrial drop rods, and anti-sag gate hardware kits.',
+      desc: 'Pressed steel male & box hinges, industrial 180° swing hinges, and heavy-duty gate latches.',
     },
     {
-      id: 'concrete-post-repair',
-      title: 'POST & FOUNDATION REPAIR',
+      id: 'cantilever-rollers',
+      title: 'CANTILEVER GATE ROLLERS',
+      image: IMAGES.gateRepair,
+      icon: Wrench,
+      category: 'Heavy Industrial Access',
+      desc: 'Machined steel and nylon cantilever roller assemblies with sealed bearings for heavy automated slide gates.',
+    },
+    {
+      id: 'tension-bars',
+      title: 'TENSION BARS & RODS',
+      image: IMAGES.drillRepair,
+      icon: Drill,
+      category: 'Galvanized Structural',
+      desc: 'Commercial-grade steel tension bars, truss rods, and wire clamps for high-tension perimeter chain link fencing.',
+    },
+    {
+      id: 'security-arms',
+      title: 'BARBED WIRE ARMS',
+      image: IMAGES.installerWork,
+      icon: Hammer,
+      category: 'High Security Perimeter',
+      desc: 'Heavy-gauge 45-degree and vertical pressed steel extension arms engineered for 3-strand barbed wire tops.',
+    },
+    {
+      id: 'custom-stamping',
+      title: 'CUSTOM OEM DIE STAMPING',
       image: IMAGES.concrete,
       icon: Shield,
-      category: 'Post Anchoring',
-      desc: 'Deep concrete core drilling, storm-damaged post resetting, and ground-level structural stabilization.',
+      category: 'Tool & Die Division',
+      desc: 'In-house precision tooling and high-tonnage mechanical press stampings built to proprietary contractor specs.',
     },
   ];
 
@@ -83,16 +83,16 @@ export const ServicesShowcase: React.FC<ServicesShowcaseProps> = ({
         
         {/* Section Header matching reference image layout */}
         <div className="text-center max-w-3xl mx-auto space-y-4 mb-12 sm:mb-16">
-          {/* Eyebrow Pill Badge: • SERVICE WE PROVIDE */}
+          {/* Eyebrow Pill Badge: • WHAT WE MANUFACTURE */}
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-gray-800 text-[12px] font-bold tracking-wider text-gray-900 uppercase font-sans">
             <span className="w-2 h-2 rounded-full bg-[#0D3823]"></span>
-            <span>SERVICE WE PROVIDE</span>
+            <span>WHAT WE MANUFACTURE</span>
           </div>
 
           {/* Heading matching reference typography */}
           <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-black uppercase text-gray-900 tracking-tight leading-[1.08] font-sans">
-            COMPLETE FENCE SERVICES<br />
-            INSTALLATION AND REPAIRS
+            WHOLESALE FENCE &amp; FITTINGS<br />
+            MANUFACTURED IN HIGH VOLUME
           </h2>
         </div>
 

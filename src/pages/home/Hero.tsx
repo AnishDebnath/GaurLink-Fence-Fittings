@@ -1,39 +1,52 @@
-import React, { useState } from 'react';
-import { PhoneCall, ArrowRight, ShieldCheck, CheckCircle2, Award, Star, Check, ChevronDown } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { PhoneCall, ArrowRight, ShieldCheck, CheckCircle2, Award, Star } from 'lucide-react';
+import { motion, AnimatePresence } from 'motion/react';
 import { IMAGES } from '../../data/images';
 
 interface HeroProps {
   onOpenSchedule: () => void;
-  onExploreServices: () => void;
+  onExploreServices?: () => void;
 }
 
-export const Hero: React.FC<HeroProps> = ({ onOpenSchedule }) => {
-  const [formData, setFormData] = useState({
-    fullName: '',
-    phone: '',
-    email: '',
-    productLine: 'Chain Link Fittings & Clamps',
-    orderVolume: 'Full 40ft Container',
-    message: '',
-  });
-  const [submitted, setSubmitted] = useState(false);
+const HARDWARE_OBJECTS = [
+  {
+    id: 'gate-hinge',
+    name: 'Galvanized Industrial Gate Hinge',
+    image: IMAGES.gateHingeObj,
+  },
+  {
+    id: 'tension-band',
+    name: 'Heavy Pressed Steel Tension Band',
+    image: IMAGES.tensionBandObj,
+  },
+  {
+    id: 'cantilever-roller',
+    name: 'Cantilever Sliding Gate Roller Assembly',
+    image: IMAGES.cantileverRollerObj,
+  },
+  {
+    id: 'barbed-arm',
+    name: '3-Wire Commercial Barbed Extension Arm',
+    image: IMAGES.barbedArmObj,
+  },
+];
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!formData.fullName || !formData.phone) return;
-    setSubmitted(true);
-    setTimeout(() => {
-      setSubmitted(false);
-      setFormData({
-        fullName: '',
-        phone: '',
-        email: '',
-        productLine: 'Chain Link Fittings & Clamps',
-        orderVolume: 'Full 40ft Container',
-        message: '',
-      });
-    }, 5000);
+export const Hero: React.FC<HeroProps> = ({ onOpenSchedule }) => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  // Auto-advance items right to left
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % HARDWARE_OBJECTS.length);
+    }, 3600);
+    return () => clearInterval(timer);
+  }, []);
+
+  const handleNext = () => {
+    setCurrentIndex((prev) => (prev + 1) % HARDWARE_OBJECTS.length);
   };
+
+  const currentObject = HARDWARE_OBJECTS[currentIndex];
 
   return (
     <section id="home" className="relative min-h-[640px] lg:min-h-[740px] flex items-center bg-[#071910] text-white overflow-hidden pt-32 sm:pt-36 lg:pt-40 pb-16 sm:pb-20 lg:pb-24">
@@ -41,7 +54,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenSchedule }) => {
       <div className="absolute inset-0 z-0">
         <img
           src={IMAGES.hero}
-          alt="Fence repair and hardware specialist"
+          alt="GaurLink USA fence and fittings manufacturing specialist"
           className="w-full h-full object-cover object-center scale-105 filter brightness-75 contrast-110"
         />
         {/* Dark Vignette Overlay tinted with website deep forest green tones */}
@@ -122,7 +135,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenSchedule }) => {
 
             {/* Subtitle matching reference format */}
             <p className="text-gray-200 text-sm sm:text-base max-w-xl leading-relaxed font-normal">
-              Direct factory manufacturer of precision pressed steel, malleable iron fence fittings, gate hardware, and chain-link components. Supplying fence distributors, commercial contractors, and builders nationwide at competitive wholesale rates.
+              GaurLink is a USA-based fence and fittings manufacturing company, supplying commercial fence and fittings items at direct factory wholesale rates to supply yards, distributors, and contractors nationwide.
             </p>
 
             {/* Action Buttons matching reference image layout in website color theme */}
@@ -150,43 +163,52 @@ export const Hero: React.FC<HeroProps> = ({ onOpenSchedule }) => {
               </a>
             </div>
 
-            {/* Bottom 3 Glass Cards matching reference image */}
-            <div className="pt-2 sm:pt-3 grid grid-cols-1 sm:grid-cols-3 gap-3 max-w-xl w-full">
-              {/* Card 1: FACTORY DIRECT / LICENSE INSURE */}
-              <div className="bg-black/35 backdrop-blur-md border border-white/20 hover:border-emerald-400/50 rounded-xl p-3.5 sm:p-4 flex items-center gap-3.5 transition-all">
-                <ShieldCheck className="w-7 h-7 sm:w-8 sm:h-8 text-white stroke-[1.8] shrink-0" />
+            {/* Bottom 3 Prominent Glass Badges matching reference image */}
+            <div className="pt-2 sm:pt-3 grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-3.5 max-w-[560px] sm:max-w-[600px] w-full">
+              {/* Card 1: FACTORY DIRECT / Wholesale Rates */}
+              <div
+                id="hero-feature-factory-direct"
+                className="bg-black/40 backdrop-blur-md border border-white/20 hover:border-emerald-400/60 rounded-2xl p-3.5 sm:p-4 flex items-center gap-3 transition-all shadow-md group hover:bg-black/50"
+              >
+                <ShieldCheck className="w-7 h-7 sm:w-8 sm:h-8 text-[#E5A912] sm:text-white group-hover:text-[#E5A912] stroke-[1.8] shrink-0 transition-colors" />
                 <div className="min-w-0 text-left">
-                  <div className="text-[12px] sm:text-[13px] font-black uppercase text-white tracking-wide leading-tight truncate">
+                  <div className="text-[12px] sm:text-[13px] font-black uppercase text-white tracking-wide leading-tight whitespace-nowrap">
                     FACTORY DIRECT
                   </div>
-                  <div className="text-[11px] text-gray-300 font-normal leading-tight mt-0.5 truncate">
+                  <div className="text-[11px] sm:text-xs text-gray-300 font-normal leading-tight mt-1 whitespace-nowrap">
                     Wholesale Rates
                   </div>
                 </div>
               </div>
 
-              {/* Card 2: ASTM A153 / FREE ESTIMATE */}
-              <div className="bg-black/35 backdrop-blur-md border border-white/20 hover:border-emerald-400/50 rounded-xl p-3.5 sm:p-4 flex items-center gap-3.5 transition-all">
-                <CheckCircle2 className="w-7 h-7 sm:w-8 sm:h-8 text-white stroke-[1.8] shrink-0" />
+              {/* Card 2: ASTM A153 / Galvanized Zinc */}
+              <div
+                id="hero-feature-astm"
+                className="bg-black/40 backdrop-blur-md border border-white/20 hover:border-emerald-400/60 rounded-2xl p-3.5 sm:p-4 flex items-center gap-3 transition-all shadow-md group hover:bg-black/50"
+              >
+                <CheckCircle2 className="w-7 h-7 sm:w-8 sm:h-8 text-[#E5A912] sm:text-white group-hover:text-[#E5A912] stroke-[1.8] shrink-0 transition-colors" />
                 <div className="min-w-0 text-left">
-                  <div className="text-[12px] sm:text-[13px] font-black uppercase text-white tracking-wide leading-tight truncate">
-                    ASTM A153 / F626
+                  <div className="text-[12px] sm:text-[13px] font-black uppercase text-white tracking-wide leading-tight whitespace-nowrap">
+                    ASTM A153
                   </div>
-                  <div className="text-[11px] text-gray-300 font-normal leading-tight mt-0.5 truncate">
-                    Hot-Dip Galvanized
+                  <div className="text-[11px] sm:text-xs text-gray-300 font-normal leading-tight mt-1 whitespace-nowrap">
+                    Galvanized Zinc
                   </div>
                 </div>
               </div>
 
-              {/* Card 3: BULK IN STOCK / BEST PRICE */}
-              <div className="bg-black/35 backdrop-blur-md border border-white/20 hover:border-emerald-400/50 rounded-xl p-3.5 sm:p-4 flex items-center gap-3.5 transition-all">
-                <Award className="w-7 h-7 sm:w-8 sm:h-8 text-white stroke-[1.8] shrink-0" />
+              {/* Card 3: IN STOCK / Pallet Ready */}
+              <div
+                id="hero-feature-in-stock"
+                className="bg-black/40 backdrop-blur-md border border-white/20 hover:border-emerald-400/60 rounded-2xl p-3.5 sm:p-4 flex items-center gap-3 transition-all shadow-md group hover:bg-black/50"
+              >
+                <Award className="w-7 h-7 sm:w-8 sm:h-8 text-[#E5A912] sm:text-white group-hover:text-[#E5A912] stroke-[1.8] shrink-0 transition-colors" />
                 <div className="min-w-0 text-left">
-                  <div className="text-[12px] sm:text-[13px] font-black uppercase text-white tracking-wide leading-tight truncate">
-                    BULK IN STOCK
+                  <div className="text-[12px] sm:text-[13px] font-black uppercase text-white tracking-wide leading-tight whitespace-nowrap">
+                    IN STOCK
                   </div>
-                  <div className="text-[11px] text-gray-300 font-normal leading-tight mt-0.5 truncate">
-                    Pallet &amp; Container
+                  <div className="text-[11px] sm:text-xs text-gray-300 font-normal leading-tight mt-1 whitespace-nowrap">
+                    Pallet Ready
                   </div>
                 </div>
               </div>
@@ -194,112 +216,39 @@ export const Hero: React.FC<HeroProps> = ({ onOpenSchedule }) => {
 
           </div>
 
-          {/* Right Column: Floating Form Card matching reference image style */}
-          <div className="lg:col-span-5">
-            <div className="bg-white rounded-3xl shadow-2xl p-6 sm:p-8 text-gray-900 border border-gray-100/90 relative">
-              <div className="mb-5">
-                <h2 className="text-xl sm:text-2xl font-black uppercase text-gray-900 tracking-tight text-left">
-                  LET'S FIX YOUR FENCE FAST
-                </h2>
-              </div>
+          {/* Right Column: Floating PNG Hardware Objects Showcase (moving right to left) */}
+          {/* Right Column: Directly show floating object image moving right to left */}
+          <div className="lg:col-span-5 flex items-center justify-center relative min-h-[360px] sm:min-h-[420px] lg:min-h-[480px] w-full select-none">
+            {/* Ambient subtle warm/emerald glow directly on hero section */}
+            <div className="absolute w-72 h-72 sm:w-96 sm:h-96 rounded-full bg-gradient-to-tr from-[#0D3823]/60 via-[#E5A912]/20 to-transparent blur-3xl pointer-events-none" />
 
-              {submitted ? (
-                <div className="py-12 text-center space-y-3 animate-in fade-in">
-                  <div className="w-14 h-14 bg-emerald-100 text-[#0D3823] rounded-full flex items-center justify-center mx-auto shadow-inner">
-                    <Check className="w-7 h-7 stroke-[3]" />
-                  </div>
-                  <h3 className="text-lg font-black text-gray-900 uppercase">
-                    SCHEDULE REQUEST RECEIVED!
-                  </h3>
-                  <p className="text-xs text-gray-600 max-w-xs mx-auto">
-                    Thank you, {formData.fullName}! Our team will prepare your quote and contact you at {formData.phone}.
-                  </p>
-                </div>
-              ) : (
-                <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-3.5">
-                  {/* Row 1: Full Name & Phone Number side by side matching image */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    <div>
-                      <input
-                        type="text"
-                        required
-                        placeholder="Full Name"
-                        value={formData.fullName}
-                        onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-                        className="w-full bg-[#EEEEEE] border-0 rounded-xl px-4 py-3.5 text-xs sm:text-sm text-gray-800 placeholder-gray-500 font-medium focus:bg-white focus:ring-2 focus:ring-[#0D3823] transition-all"
-                        id="hero-form-name"
-                      />
-                    </div>
-                    <div>
-                      <input
-                        type="tel"
-                        required
-                        placeholder="Phone Number"
-                        value={formData.phone}
-                        onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                        className="w-full bg-[#EEEEEE] border-0 rounded-xl px-4 py-3.5 text-xs sm:text-sm text-gray-800 placeholder-gray-500 font-medium focus:bg-white focus:ring-2 focus:ring-[#0D3823] transition-all"
-                        id="hero-form-phone"
-                      />
-                    </div>
-                  </div>
-
-                  {/* Row 2: Email Address (full width matching image) */}
-                  <div>
-                    <input
-                      type="email"
-                      required
-                      placeholder="Email Address"
-                      value={formData.email}
-                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="w-full bg-[#EEEEEE] border-0 rounded-xl px-4 py-3.5 text-xs sm:text-sm text-gray-800 placeholder-gray-500 font-medium focus:bg-white focus:ring-2 focus:ring-[#0D3823] transition-all"
-                      id="hero-form-email"
-                    />
-                  </div>
-
-                  {/* Row 3: Service Type Dropdown matching image */}
-                  <div className="relative">
-                    <select
-                      value={formData.productLine}
-                      onChange={(e) => setFormData({ ...formData, productLine: e.target.value })}
-                      className="w-full appearance-none bg-[#EEEEEE] border-0 rounded-xl px-4 py-3.5 text-xs sm:text-sm text-gray-800 font-medium focus:bg-white focus:ring-2 focus:ring-[#0D3823] transition-all cursor-pointer pr-10"
-                      id="hero-form-service"
-                    >
-                      <option value="Chain Link Fittings & Clamps">Chain Link Fittings &amp; Clamps</option>
-                      <option value="Commercial Gate Hardware">Commercial Gate Hardware &amp; 180° Hinges</option>
-                      <option value="Fence Repair & Restoration">Fence Repair &amp; Restoration</option>
-                      <option value="Tension Bars & Wire">Tension Bars, Truss Rods &amp; Wire</option>
-                      <option value="Cantilever Gate Rollers">Industrial Cantilever Nylon Rollers</option>
-                      <option value="Barbed Wire Extension Arms">Barbed Wire Extension Arms</option>
-                      <option value="Custom OEM Tooling & Wholesale">Wholesale Pallets &amp; Containers</option>
-                    </select>
-                    <ChevronDown className="absolute right-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-600 pointer-events-none stroke-[2.2]" />
-                  </div>
-
-                  {/* Row 4: Write Your Message Textarea matching image */}
-                  <div>
-                    <textarea
-                      rows={4}
-                      placeholder="Write Your Message"
-                      value={formData.message}
-                      onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      className="w-full bg-[#EEEEEE] border-0 rounded-xl px-4 py-3.5 text-xs sm:text-sm text-gray-800 placeholder-gray-500 font-medium focus:bg-white focus:ring-2 focus:ring-[#0D3823] transition-all resize-none"
-                      id="hero-form-message"
-                    ></textarea>
-                  </div>
-
-                  {/* Submit Button matching image style (pill with circle arrow on left) in website color theme */}
-                  <button
-                    type="submit"
-                    className="w-full h-[50px] sm:h-[52px] inline-flex items-center justify-center gap-3 bg-[#0D3823] hover:bg-[#072416] text-white font-black text-xs sm:text-sm uppercase tracking-wider rounded-full shadow-lg hover:shadow-xl transition-all transform active:scale-98 group border border-emerald-600/30 ring-1 ring-[#E5A912]/20"
-                    id="hero-form-submit-btn"
+            <div className="relative w-full h-full flex items-center justify-center">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={currentObject.id}
+                  initial={{ opacity: 0, x: 140 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -140 }}
+                  transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                  onClick={handleNext}
+                  className="cursor-pointer flex items-center justify-center"
+                  title="Click to view next fitting"
+                >
+                  {/* Weightless vertical floating motion */}
+                  <motion.div
+                    animate={{ y: [0, -14, 0] }}
+                    transition={{ repeat: Infinity, duration: 3.6, ease: 'easeInOut' }}
+                    className="relative w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 lg:w-[440px] lg:h-[440px] flex items-center justify-center"
                   >
-                    <span className="w-8 h-8 rounded-full bg-[#E5A912] text-[#0D3823] font-black flex items-center justify-center group-hover:translate-x-0.5 transition-transform shadow-xs shrink-0">
-                      <ArrowRight className="w-4 h-4 stroke-[3]" />
-                    </span>
-                    <span>BOOK A SCHEDULE</span>
-                  </button>
-                </form>
-              )}
+                    <img
+                      src={currentObject.image}
+                      alt={currentObject.name}
+                      referrerPolicy="no-referrer"
+                      className="w-full h-full object-contain mix-blend-screen [mask-image:radial-gradient(ellipse_at_center,black_62%,transparent_98%)] filter drop-shadow-[0_25px_40px_rgba(0,0,0,0.95)] contrast-125 brightness-110 select-none pointer-events-none"
+                    />
+                  </motion.div>
+                </motion.div>
+              </AnimatePresence>
             </div>
           </div>
 

@@ -8,6 +8,10 @@ import fenceFittingsImg from '../assets/images/hero_fence_fittings_1788071697609
 import hardwareCatalogImg from '../assets/images/fence_hardware_catalog_1788071714440.jpg';
 import plantImg from '../assets/images/manufacturing_plant_1788071733745.jpg';
 import bannerImg from '../assets/banner.jpeg';
+import gateHingeObjImg from '../assets/images/gate_hinge_hardware_1788549224564.jpg';
+import tensionBandObjImg from '../assets/images/tension_band_hardware_1788549239389.jpg';
+import cantileverRollerObjImg from '../assets/images/cantilever_roller_obj_1788549255147.jpg';
+import barbedArmObjImg from '../assets/images/barbed_arm_obj_1788549272254.jpg';
 
 export const IMAGES = {
   hero: heroImg,
@@ -20,4 +24,8 @@ export const IMAGES = {
   hardwareCatalog: hardwareCatalogImg,
   manufacturingPlant: plantImg,
   banner: bannerImg,
+  gateHingeObj: gateHingeObjImg,
+  tensionBandObj: tensionBandObjImg,
+  cantileverRollerObj: cantileverRollerObjImg,
+  barbedArmObj: barbedArmObjImg,
 };

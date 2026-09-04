@@ -3,15 +3,14 @@ import { ArrowRight, Menu, X, Phone } from 'lucide-react';
 import { FenceFixLogo } from './FenceFixLogo';
 
 interface NavbarProps {
-  onOpenSchedule: () => void;
-  onNavigateSection: (sectionId: string) => void;
-  onNavigatePage: (page: 'about' | 'contact') => void;
+  onOpenSchedule?: () => void;
+  onNavigateSection?: (sectionId: string) => void;
+  onNavigatePage: (page: 'home' | 'products' | 'about' | 'contact', params?: { quote?: boolean; productId?: string }) => void;
   currentRoute: string;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
   onOpenSchedule,
-  onNavigateSection,
   onNavigatePage,
   currentRoute,
 }) => {
@@ -53,8 +52,12 @@ export const Navbar: React.FC<NavbarProps> = ({
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleNavClick = (id: string) => {
-    onNavigateSection(id);
+  const handleRequestQuote = () => {
+    if (onOpenSchedule) {
+      onOpenSchedule();
+    } else {
+      onNavigatePage('contact', { quote: true });
+    }
     setMobileMenuOpen(false);
   };
 
@@ -79,7 +82,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           {/* Left: Logo */}
           <button
             type="button"
-            onClick={() => handleNavClick('home')}
+            onClick={() => onNavigatePage('home')}
             className="flex items-center focus:outline-none shrink-0 pr-2 sm:pr-4 cursor-pointer text-left"
             aria-label="Gaur Link Fence & Fittings Manufacturing"
           >
@@ -95,8 +98,8 @@ export const Navbar: React.FC<NavbarProps> = ({
             }`}
           >
             <button
-              onClick={() => handleNavClick('home')}
-              className={`relative px-3 py-2 text-[14px] font-semibold transition-colors whitespace-nowrap ${
+              onClick={() => onNavigatePage('home')}
+              className={`relative px-3.5 py-2 text-[14px] font-bold transition-colors whitespace-nowrap cursor-pointer ${
                 isActive('home')
                   ? 'text-[#0D3823]'
                   : 'text-gray-600 hover:text-[#0D3823]'
@@ -109,8 +112,22 @@ export const Navbar: React.FC<NavbarProps> = ({
             </button>
 
             <button
+              onClick={() => onNavigatePage('products')}
+              className={`relative px-3.5 py-2 text-[14px] font-bold transition-colors whitespace-nowrap cursor-pointer ${
+                isActive('products')
+                  ? 'text-[#0D3823]'
+                  : 'text-gray-600 hover:text-[#0D3823]'
+              }`}
+            >
+              Products
+              {isActive('products') && (
+                <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-5 h-0.5 bg-[#0D3823] rounded-full" />
+              )}
+            </button>
+
+            <button
               onClick={() => onNavigatePage('about')}
-              className={`relative px-3 py-2 text-[14px] font-semibold transition-colors whitespace-nowrap ${
+              className={`relative px-3.5 py-2 text-[14px] font-bold transition-colors whitespace-nowrap cursor-pointer ${
                 isActive('about')
                   ? 'text-[#0D3823]'
                   : 'text-gray-600 hover:text-[#0D3823]'
@@ -118,6 +135,20 @@ export const Navbar: React.FC<NavbarProps> = ({
             >
               About
               {isActive('about') && (
+                <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-5 h-0.5 bg-[#0D3823] rounded-full" />
+              )}
+            </button>
+
+            <button
+              onClick={() => onNavigatePage('contact')}
+              className={`relative px-3.5 py-2 text-[14px] font-bold transition-colors whitespace-nowrap cursor-pointer ${
+                isActive('contact')
+                  ? 'text-[#0D3823]'
+                  : 'text-gray-600 hover:text-[#0D3823]'
+              }`}
+            >
+              Contact
+              {isActive('contact') && (
                 <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-5 h-0.5 bg-[#0D3823] rounded-full" />
               )}
             </button>
@@ -155,8 +186,8 @@ export const Navbar: React.FC<NavbarProps> = ({
             </a>
 
             <button
-              onClick={onOpenSchedule}
-              className="h-[40px] sm:h-[42px] flex items-center gap-2 sm:gap-2.5 bg-[#0D3823] hover:bg-[#072416] text-white pl-1.5 pr-4 sm:pr-5 rounded-full shadow-md hover:shadow-lg transition-all transform active:scale-95 group shrink-0 ring-1 ring-[#E5A912]/30 border border-emerald-600/30"
+              onClick={handleRequestQuote}
+              className="h-[40px] sm:h-[42px] flex items-center gap-2 sm:gap-2.5 bg-[#0D3823] hover:bg-[#072416] text-white pl-1.5 pr-4 sm:pr-5 rounded-full shadow-md hover:shadow-lg transition-all transform active:scale-95 group shrink-0 ring-1 ring-[#E5A912]/30 border border-emerald-600/30 cursor-pointer"
             >
               <span className="w-7 h-7 sm:w-7.5 sm:h-7.5 rounded-full bg-[#E5A912] flex items-center justify-center text-[#0D3823] shrink-0 group-hover:translate-x-0.5 transition-transform shadow-xs">
                 <ArrowRight className="w-3.5 h-3.5 stroke-[2.5]" />
@@ -169,7 +200,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             <div className="flex items-center lg:hidden">
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="p-1.5 sm:p-2 rounded-full text-gray-700 hover:bg-gray-100/80 focus:outline-none transition-colors"
+                className="p-1.5 sm:p-2 rounded-full text-gray-700 hover:bg-gray-100/80 focus:outline-none transition-colors cursor-pointer"
                 aria-label="Toggle menu"
               >
                 {mobileMenuOpen ? <X className="w-5 h-5 sm:w-6 sm:h-6" /> : <Menu className="w-5 h-5 sm:w-6 sm:h-6" />}
@@ -182,8 +213,8 @@ export const Navbar: React.FC<NavbarProps> = ({
         {mobileMenuOpen && (
           <div className="lg:hidden mt-2 bg-white/95 backdrop-blur-xl rounded-3xl shadow-2xl border border-emerald-900/10 p-5 space-y-1 animate-in fade-in slide-in-from-top-3 duration-200">
             <button
-              onClick={() => handleNavClick('home')}
-              className={`relative block w-full text-left py-2.5 px-3 rounded-xl font-bold transition-all ${
+              onClick={() => { setMobileMenuOpen(false); onNavigatePage('home'); }}
+              className={`relative block w-full text-left py-2.5 px-3 rounded-xl font-bold transition-all cursor-pointer ${
                 isActive('home')
                   ? 'text-[#0D3823] bg-emerald-50/80'
                   : 'text-gray-600 hover:bg-gray-50 hover:text-[#0D3823]'
@@ -194,9 +225,24 @@ export const Navbar: React.FC<NavbarProps> = ({
                 <span className="absolute bottom-1 left-3 w-5 h-0.5 bg-[#0D3823] rounded-full" />
               )}
             </button>
+
+            <button
+              onClick={() => { setMobileMenuOpen(false); onNavigatePage('products'); }}
+              className={`relative block w-full text-left py-2.5 px-3 rounded-xl font-bold transition-all cursor-pointer ${
+                isActive('products')
+                  ? 'text-[#0D3823] bg-emerald-50/80'
+                  : 'text-gray-600 hover:bg-gray-50 hover:text-[#0D3823]'
+              }`}
+            >
+              Products Catalog
+              {isActive('products') && (
+                <span className="absolute bottom-1 left-3 w-5 h-0.5 bg-[#0D3823] rounded-full" />
+              )}
+            </button>
+
             <button
               onClick={() => { setMobileMenuOpen(false); onNavigatePage('about'); }}
-              className={`relative block w-full text-left py-2.5 px-3 rounded-xl font-bold transition-all ${
+              className={`relative block w-full text-left py-2.5 px-3 rounded-xl font-bold transition-all cursor-pointer ${
                 isActive('about')
                   ? 'text-[#0D3823] bg-emerald-50/80'
                   : 'text-gray-600 hover:bg-gray-50 hover:text-[#0D3823]'
@@ -204,6 +250,20 @@ export const Navbar: React.FC<NavbarProps> = ({
             >
               About
               {isActive('about') && (
+                <span className="absolute bottom-1 left-3 w-5 h-0.5 bg-[#0D3823] rounded-full" />
+              )}
+            </button>
+
+            <button
+              onClick={() => { setMobileMenuOpen(false); onNavigatePage('contact'); }}
+              className={`relative block w-full text-left py-2.5 px-3 rounded-xl font-bold transition-all cursor-pointer ${
+                isActive('contact')
+                  ? 'text-[#0D3823] bg-emerald-50/80'
+                  : 'text-gray-600 hover:bg-gray-50 hover:text-[#0D3823]'
+              }`}
+            >
+              Contact &amp; Wholesale Quote
+              {isActive('contact') && (
                 <span className="absolute bottom-1 left-3 w-5 h-0.5 bg-[#0D3823] rounded-full" />
               )}
             </button>
@@ -222,8 +282,8 @@ export const Navbar: React.FC<NavbarProps> = ({
                 </div>
               </a>
               <button
-                onClick={() => { setMobileMenuOpen(false); onOpenSchedule(); }}
-                className="w-full flex items-center justify-center gap-2.5 bg-[#0D3823] text-white py-3 rounded-full font-black text-xs uppercase shadow-md ring-2 ring-[#E5A912]/30"
+                onClick={handleRequestQuote}
+                className="w-full flex items-center justify-center gap-2.5 bg-[#0D3823] text-white py-3 rounded-full font-black text-xs uppercase shadow-md ring-2 ring-[#E5A912]/30 cursor-pointer"
               >
                 <span className="w-6 h-6 rounded-full bg-[#E5A912] text-[#0D3823] flex items-center justify-center">
                   <ArrowRight className="w-3.5 h-3.5 stroke-[2.5]" />

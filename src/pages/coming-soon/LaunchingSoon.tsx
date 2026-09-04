@@ -78,7 +78,7 @@ export const LaunchingSoon: React.FC = () => {
 
         {/* Sub-heading */}
         <p className="text-sm sm:text-base text-emerald-100/80 max-w-lg mx-auto mt-4 font-medium leading-relaxed">
-          Engineered chain link fabrics, industrial hardware, and complete perimeter security solutions.
+          GaurLink is a USA-based fence and fittings manufacturing company supplying fence and fittings items at direct factory wholesale rates.
         </p>
 
         {/* 7-Day Countdown Timer */}

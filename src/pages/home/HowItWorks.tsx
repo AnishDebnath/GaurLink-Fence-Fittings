@@ -7,23 +7,23 @@ export const HowItWorks: React.FC = () => {
   const steps = [
     {
       num: '01',
-      title: 'REQUEST YOUR FREE ESTIMATE',
-      desc: "Contact FenceFix Houston by phone or through our online form. Tell us about fence issue we'll schedule",
+      title: 'SUBMIT SPECIFICATIONS & RFQ',
+      desc: 'Send your part numbers, quantities, pipe diameters, or custom CAD drawings directly to our wholesale trade desk.',
     },
     {
       num: '02',
-      title: 'ON-SITE FENCE INSPECTION',
-      desc: 'Our team visits your property to the assess the damage identify repair needs, and provide an clear honest quote',
+      title: 'ITEMIZED FACTORY QUOTE',
+      desc: 'Receive transparent tiered wholesale pricing for pallet and container volumes within 12–24 business hours.',
     },
     {
       num: '03',
-      title: 'PROFESSIONAL FENCE REPAIR',
-      desc: 'We repair broken panels, leaning posts, gates damaged sections using quality materials and skilled workmanship',
+      title: 'HIGH-TONNAGE PRODUCTION',
+      desc: 'Components are stamped, forged, and hot-dip galvanized to ASTM A153 with strict in-house quality inspection.',
     },
     {
       num: '04',
-      title: 'ALL WALKTHROUGH & CLEAN',
-      desc: 'After completing the repair, we inspect the work with you and makes sure your property is clean safe looking great.',
+      title: 'DDP NATIONWIDE FREIGHT',
+      desc: 'Your order is packaged in reinforced crates or banded pallets and delivered directly to your commercial dock across the USA.',
     },
   ];
 
@@ -41,8 +41,8 @@ export const HowItWorks: React.FC = () => {
 
           {/* Heading in 2 bold lines */}
           <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-black uppercase text-gray-900 tracking-tight leading-[1.08] font-sans">
-            HASSLE-FREE FENCE REPAIR<br />
-            FROM START TO THE FINISH
+            STREAMLINED WHOLESALE SUPPLY<br />
+            FROM PRODUCTION TO YOUR YARD
           </h2>
         </div>
 
@@ -54,7 +54,7 @@ export const HowItWorks: React.FC = () => {
             <div className="relative w-full max-w-[420px] aspect-[4/4.7] rounded-[32px] overflow-hidden shadow-sm bg-gray-100">
               <img
                 src={IMAGES.concrete}
-                alt="Cement mixer pouring concrete for fence post foundation"
+                alt="GaurLink manufacturing plant and hardware quality control"
                 className="w-full h-full object-cover object-center"
               />
             </div>
@@ -62,12 +62,12 @@ export const HowItWorks: React.FC = () => {
             {/* Overlapping Floating Dark Badge with White Border on the Left Edge */}
             <div className="absolute top-[20%] -left-1 sm:-left-6 lg:-left-6 bg-[#222222] text-white rounded-[20px] p-5 sm:p-6 w-[170px] sm:w-[195px] shadow-2xl border-[1.5px] border-white z-20 select-none">
               <div className="text-5xl sm:text-[54px] font-black text-white leading-none tracking-tight font-sans">
-                25+
+                55+
               </div>
               <div className="text-[13px] sm:text-[14.5px] font-medium text-white leading-snug mt-3 font-sans">
                 Years of Fence<br />
-                Repair Service<br />
-                Done Right
+                Hardware Supply<br />
+                Direct to Yards
               </div>
             </div>
           </div>

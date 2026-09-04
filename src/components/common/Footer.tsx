@@ -5,41 +5,47 @@ import logo from '../../assets/logo/logo.png';
 interface FooterProps {
   onNavigateSection: (sectionId: string) => void;
   onOpenSchedule: () => void;
+  onNavigatePage?: (page: 'home' | 'products' | 'about' | 'contact', params?: { quote?: boolean; productId?: string }) => void;
 }
 
-export const Footer: React.FC<FooterProps> = ({ onNavigateSection }) => {
+export const Footer: React.FC<FooterProps> = ({ onNavigateSection, onOpenSchedule, onNavigatePage }) => {
   const [zoomLevel, setZoomLevel] = useState<number>(6);
 
+  const handlePageClick = (page: 'home' | 'products' | 'about' | 'contact', params?: { quote?: boolean; productId?: string }) => {
+    if (onNavigatePage) {
+      onNavigatePage(page, params);
+    } else if (page === 'contact' && params?.quote) {
+      onOpenSchedule();
+    } else {
+      onNavigateSection(page);
+    }
+  };
+
   const quickLinks = [
-    { label: 'Home', id: 'home' },
-    { label: 'About Us', id: 'why-choose-us' },
-    { label: 'Our Services', id: 'services' },
-    { label: 'Case Studies', id: 'case-studies' },
-    { label: 'Our Blog', id: 'services' },
-    { label: 'Testimonials', id: 'testimonials' },
-    { label: 'Our Team', id: 'testimonials' },
-    { label: 'Contact Us', id: 'faq' },
+    { label: 'Home', page: 'home' as const },
+    { label: 'Products Catalog', page: 'products' as const },
+    { label: 'About Us', page: 'about' as const },
+    { label: 'Contact & Wholesale Quote', page: 'contact' as const },
   ];
 
-  const services = [
-    'Fence Installation',
-    'Wood Fence Repair',
-    'Gate fence Repair',
-    'Fence Replacement',
-    'Fence Post Repair',
-    'Fence Maintenance',
-    'Privacy Fence Repair',
-    'Commercial Fence',
+  const productCategories = [
+    'Gate Hinges (Male & Box)',
+    'Fence Fittings & Post Clamps',
+    'Rolling Gate Hardware Kits',
+    'Industrial Cantilever Rollers',
+    'Galvanized Tension Bars',
+    'Barbed Wire Extension Arms',
+    'Custom Stamping & OEM Tooling',
   ];
 
   const handleZoomIn = () => setZoomLevel((prev) => Math.min(prev + 1, 14));
   const handleZoomOut = () => setZoomLevel((prev) => Math.max(prev - 1, 4));
 
   return (
-    <footer className="bg-[#071910] text-gray-300 pt-8 sm:pt-10 pb-10 font-sans select-none">
+    <footer className="bg-[#071910] text-gray-300 pt-8 sm:pt-10 pb-10 font-sans select-none border-t border-emerald-900/40">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Main 4-Column Grid matching reference layout */}
+        {/* Main 4-Column Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-8 pb-12 border-b border-emerald-900/40">
           
           {/* Col 1: Brand Mascot, Bio, Socials & Review Badges */}
@@ -47,12 +53,11 @@ export const Footer: React.FC<FooterProps> = ({ onNavigateSection }) => {
             <img src={logo} alt="Gaur Link Fence & Fittings" className="h-14 w-auto object-contain" />
 
             <p className="text-sm text-emerald-100/80 leading-relaxed max-w-[310px] font-normal">
-              Construction marketing for contractors and construction companies across the USA. We help builders, remodelers, and service professionals grow in visibility.
+              Direct manufacturer of pressed steel, malleable iron, and custom OEM fence hardware for commercial fence contractors and supply yards across the USA.
             </p>
 
             {/* Social Icons Row */}
             <div className="flex items-center gap-2 pt-1">
-              {/* Facebook (Gold/Amber highlighted) */}
               <button
                 type="button"
                 className="w-8 h-8 rounded-full bg-[#E5A912] text-[#071910] hover:bg-[#D89A08] flex items-center justify-center text-xs font-bold transition-transform active:scale-95 shadow-xs cursor-pointer"
@@ -61,7 +66,6 @@ export const Footer: React.FC<FooterProps> = ({ onNavigateSection }) => {
               >
                 f
               </button>
-              {/* LinkedIn */}
               <button
                 type="button"
                 className="w-8 h-8 rounded-full bg-[#0D291B] text-white hover:bg-[#153D29] flex items-center justify-center text-xs font-bold transition-colors border border-emerald-800/40 cursor-pointer"
@@ -70,7 +74,6 @@ export const Footer: React.FC<FooterProps> = ({ onNavigateSection }) => {
               >
                 in
               </button>
-              {/* X */}
               <button
                 type="button"
                 className="w-8 h-8 rounded-full bg-[#0D291B] text-white hover:bg-[#153D29] flex items-center justify-center text-xs font-bold transition-colors border border-emerald-800/40 cursor-pointer"
@@ -79,16 +82,6 @@ export const Footer: React.FC<FooterProps> = ({ onNavigateSection }) => {
               >
                 X
               </button>
-              {/* TikTok */}
-              <button
-                type="button"
-                className="w-8 h-8 rounded-full bg-[#0D291B] text-white hover:bg-[#153D29] flex items-center justify-center text-xs font-bold transition-colors border border-emerald-800/40 cursor-pointer"
-                title="TikTok"
-                aria-label="TikTok"
-              >
-                ♪
-              </button>
-              {/* YouTube */}
               <button
                 type="button"
                 className="w-8 h-8 rounded-full bg-[#0D291B] text-white hover:bg-[#153D29] flex items-center justify-center text-xs font-bold transition-colors border border-emerald-800/40 cursor-pointer"
@@ -99,9 +92,8 @@ export const Footer: React.FC<FooterProps> = ({ onNavigateSection }) => {
               </button>
             </div>
 
-            {/* Rating Badges Row matching screenshot */}
+            {/* Rating Badges Row */}
             <div className="flex flex-wrap items-center gap-3 pt-2">
-              {/* 1. Google Reviews */}
               <div className="flex items-center gap-1.5 bg-[#0D291B]/80 px-2.5 py-1 rounded border border-emerald-800/40">
                 <div className="flex font-black text-xs tracking-tighter">
                   <span className="text-[#4285F4]">G</span>
@@ -119,56 +111,53 @@ export const Footer: React.FC<FooterProps> = ({ onNavigateSection }) => {
                 </div>
               </div>
 
-              {/* 2. Facebook Reviews */}
               <div className="flex items-center gap-1.5 bg-[#0D291B]/80 px-2.5 py-1 rounded border border-emerald-800/40">
-                <span className="font-black text-xs text-white">facebook</span>
+                <span className="font-black text-xs text-white">ISO 9001</span>
                 <div className="flex flex-col">
-                  <span className="text-[9px] font-bold text-gray-300 leading-none">Reviews</span>
-                  <div className="flex text-white text-[8px] leading-none mt-0.5 tracking-tight">
-                    ★★★★★
-                  </div>
-                </div>
-              </div>
-
-              {/* 3. Yelp Reviews */}
-              <div className="bg-[#D32323] text-white px-2.5 py-1 rounded-sm flex flex-col items-center justify-center shadow-xs">
-                <span className="font-black text-[10px] tracking-tighter leading-none">yelp</span>
-                <div className="flex text-white text-[7px] leading-none mt-0.5 tracking-tight">
-                  ★★★★★
+                  <span className="text-[9px] font-bold text-[#E5A912] leading-none">Certified</span>
+                  <span className="text-[8px] text-gray-300">ASTM Compliant</span>
                 </div>
               </div>
             </div>
           </div>
 
           {/* Col 2: Quick Links */}
-          <div className="lg:col-span-2 space-y-3.5">
+          <div className="lg:col-span-3 space-y-3.5">
             <h3 className="text-sm font-bold uppercase tracking-wider text-white">
-              QUICK LINKS
+              NAVIGATION
             </h3>
             <ul className="space-y-2 text-sm text-emerald-100/80 font-medium">
               {quickLinks.map((link, idx) => (
                 <li key={idx}>
                   <button
-                    onClick={() => onNavigateSection(link.id)}
+                    onClick={() => handlePageClick(link.page)}
                     className="hover:text-[#E5A912] transition-colors text-left cursor-pointer"
                   >
                     {link.label}
                   </button>
                 </li>
               ))}
+              <li>
+                <button
+                  onClick={() => handlePageClick('contact', { quote: true })}
+                  className="text-[#E5A912] font-bold hover:underline transition-colors text-left cursor-pointer"
+                >
+                  Request Wholesale Quote →
+                </button>
+              </li>
             </ul>
           </div>
 
-          {/* Col 3: Our Services */}
-          <div className="lg:col-span-3 space-y-3.5">
+          {/* Col 3: Product Categories */}
+          <div className="lg:col-span-2 space-y-3.5">
             <h3 className="text-sm font-bold uppercase tracking-wider text-white">
-              OUR SERVICES
+              PRODUCTS
             </h3>
-            <ul className="space-y-2 text-sm text-emerald-100/80 font-medium">
-              {services.map((item, idx) => (
+            <ul className="space-y-2 text-xs sm:text-sm text-emerald-100/80 font-medium">
+              {productCategories.map((item, idx) => (
                 <li key={idx}>
                   <button
-                    onClick={() => onNavigateSection('services')}
+                    onClick={() => handlePageClick('products')}
                     className="hover:text-[#E5A912] transition-colors text-left cursor-pointer"
                   >
                     {item}
@@ -181,23 +170,10 @@ export const Footer: React.FC<FooterProps> = ({ onNavigateSection }) => {
           {/* Col 4: Contact Info & Mini Map */}
           <div className="lg:col-span-3 space-y-3.5">
             <h3 className="text-sm font-bold uppercase tracking-wider text-white">
-              CONTACT INFO
+              WHOLESALE TRADE DESK
             </h3>
 
             <div className="space-y-2.5 text-sm text-emerald-100/85">
-              <a
-                href="mailto:fenching@repair.com"
-                className="flex items-center gap-2.5 hover:text-[#E5A912] transition-colors"
-              >
-                <Mail className="w-4 h-4 text-[#E5A912] shrink-0" />
-                <span>fenching@repair.com</span>
-              </a>
-
-              <div className="flex items-start gap-2.5">
-                <MapPin className="w-4 h-4 text-[#E5A912] shrink-0 mt-0.5" />
-                <span>3000 Texas Villa St #10, USA</span>
-              </div>
-
               <a
                 href="tel:7208053155"
                 className="flex items-center gap-2.5 hover:text-[#E5A912] transition-colors"
@@ -205,9 +181,22 @@ export const Footer: React.FC<FooterProps> = ({ onNavigateSection }) => {
                 <Phone className="w-4 h-4 text-[#E5A912] shrink-0" />
                 <span>(720) 805-3155</span>
               </a>
+
+              <a
+                href="mailto:trade@gaurlink.com"
+                className="flex items-center gap-2.5 hover:text-[#E5A912] transition-colors"
+              >
+                <Mail className="w-4 h-4 text-[#E5A912] shrink-0" />
+                <span>trade@gaurlink.com</span>
+              </a>
+
+              <div className="flex items-start gap-2.5">
+                <MapPin className="w-4 h-4 text-[#E5A912] shrink-0 mt-0.5" />
+                <span>20,000 SQ.FT Manufacturing Plant (DDP USA Freight)</span>
+              </div>
             </div>
 
-            {/* Embedded Mini Interactive Google Map matching screenshot */}
+            {/* Embedded Mini Interactive Google Map */}
             <div className="relative w-full h-28 rounded-xl overflow-hidden border border-emerald-800/50 shadow-md bg-black mt-2">
               <iframe
                 title="Footer Texas Mini Map"
@@ -217,7 +206,6 @@ export const Footer: React.FC<FooterProps> = ({ onNavigateSection }) => {
                 referrerPolicy="no-referrer-when-downgrade"
               />
               
-              {/* Zoom Buttons in corner */}
               <div className="absolute bottom-2 right-2 flex flex-col gap-1 z-10">
                 <button
                   type="button"
@@ -241,18 +229,26 @@ export const Footer: React.FC<FooterProps> = ({ onNavigateSection }) => {
 
         </div>
 
-        {/* Bottom Copyright Bar matching screenshot */}
+        {/* Bottom Copyright Bar */}
         <div className="pt-6 flex flex-col sm:flex-row items-center justify-between text-xs sm:text-[13px] text-emerald-100/70 gap-3 font-normal">
           <div>
-            Copyright © 2026 Fench Repair (Website Design By FleexStudio)
+            Copyright © 2026 Gaur Link Fence Fittings &amp; Hardware Manufacturing. All Rights Reserved.
           </div>
           <div className="flex items-center gap-2 text-emerald-100/75">
-            <button type="button" className="hover:text-[#E5A912] transition-colors cursor-pointer">
-              Terms And Condition
+            <button 
+              type="button" 
+              onClick={() => handlePageClick('about')}
+              className="hover:text-[#E5A912] transition-colors cursor-pointer"
+            >
+              About Manufacturer
             </button>
             <span>|</span>
-            <button type="button" className="hover:text-[#E5A912] transition-colors cursor-pointer">
-              Privacy Policy
+            <button 
+              type="button" 
+              onClick={() => handlePageClick('contact')}
+              className="hover:text-[#E5A912] transition-colors cursor-pointer"
+            >
+              Wholesale RFQ
             </button>
           </div>
         </div>

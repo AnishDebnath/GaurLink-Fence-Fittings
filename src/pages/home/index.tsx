@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { Hero } from './Hero';
 import { WhyChooseUs } from './WhyChooseUs';
 import { TrustBar } from './TrustBar';
@@ -12,27 +11,22 @@ import { FaqSection } from './FaqSection';
 import { ConversionBanner } from './ConversionBanner';
 import { Navbar } from '../../components/common/Navbar';
 import { Footer } from '../../components/common/Footer';
-import { QuoteModal } from './QuoteModal';
 
 interface HomePageProps {
   onNavigateSection: (sectionId: string) => void;
-  onNavigatePage: (page: 'about' | 'contact') => void;
+  onNavigatePage: (page: 'home' | 'products' | 'about' | 'contact', params?: { quote?: boolean; productId?: string }) => void;
   currentRoute: string;
 }
 
 export const HomePage: React.FC<HomePageProps> = ({ onNavigateSection, onNavigatePage, currentRoute }) => {
-  const [scheduleModalOpen, setScheduleModalOpen] = useState(false);
-  const [selectedService, setSelectedService] = useState<string | null>(null);
-
-  const handleOpenSchedule = (serviceName?: string) => {
-    setSelectedService(serviceName || null);
-    setScheduleModalOpen(true);
+  const handleOpenQuote = (serviceOrProduct?: string) => {
+    onNavigatePage('contact', { quote: true, productId: serviceOrProduct });
   };
 
   return (
     <div className="min-h-screen flex flex-col bg-white text-gray-900 font-sans selection:bg-[#0D3823] selection:text-[#E5A912]">
       <Navbar
-        onOpenSchedule={() => handleOpenSchedule()}
+        onOpenSchedule={() => handleOpenQuote()}
         onNavigateSection={onNavigateSection}
         onNavigatePage={onNavigatePage}
         currentRoute={currentRoute}
@@ -40,26 +34,26 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigateSection, onNavigat
 
       <main className="flex-1">
         <Hero
-          onOpenSchedule={() => handleOpenSchedule()}
-          onExploreServices={() => onNavigateSection('services')}
+          onOpenSchedule={() => handleOpenQuote()}
+          onExploreServices={() => onNavigatePage('products')}
         />
-        <WhyChooseUs onOpenSchedule={() => handleOpenSchedule()} />
+        <WhyChooseUs onOpenSchedule={() => handleOpenQuote()} />
         <TrustBar />
         <ServicesShowcase
-          onSelectService={(service) => handleOpenSchedule(service)}
-          onOpenSchedule={() => handleOpenSchedule()}
+          onSelectService={(service) => handleOpenQuote(service)}
+          onOpenSchedule={() => handleOpenQuote()}
         />
         <MarqueeTicker
           variant="deep-green"
           items={[
-            'WITH QUALITY',
-            'RELIABLE FENCE FIXES',
-            'FAST FENCE REPAIR',
-            'FENCE REPAIR EXPERTS',
-            'PREMIUM CRAFTSMANSHIP',
-            'TEXAS LICENSED & INSURED',
-            'FREE ONSITE ESTIMATES',
-            'GUARANTEED WORKMANSHIP',
+            'USA-BASED MANUFACTURER',
+            'WHOLESALE FENCE & FITTINGS',
+            'ASTM A153 HOT-DIP GALVANIZED',
+            'FACTORY-DIRECT BULK RATES',
+            'COMMERCIAL GATE HARDWARE',
+            'CHAIN LINK FITTINGS & POST CLAMPS',
+            'IN-HOUSE TOOL & DIE DIVISION',
+            'DDP US NATIONWIDE FREIGHT',
           ]}
         />
         <HowItWorks />
@@ -68,30 +62,25 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigateSection, onNavigat
         <MarqueeTicker
           variant="deep-green"
           items={[
-            'WITH QUALITY',
-            'RELIABLE FENCE FIXES',
-            'FAST FENCE REPAIR',
-            'FENCE REPAIR EXPERTS',
-            'PREMIUM CRAFTSMANSHIP',
-            'TEXAS LICENSED & INSURED',
-            'FREE ONSITE ESTIMATES',
-            'GUARANTEED WORKMANSHIP',
+            'DIRECT WHOLESALE SUPPLY',
+            'PALLET & CONTAINER VOLUME',
+            'PRECISION PRESSED STEEL',
+            'MALLEABLE IRON GATE HINGES',
+            'NATIONWIDE CONTRACTOR SUPPLY',
+            'CUSTOM OEM TOOLING',
+            '12-24H RFQ TURNAROUND',
+            'ASTM F626 COMPLIANT',
           ]}
         />
-        <ServiceAreasMap onOpenSchedule={() => handleOpenSchedule()} />
-        <FaqSection onOpenSchedule={() => handleOpenSchedule()} />
-        <ConversionBanner onOpenSchedule={() => handleOpenSchedule()} />
+        <ServiceAreasMap onOpenSchedule={() => handleOpenQuote()} />
+        <FaqSection onOpenSchedule={() => handleOpenQuote()} />
+        <ConversionBanner onOpenSchedule={() => handleOpenQuote()} />
       </main>
 
       <Footer
         onNavigateSection={onNavigateSection}
-        onOpenSchedule={() => handleOpenSchedule()}
-      />
-
-      <QuoteModal
-        isOpen={scheduleModalOpen}
-        onClose={() => setScheduleModalOpen(false)}
-        initialService={selectedService}
+        onOpenSchedule={() => handleOpenQuote()}
+        onNavigatePage={onNavigatePage}
       />
     </div>
   );

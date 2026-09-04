@@ -20,14 +20,14 @@ const RibbonAsterisk: React.FC<{ className?: string }> = ({ className = 'w-6 h-6
 
 export const MarqueeTicker: React.FC<MarqueeTickerProps> = ({
   items = [
-    'WITH QUALITY',
-    'RELIABLE FENCE FIXES',
-    'FAST FENCE REPAIR',
-    'FENCE REPAIR EXPERTS',
-    'PREMIUM CRAFTSMANSHIP',
-    'TEXAS LICENSED & INSURED',
-    'FREE ONSITE ESTIMATES',
-    'GUARANTEED WORKMANSHIP',
+    'USA-BASED MANUFACTURER',
+    'WHOLESALE FENCE & FITTINGS',
+    'ASTM A153 HOT-DIP GALVANIZED',
+    'FACTORY-DIRECT PALLET RATES',
+    'COMMERCIAL GATE HARDWARE',
+    'CHAIN LINK FITTINGS & POST CLAMPS',
+    'IN-HOUSE TOOL & DIE DIVISION',
+    'DDP NATIONWIDE US FREIGHT',
   ],
   className = '',
   variant = 'gold',

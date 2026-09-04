@@ -1,3 +1,5 @@
+export type PageRoute = 'home' | 'products' | 'product-detail' | 'about' | 'contact' | 'launching-soon';
+
 export type ProductCategory = 
   | 'all'
   | 'hinges'
@@ -26,6 +28,7 @@ export interface ProductItem {
   commonSizes: string[];
   applications: string[];
   imagePlaceholderId: string;
+  imageSrc?: string;
   astmCompliance?: string;
   tag?: string;
 }

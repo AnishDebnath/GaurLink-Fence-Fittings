@@ -12,11 +12,11 @@ export const TestimonialsGrid: React.FC = () => {
           {/* Eyebrow Pill Badge: • TESTIMONIALS with website theme */}
           <div className="inline-flex items-center gap-2 px-4 py-1 rounded-full border border-gray-900/80 bg-white text-[11px] sm:text-[12px] font-bold tracking-widest text-gray-900 uppercase font-sans">
             <span className="w-1.5 h-1.5 rounded-full bg-[#0D3823]"></span>
-            <span>TESTIMONIALS</span>
+            <span>WHOLESALE CLIENT REVIEWS</span>
           </div>
 
           <h2 className="text-2xl sm:text-3xl lg:text-[34px] font-black uppercase text-gray-900 tracking-tight leading-tight font-sans">
-            WHAT OUR CLIENTS SAY ABOUT FENCING
+            WHAT SUPPLY YARDS &amp; CONTRACTORS SAY
           </h2>
         </div>
 
@@ -37,7 +37,7 @@ export const TestimonialsGrid: React.FC = () => {
                 </div>
                 {/* Review Text */}
                 <p className="text-[13px] sm:text-[13.5px] text-gray-700 leading-relaxed font-normal">
-                  “Fence Shield Texas did an amazing job on our new privacy fence. Then team was professional fast and the best quality is very outstanding.”
+                  “GaurLink delivers unmatched consistency on high-volume container orders. Their hot-dip galvanized chain link fittings always meet ASTM specs, and wholesale pricing is direct from the manufacturer.”
                 </p>
               </div>
 
@@ -52,7 +52,7 @@ export const TestimonialsGrid: React.FC = () => {
                       MARCUS T.
                     </div>
                     <div className="text-[11px] text-gray-500 font-medium">
-                      Homeowner
+                      Supply Yard Manager
                     </div>
                   </div>
                 </div>
@@ -80,7 +80,7 @@ export const TestimonialsGrid: React.FC = () => {
                 </div>
                 {/* Review Text */}
                 <p className="text-[13px] sm:text-[13.5px] text-gray-700 leading-relaxed font-normal">
-                  “We hired them for a commercial fence installation, and everything was completed on time exactly as promised. Highly recommended.”
+                  “We buy our commercial gate hinges and cantilever rollers in pallet quantities from GaurLink. Heavy-duty build, clean stamping, and prompt freight delivery to our yard every single time.”
                 </p>
               </div>
 
@@ -95,7 +95,7 @@ export const TestimonialsGrid: React.FC = () => {
                       SERGIO R.
                     </div>
                     <div className="text-[11px] text-gray-500 font-medium">
-                      Homeowner
+                      Commercial Contractor
                     </div>
                   </div>
                 </div>
@@ -207,7 +207,7 @@ export const TestimonialsGrid: React.FC = () => {
                 </div>
                 {/* Review Text */}
                 <p className="text-[13px] sm:text-[13.5px] text-gray-700 leading-relaxed font-normal">
-                  “Fence Shield Texas was delivered excellent quality work on our fence installation. Fast professional and reliable service from start finish.”
+                  “Switching to GaurLink for our wholesale post clamps and tension bars reduced our procurement lead times dramatically. The hot-dip zinc finish and steel gauge are top notch.”
                 </p>
               </div>
 
@@ -222,7 +222,7 @@ export const TestimonialsGrid: React.FC = () => {
                       LUCAS H.
                     </div>
                     <div className="text-[11px] text-gray-500 font-medium">
-                      Homeowner
+                      Regional Fence Distributor
                     </div>
                   </div>
                 </div>
@@ -250,7 +250,7 @@ export const TestimonialsGrid: React.FC = () => {
                 </div>
                 {/* Review Text */}
                 <p className="text-[13px] sm:text-[13.5px] text-gray-700 leading-relaxed font-normal">
-                  “Fence Shield Texas provided fast and professional of service for our fence installation. The quality and finish exceeded our expectations.”
+                  “GaurLink's in-house tool & die room produced custom post brackets for our commercial projects in record time. Excellent manufacturer-direct pricing and USA freight support.”
                 </p>
               </div>
 
@@ -265,7 +265,7 @@ export const TestimonialsGrid: React.FC = () => {
                       PAULO M.
                     </div>
                     <div className="text-[11px] text-gray-500 font-medium">
-                      Homeowner
+                      Perimeter Security Installer
                     </div>
                   </div>
                 </div>

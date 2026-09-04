@@ -28,13 +28,13 @@ export const ConversionBanner: React.FC<ConversionBannerProps> = ({ onOpenSchedu
           {/* Content matching exact layout and typography */}
           <div className="relative z-10 max-w-2xl mx-auto space-y-4">
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black uppercase text-white tracking-tight leading-[1.15] font-sans drop-shadow-md">
-              NEED FENCE REPAIR FAST?
+              LOOKING FOR WHOLESALE FENCE FITTINGS?
               <br />
-              WE’RE READY TO THE HELP
+              GET FACTORY DIRECT PRICING
             </h2>
 
             <p className="text-sm sm:text-[15px] text-emerald-100/90 leading-relaxed max-w-xl mx-auto font-normal">
-              Protect your home or business with professional fence repair solutions designed last. We make the process simple, affordable, and stress-free from start to finish.
+              Supply your yard with ASTM-certified fence fittings, commercial gate hardware, and custom die stampings at direct wholesale rates. Fast freight delivery across the USA.
             </p>
 
             {/* Buttons Row matching exact image layout with website theme colors */}
@@ -48,7 +48,7 @@ export const ConversionBanner: React.FC<ConversionBannerProps> = ({ onOpenSchedu
                 <span className="w-6 h-6 rounded-full bg-[#0D3823] text-[#E5A912] font-black flex items-center justify-center group-hover:translate-x-0.5 transition-transform shadow-xs shrink-0">
                   <ArrowRight className="w-3.5 h-3.5 stroke-[3]" />
                 </span>
-                <span className="whitespace-nowrap">SCHEDULE SERVICE</span>
+                <span className="whitespace-nowrap">REQUEST WHOLESALE QUOTE</span>
               </button>
 
               {/* Secondary Phone Button (White Capsule) */}

@@ -13,22 +13,20 @@ interface ServiceCity {
 }
 
 const SERVICE_CITIES: ServiceCity[] = [
-  { id: 'texas', name: 'TEXAS', query: 'Texas, USA', zoom: 6 },
-  { id: 'dallas', name: 'DALLAS', query: 'Dallas, TX', zoom: 11 },
-  { id: 'grand-prairie', name: 'GRAND PRAIRIE', query: 'Grand Prairie, TX', zoom: 12 },
-  { id: 'lubbock', name: 'LUBBOCK', query: 'Lubbock, TX', zoom: 11 },
-  { id: 'el-paso', name: 'EL PASO', query: 'El Paso, TX', zoom: 11 },
-  { id: 'corpus-christi', name: 'CORPUS CHRISTI', query: 'Corpus Christi, TX', zoom: 11 },
-  { id: 'round-rock', name: 'ROUND ROCK', query: 'Round Rock, TX', zoom: 12 },
-  { id: 'college-station', name: 'COLLEGE STATION', query: 'College Station, TX', zoom: 12 },
-  { id: 'allen', name: 'ALLEN', query: 'Allen, TX', zoom: 12 },
-  { id: 'denton', name: 'DENTON', query: 'Denton, TX', zoom: 12 },
-  { id: 'carrollton', name: 'CARROLLTON', query: 'Carrollton, TX', zoom: 12 },
-  { id: 'irving', name: 'IRVING', query: 'Irving, TX', zoom: 12 },
+  { id: 'usa', name: 'USA NATIONWIDE', query: 'United States', zoom: 4 },
+  { id: 'texas', name: 'HOUSTON, TX (HQ)', query: 'Houston, TX', zoom: 10 },
+  { id: 'dallas', name: 'DALLAS / FT WORTH', query: 'Dallas, TX', zoom: 10 },
+  { id: 'atlanta', name: 'ATLANTA, GA', query: 'Atlanta, GA', zoom: 10 },
+  { id: 'chicago', name: 'CHICAGO, IL', query: 'Chicago, IL', zoom: 10 },
+  { id: 'los-angeles', name: 'LOS ANGELES, CA', query: 'Los Angeles, CA', zoom: 10 },
+  { id: 'philadelphia', name: 'PHILADELPHIA, PA', query: 'Philadelphia, PA', zoom: 10 },
+  { id: 'kansas-city', name: 'KANSAS CITY, MO', query: 'Kansas City, MO', zoom: 10 },
+  { id: 'phoenix', name: 'PHOENIX, AZ', query: 'Phoenix, AZ', zoom: 10 },
+  { id: 'tampa', name: 'TAMPA, FL', query: 'Tampa, FL', zoom: 10 },
 ];
 
 export const ServiceAreasMap: React.FC<ServiceAreasMapProps> = ({ onOpenSchedule }) => {
-  const [activeCityId, setActiveCityId] = useState<string>('texas');
+  const [activeCityId, setActiveCityId] = useState<string>('usa');
 
   const activeCity = SERVICE_CITIES.find((c) => c.id === activeCityId) || SERVICE_CITIES[0];
 
@@ -59,9 +57,12 @@ export const ServiceAreasMap: React.FC<ServiceAreasMapProps> = ({ onOpenSchedule
         <div className="pointer-events-auto bg-[#071910] text-white rounded-[24px] p-6 sm:p-7 max-w-[430px] w-full shadow-2xl border border-emerald-500/30 ring-1 ring-emerald-400/20 backdrop-blur-xs select-none">
           
           {/* Card Title */}
-          <h2 className="text-2xl sm:text-[26px] font-black uppercase tracking-tight text-white font-sans mb-4">
-            OUR SERVICE AREAS
+          <h2 className="text-2xl sm:text-[26px] font-black uppercase tracking-tight text-white font-sans mb-1">
+            USA DISTRIBUTION HUBS
           </h2>
+          <p className="text-xs text-emerald-200/80 mb-4 font-normal">
+            Factory-direct wholesale pallet &amp; container freight shipping across all 50 states.
+          </p>
 
           {/* City Filter Pills */}
           <div className="flex flex-wrap gap-2 mb-5">
@@ -95,7 +96,7 @@ export const ServiceAreasMap: React.FC<ServiceAreasMapProps> = ({ onOpenSchedule
             <span className="w-7 h-7 rounded-full bg-[#E5A912] text-[#0D3823] font-black flex items-center justify-center group-hover:translate-x-0.5 transition-transform shadow-xs shrink-0">
               <ArrowRight className="w-3.5 h-3.5 stroke-[3]" />
             </span>
-            <span className="whitespace-nowrap">EXPLORE SERVICE AREAS</span>
+            <span className="whitespace-nowrap">REQUEST WHOLESALE FREIGHT</span>
           </button>
         </div>
       </div>

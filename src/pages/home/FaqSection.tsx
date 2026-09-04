@@ -11,28 +11,28 @@ export const FaqSection: React.FC<FaqSectionProps> = () => {
 
   const faqs = [
     {
-      q: 'How quickly can FenceFix Houston repair my fence?',
-      a: 'We offer rapid dispatch across Texas with same-day emergency triage and 24 to 48-hour standard repair turnaround. Our mobile fence fabrication trucks carry full post, picket, and gate hardware stock to complete most residential repairs in a single visit.',
+      q: 'What fence fittings and hardware does GaurLink manufacture?',
+      a: 'We manufacture commercial chain link fittings, malleable iron gate hinges, cantilever slide gate rollers, tension bands, brace bands, barbed wire extension arms, and custom stamped brackets.',
     },
     {
-      q: 'How much does fence repair usually cost in Houston?',
-      a: 'Fence repair costs depend on the length of damaged sections, post stability, and material type (cedar, pine, iron, or chain link). We provide 100% upfront, itemized estimates with no hidden fees before starting any work.',
+      q: 'Are your fence fittings compliant with ASTM standards?',
+      a: 'Yes. All GaurLink steel fittings are hot-dip galvanized to ASTM A153 and ASTM F626 standards for heavy commercial corrosion resistance and long service life.',
     },
     {
-      q: 'Do you serve residential and commercial properties?',
-      a: 'Yes, we service both residential perimeter fences and heavy-duty commercial security installations, including industrial chain link, automated cantilever slide gates, masonry pillar repairs, and security enclosures.',
+      q: 'What are your minimum order quantities (MOQ) for wholesale rates?',
+      a: 'We provide tiered wholesale pricing for master carton, pallet, and full container volumes. Contact our trade desk with your bill of materials for custom volume discounts.',
     },
     {
-      q: 'What should I do if my fence is leaning or unstable?',
-      a: 'A leaning fence often indicates rotted wooden posts beneath ground level or compromised concrete footers. We recommend keeping pets and children clear of the unstable run and booking an immediate inspection so our crew can set reinforced steel or concrete posts.',
+      q: 'Where are GaurLink products shipped from?',
+      a: 'GaurLink is a USA-based manufacturing and supply company headquartered in Houston, Texas, with nationwide freight logistics serving all 50 states.',
     },
     {
-      q: 'Can you repair gates that are not closing properly?',
-      a: 'Yes! Gate sagging, latch misalignment, rusted hinges, and warped wood frames are among our most frequent repair calls. We re-square gate frames, reinforce diagonal truss bracing, and replace heavy-duty self-closing hardware.',
+      q: 'Do you offer custom tool & die manufacturing for OEM hardware?',
+      a: 'Yes. Our in-house tool & die division produces custom progressive dies and stamped brackets according to contractor, distributor, or OEM CAD drawings.',
     },
     {
-      q: 'How do I prepare my yard before fence repair?',
-      a: 'Before our team arrives, it is helps clear the area around your fence so we can work safely and efficiently. Move outdoor furniture, plants, decorations, or any objects that are close to then fence line. If possible, trim back bushes or vine that may be blocking access our FenceFix.',
+      q: 'What are standard shipping lead times for wholesale bulk orders?',
+      a: 'In-stock inventory ships within 24 to 48 hours via LTL or dedicated FTL freight. Custom die-stamped orders ship in 2 to 4 weeks based on tooling and volume requirements.',
     },
   ];
 
