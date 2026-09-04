@@ -19,20 +19,22 @@ export const Navbar: React.FC<NavbarProps> = ({
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
-    let lastScrollY = typeof window !== 'undefined' ? window.scrollY : 0;
+    let lastScrollY = typeof window !== 'undefined' ? (window.scrollY || document.documentElement.scrollTop || 0) : 0;
     let ticking = false;
 
     const updateScroll = () => {
-      const currentScrollY = window.scrollY;
+      const currentScrollY = typeof window !== 'undefined' ? (window.scrollY || document.documentElement.scrollTop || 0) : 0;
       setIsScrolled(currentScrollY > 20);
 
-      if (currentScrollY <= 40) {
+      // When at top, always stay expanded
+      if (currentScrollY <= 60) {
         setShowMenus(true);
       } else {
         const scrollDiff = currentScrollY - lastScrollY;
-        if (Math.abs(scrollDiff) > 6) {
+        // Hysteresis threshold to prevent jitter
+        if (scrollDiff > 12) {
           setShowMenus(false);
-        } else if (scrollDiff < -6) {
+        } else if (scrollDiff < -10) {
           setShowMenus(true);
         }
       }
@@ -64,18 +66,18 @@ export const Navbar: React.FC<NavbarProps> = ({
   const isActive = (page: string) => currentRoute === page;
 
   return (
-    <header className="sticky top-3 sm:top-4 z-50 w-full px-3 sm:px-6 transition-all duration-500 -mb-16 sm:-mb-20 pointer-events-none">
+    <header className="fixed top-0 left-0 right-0 z-50 w-full pt-2.5 sm:pt-3 pb-1 px-3 sm:px-6 pointer-events-none">
       <div
-        className={`mx-auto pointer-events-auto transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+        className={`mx-auto pointer-events-auto transition-[max-width,padding] duration-500 ease-[cubic-bezier(0.2,0.8,0.2,1)] ${
           showMenus || mobileMenuOpen
             ? 'max-w-[1280px] px-0'
             : 'max-w-[620px] sm:max-w-[650px] lg:max-w-[630px] px-1 sm:px-2'
         }`}
       >
         <div
-          className={`rounded-full transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] flex items-center justify-between border backdrop-saturate-150 ${
+          className={`rounded-full transition-[background-color,border-color,box-shadow,padding] duration-500 ease-[cubic-bezier(0.2,0.8,0.2,1)] flex items-center justify-between border backdrop-saturate-150 ${
             !showMenus || isScrolled
-              ? 'bg-white/85 backdrop-blur-xl shadow-[0_14px_32px_rgba(13,56,35,0.14),inset_0_1px_1px_rgba(255,255,255,0.9)] border-white/80 py-1.5 sm:py-2 px-3.5 sm:px-5 ring-1 ring-[#0D3823]/10'
+              ? 'bg-white/95 backdrop-blur-xl shadow-[0_12px_32px_rgba(13,56,35,0.16),inset_0_1px_1px_rgba(255,255,255,0.9)] border-white/90 py-1.5 sm:py-2 px-3.5 sm:px-5 ring-1 ring-[#0D3823]/10'
               : 'bg-white/90 backdrop-blur-lg shadow-[0_10px_28px_rgba(0,0,0,0.09),inset_0_1px_1px_rgba(255,255,255,0.9)] border-white/70 py-1.5 sm:py-2 px-4 sm:px-6'
           }`}
         >
@@ -86,15 +88,15 @@ export const Navbar: React.FC<NavbarProps> = ({
             className="flex items-center focus:outline-none shrink-0 pr-2 sm:pr-4 cursor-pointer text-left"
             aria-label="Gaur Link Fence & Fittings Manufacturing"
           >
-            <FenceFixLogo size={showMenus ? (isScrolled ? 'sm' : 'md') : 'sm'} />
+            <FenceFixLogo size="md" />
           </button>
 
-          {/* Center: Desktop Nav */}
+          {/* Center: Desktop Nav with smooth width and opacity animation */}
           <nav
-            className={`hidden lg:flex items-center transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+            className={`hidden lg:flex items-center overflow-hidden transition-[max-width,opacity,transform] duration-500 ease-[cubic-bezier(0.2,0.8,0.2,1)] will-change-[max-width,opacity] ${
               showMenus
-                ? 'opacity-100 max-w-[680px] scale-100 gap-1 pointer-events-auto'
-                : 'opacity-0 max-w-0 scale-95 gap-0 pointer-events-none overflow-hidden select-none'
+                ? 'opacity-100 max-w-[500px] scale-100 gap-1 pointer-events-auto'
+                : 'opacity-0 max-w-0 scale-95 gap-0 pointer-events-none select-none'
             }`}
           >
             <button
