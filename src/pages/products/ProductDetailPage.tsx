@@ -498,7 +498,7 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
                             onSelectProduct(rel.id);
                             window.scrollTo({ top: 0, behavior: 'smooth' });
                           }}
-                          className="text-base font-black uppercase text-gray-900 group-hover:text-[#0D3823] transition-colors cursor-pointer leading-tight mb-2"
+                          className="text-base font-black uppercase text-gray-900 group-hover:text-[#0D3823] transition-colors cursor-pointer leading-tight mb-2 line-clamp-2 min-h-[2.4em]"
                         >
                           {rel.name}
                         </h4>
@@ -514,10 +514,15 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
                           onSelectProduct(rel.id);
                           window.scrollTo({ top: 0, behavior: 'smooth' });
                         }}
-                        className="w-full h-[44px] rounded-full bg-[#0D3823] hover:bg-[#072416] text-white text-xs font-black uppercase tracking-wider transition-all text-center cursor-pointer flex items-center justify-center gap-2 shadow-md border border-emerald-500/30"
+                        className="w-full h-[42px] sm:h-[44px] flex items-center justify-between bg-[#0D3823] hover:bg-[#072416] text-white pl-1.5 pr-4 sm:pr-5 rounded-full shadow-md hover:shadow-lg transition-all transform active:scale-95 group/btn shrink-0 ring-1 ring-[#E5A912]/30 border border-emerald-600/30 cursor-pointer"
                       >
-                        <span>VIEW DETAILS</span>
-                        <ChevronRight className="w-3.5 h-3.5" />
+                        <span className="w-7 h-7 sm:w-7.5 sm:h-7.5 rounded-full bg-[#E5A912] flex items-center justify-center text-[#0D3823] shrink-0 group-hover/btn:translate-x-0.5 transition-transform shadow-xs">
+                          <ArrowRight className="w-3.5 h-3.5 stroke-[2.5]" />
+                        </span>
+                        <span className="text-[11.5px] sm:text-[12px] font-black uppercase tracking-wider text-white select-none whitespace-nowrap">
+                          VIEW PRODUCT DETAILS
+                        </span>
+                        <span className="w-2" />
                       </button>
                     </div>
                   </div>

@@ -2,9 +2,8 @@ import React, { useState, useMemo } from 'react';
 import { 
   Search, 
   Filter, 
-  ChevronRight,
   ArrowRight,
-  ShieldCheck
+  ChevronRight
 } from 'lucide-react';
 import { PRODUCTS_DATA } from '../../data/products';
 import { ProductCategory } from '../../types';
@@ -60,8 +59,8 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
       />
 
       <main className="flex-1">
-        {/* Simple, Clean Header matching Home Page style */}
-        <section className="relative bg-[#071910] text-white pt-32 sm:pt-36 pb-12 sm:pb-16 overflow-hidden">
+        {/* Simple, Clean Header matching Contact Page style */}
+        <section className="relative bg-[#071910] text-white pt-32 sm:pt-40 lg:pt-44 pb-16 sm:pb-24 lg:pb-28 overflow-hidden">
           <div className="absolute inset-0 z-0 opacity-25">
             <img
               src={IMAGES.hardwareCatalog || IMAGES.hero}
@@ -84,12 +83,7 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
               <span className="text-[#E5A912]">Products</span>
             </div>
 
-            <div className="max-w-3xl space-y-3">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-emerald-500/40 bg-[#0D3823]/70 text-[11px] font-bold tracking-wider text-[#E5A912] uppercase font-sans">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#E5A912]"></span>
-                <span>FENCE HARDWARE CATALOG</span>
-              </div>
-
+            <div className="max-w-3xl space-y-4">
               <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black uppercase text-white tracking-tight leading-tight">
                 COMMERCIAL FITTINGS &amp; HARDWARE
               </h1>
@@ -117,17 +111,43 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
         <section className="py-10 sm:py-14 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             
-            {/* Filter & Search Controls */}
-            <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-8 border-b border-gray-200 mb-8">
-              {/* Category Pills */}
-              <div className="flex flex-wrap items-center gap-2">
+            {/* Filter & Search Controls - Centered and Balanced Hierarchy */}
+            <div className="space-y-5 pb-8 border-b border-gray-200 mb-8">
+              {/* Top Row: Search Bar in a clean, prominent top position */}
+              <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div className="relative w-full max-w-md">
+                  <Search className="w-4 h-4 text-gray-400 absolute left-4 top-1/2 -translate-y-1/2" />
+                  <input
+                    type="text"
+                    placeholder="Search by fitting, dimension, ASTM spec, or material..."
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    className="w-full pl-10 pr-4 py-2.5 bg-gray-50 hover:bg-white focus:bg-white border border-gray-300 rounded-full text-xs font-medium text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-[#0D3823] focus:border-[#0D3823] transition-all shadow-xs"
+                  />
+                  {searchQuery && (
+                    <button
+                      onClick={() => setSearchQuery('')}
+                      className="absolute right-3.5 top-1/2 -translate-y-1/2 text-xs text-gray-400 hover:text-gray-700 font-bold p-1 cursor-pointer"
+                    >
+                      ✕
+                    </button>
+                  )}
+                </div>
+
+                <span className="text-xs font-bold text-gray-500 uppercase tracking-wider hidden sm:block">
+                  Showing {filteredProducts.length} of {PRODUCTS_DATA.length} fittings
+                </span>
+              </div>
+
+              {/* Category Filter Pills */}
+              <div className="flex flex-wrap items-center gap-2 pt-1">
                 {categories.map((cat) => {
                   const isSelected = selectedCategory === cat.id;
                   return (
                     <button
                       key={cat.id}
                       onClick={() => setSelectedCategory(cat.id)}
-                      className={`h-[40px] px-4 rounded-full text-xs font-black uppercase tracking-wider whitespace-nowrap transition-all cursor-pointer flex items-center gap-2 border ${
+                      className={`h-[38px] px-4 rounded-full text-xs font-black uppercase tracking-wider whitespace-nowrap transition-all cursor-pointer flex items-center gap-2 border ${
                         isSelected
                           ? 'bg-[#0D3823] text-white border-[#0D3823] shadow-sm ring-1 ring-[#E5A912]/40'
                           : 'bg-white text-gray-700 border-gray-300 hover:border-gray-900 hover:bg-gray-50'
@@ -143,21 +163,9 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
                   );
                 })}
               </div>
-
-              {/* Search Bar */}
-              <div className="relative w-full md:w-72 shrink-0">
-                <Search className="w-4 h-4 text-gray-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
-                <input
-                  type="text"
-                  placeholder="Search products..."
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full pl-9 pr-4 py-2 bg-gray-50 border border-gray-300 rounded-full text-xs font-medium focus:outline-none focus:ring-2 focus:ring-[#0D3823] focus:border-[#0D3823]"
-                />
-              </div>
             </div>
 
-            {/* Products Grid - Simple, Clean Cards with Details on Detail Page */}
+            {/* Products Grid - Clean Cards without on-image tags */}
             {filteredProducts.length === 0 ? (
               <div className="bg-[#FBFBFA] rounded-[24px] p-10 text-center border border-gray-200 max-w-md mx-auto">
                 <Filter className="w-10 h-10 text-gray-400 mx-auto mb-2" />
@@ -181,7 +189,7 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
                     }}
                     className="group bg-white rounded-[28px] overflow-hidden border-[2px] border-gray-900 shadow-sm hover:shadow-xl hover:border-[#0D3823] transition-all duration-300 flex flex-col justify-between cursor-pointer"
                   >
-                    {/* Product Photo */}
+                    {/* Clean Product Photo - No tags on image */}
                     <div className="relative aspect-4/3 w-full overflow-hidden bg-gray-100 border-b-2 border-gray-900">
                       <img
                         src={product.imageSrc}
@@ -189,44 +197,29 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                         loading="lazy"
                       />
-                      
-                      {/* Top Badges */}
-                      <div className="absolute top-3 left-3 right-3 flex items-center justify-between gap-2">
-                        <span className="bg-[#0D3823] text-[#E5A912] text-[10px] font-black uppercase tracking-wider px-3 py-1 rounded-full shadow-sm border border-[#E5A912]/30">
-                          {product.categoryLabel}
-                        </span>
-                        {product.tag && (
-                          <span className="bg-[#E5A912] text-[#071910] text-[10px] font-black uppercase px-2 py-0.5 rounded-full shadow-sm">
-                            {product.tag}
-                          </span>
-                        )}
-                      </div>
-
-                      {/* ASTM Compliance Badge */}
-                      {product.astmCompliance && (
-                        <div className="absolute bottom-3 left-3 flex items-center gap-1.5 bg-[#071910]/90 text-white text-[10px] font-bold px-2.5 py-1 rounded-full shadow-sm">
-                          <ShieldCheck className="w-3.5 h-3.5 text-[#E5A912]" />
-                          <span>{product.astmCompliance}</span>
-                        </div>
-                      )}
                     </div>
 
-                    {/* Card Body - Clean & Concise */}
-                    <div className="p-5 flex-1 flex flex-col justify-between space-y-3">
+                    {/* Card Body - Clean & Concise without right side tags */}
+                    <div className="p-5 flex-1 flex flex-col justify-between space-y-4">
                       <div>
-                        <span className="text-[11px] font-bold text-gray-500 uppercase tracking-wider block mb-1">
+                        <span className="text-[11px] font-bold text-gray-500 uppercase tracking-wider block mb-1 truncate whitespace-nowrap overflow-hidden text-ellipsis" title={product.material}>
                           {product.material}
                         </span>
-                        <h3 className="text-base sm:text-lg font-black uppercase text-gray-900 group-hover:text-[#0D3823] transition-colors leading-snug">
+                        <h3 className="text-base sm:text-lg font-black uppercase text-gray-900 group-hover:text-[#0D3823] transition-colors leading-snug line-clamp-2 min-h-[2.6em]">
                           {product.name}
                         </h3>
                       </div>
 
-                      {/* Bottom Button */}
-                      <div className="pt-2">
-                        <div className="w-full h-[42px] rounded-full bg-white group-hover:bg-[#0D3823] text-gray-900 group-hover:text-white text-xs font-black uppercase tracking-wider transition-all flex items-center justify-between px-5 border-2 border-gray-900 group-hover:border-[#0D3823] shadow-xs">
-                          <span>View Product Details</span>
-                          <ChevronRight className="w-4 h-4 text-[#E5A912] stroke-[3]" />
+                      {/* Bottom Button: Matches standard website CTA button with golden circle arrow */}
+                      <div className="pt-1">
+                        <div className="w-full h-[42px] sm:h-[44px] flex items-center justify-between bg-[#0D3823] group-hover:bg-[#072416] text-white pl-1.5 pr-4 sm:pr-5 rounded-full shadow-md group-hover:shadow-lg transition-all transform active:scale-95 group/btn shrink-0 ring-1 ring-[#E5A912]/30 border border-emerald-600/30">
+                          <span className="w-7 h-7 sm:w-7.5 sm:h-7.5 rounded-full bg-[#E5A912] flex items-center justify-center text-[#0D3823] shrink-0 group-hover:translate-x-0.5 transition-transform shadow-xs">
+                            <ArrowRight className="w-3.5 h-3.5 stroke-[2.5]" />
+                          </span>
+                          <span className="text-[11.5px] sm:text-[12px] font-black uppercase tracking-wider text-white select-none whitespace-nowrap">
+                            VIEW PRODUCT DETAILS
+                          </span>
+                          <span className="w-2" />
                         </div>
                       </div>
                     </div>
@@ -235,30 +228,6 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
                 ))}
               </div>
             )}
-
-            {/* Quick Custom Tooling Note - Simple & Punchy */}
-            <div className="mt-14 p-6 sm:p-8 bg-[#FBFBFA] rounded-[28px] border-2 border-gray-900 flex flex-col sm:flex-row items-center justify-between gap-6">
-              <div className="space-y-1 text-center sm:text-left">
-                <span className="text-[11px] font-black text-[#0D3823] uppercase tracking-wider block">
-                  OEM &amp; CUSTOM BLUEPRINTS
-                </span>
-                <h3 className="text-lg sm:text-xl font-black uppercase text-gray-900">
-                  Need Custom Stamped Dies or Bulk Container Pricing?
-                </h3>
-                <p className="text-xs text-gray-600">
-                  Our tool &amp; die division builds custom stamping dies in 15–25 days from your CAD drawings.
-                </p>
-              </div>
-              <button
-                onClick={() => onNavigatePage('contact', { quote: true })}
-                className="h-[46px] inline-flex items-center gap-2.5 bg-[#0D3823] hover:bg-[#072416] text-white font-black text-xs uppercase tracking-wider pl-2 pr-5 rounded-full shadow-md shrink-0 cursor-pointer"
-              >
-                <span className="w-7 h-7 rounded-full bg-[#E5A912] text-[#0D3823] flex items-center justify-center">
-                  <ArrowRight className="w-3.5 h-3.5 stroke-[3]" />
-                </span>
-                <span>Request Custom Quote</span>
-              </button>
-            </div>
 
           </div>
         </section>
