@@ -18,7 +18,7 @@ export const ConversionBanner: React.FC<ConversionBannerProps> = ({ onOpenSchedu
           {/* Background Fence Craftsman Image with Gaur Green Overlay */}
           <div className="absolute inset-0 z-0">
             <img
-              src={IMAGES.installerWork || IMAGES.hero}
+              src={IMAGES.banner}
               alt="Professional Fence Repair Craftsman"
               className="w-full h-full object-cover object-center filter brightness-40 contrast-115"
             />

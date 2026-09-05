@@ -9,26 +9,16 @@ interface HeroProps {
 }
 
 const HARDWARE_OBJECTS = [
-  {
-    id: 'gate-hinge',
-    name: 'Galvanized Industrial Gate Hinge',
-    image: IMAGES.gateHingeObj,
-  },
-  {
-    id: 'tension-band',
-    name: 'Heavy Pressed Steel Tension Band',
-    image: IMAGES.tensionBandObj,
-  },
-  {
-    id: 'cantilever-roller',
-    name: 'Cantilever Sliding Gate Roller Assembly',
-    image: IMAGES.cantileverRollerObj,
-  },
-  {
-    id: 'barbed-arm',
-    name: '3-Wire Commercial Barbed Extension Arm',
-    image: IMAGES.barbedArmObj,
-  },
+  { id: 'gaurlink-1', name: 'GaurLink Product 1', image: IMAGES.gaurlink1 },
+  { id: 'gaurlink-2', name: 'GaurLink Product 2', image: IMAGES.gaurlink2 },
+  { id: 'gaurlink-3', name: 'GaurLink Product 3', image: IMAGES.gaurlink3 },
+  { id: 'gaurlink-4', name: 'GaurLink Product 4', image: IMAGES.gaurlink4 },
+  { id: 'gaurlink-5', name: 'GaurLink Product 5', image: IMAGES.gaurlink5 },
+  { id: 'gaurlink-6', name: 'GaurLink Product 6', image: IMAGES.gaurlink6 },
+  { id: 'gaurlink-7', name: 'GaurLink Product 7', image: IMAGES.gaurlink7 },
+  { id: 'gaurlink-8', name: 'GaurLink Product 8', image: IMAGES.gaurlink8 },
+  { id: 'gaurlink-9', name: 'GaurLink Product 9', image: IMAGES.gaurlink9 },
+  { id: 'gaurlink-10', name: 'GaurLink Product 10', image: IMAGES.gaurlink10 },
 ];
 
 export const Hero: React.FC<HeroProps> = ({ onOpenSchedule }) => {
@@ -53,7 +43,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenSchedule }) => {
       {/* Background Photography matching reference */}
       <div className="absolute inset-0 z-0">
         <img
-          src={IMAGES.hero}
+          src={IMAGES.banner}
           alt="GaurLink USA fence and fittings manufacturing specialist"
           className="w-full h-full object-cover object-center scale-105 filter brightness-75 contrast-110"
         />

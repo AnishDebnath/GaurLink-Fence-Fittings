@@ -113,6 +113,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               )}
             </button>
 
+{/* Products button - commented out
             <button
               onClick={() => onNavigatePage('products')}
               className={`relative px-3.5 py-2 text-[14px] font-bold transition-colors whitespace-nowrap cursor-pointer ${
@@ -126,6 +127,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-5 h-0.5 bg-[#0D3823] rounded-full" />
               )}
             </button>
+            */}
 
             <button
               onClick={() => onNavigatePage('about')}
@@ -228,6 +230,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               )}
             </button>
 
+{/* Products Catalog - commented out
             <button
               onClick={() => { setMobileMenuOpen(false); onNavigatePage('products'); }}
               className={`relative block w-full text-left py-2.5 px-3 rounded-xl font-bold transition-all cursor-pointer ${
@@ -241,6 +244,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 <span className="absolute bottom-1 left-3 w-5 h-0.5 bg-[#0D3823] rounded-full" />
               )}
             </button>
+            */}
 
             <button
               onClick={() => { setMobileMenuOpen(false); onNavigatePage('about'); }}

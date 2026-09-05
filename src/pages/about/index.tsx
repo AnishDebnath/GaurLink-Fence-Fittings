@@ -41,7 +41,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({
         <section className="relative bg-[#071910] text-white pt-28 sm:pt-36 lg:pt-40 pb-14 sm:pb-16 lg:pb-20 overflow-hidden">
           <div className="absolute inset-0 z-0 opacity-25">
             <img
-              src={IMAGES.manufacturingPlant || IMAGES.hero}
+              src={IMAGES.banner}
               alt="Gaur Link Plant"
               className="w-full h-full object-cover"
             />
@@ -136,13 +136,14 @@ export const AboutPage: React.FC<AboutPageProps> = ({
               <div className="lg:col-span-6 flex justify-center lg:justify-end">
                 <div className="relative rounded-[28px] sm:rounded-[32px] overflow-hidden shadow-xl border-[2.5px] border-[#1C1C1C] bg-gray-900 aspect-[4/4.5] sm:aspect-[4/4.2] w-full max-w-md lg:max-w-none group">
                   <img
-                    src={IMAGES.storyDirector}
+                    src={IMAGES.aboutUsHomePage}
                     alt="GaurLink Leadership"
                     className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent pointer-events-none" />
 
                   {/* Floating Dark Info Card */}
+                  {/*}
                   <div className="absolute bottom-4 left-4 right-4 sm:bottom-5 sm:left-5 sm:right-auto z-10">
                     <div className="bg-[#071910]/90 backdrop-blur-md rounded-2xl p-3.5 sm:p-4 border border-emerald-500/30 text-white shadow-2xl max-w-xs">
                       <h4 className="text-sm sm:text-base font-black tracking-tight text-white leading-tight font-sans">
@@ -153,6 +154,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({
                       </p>
                     </div>
                   </div>
+                  {*/}
                 </div>
               </div>
             </div>
@@ -236,7 +238,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({
             {/* Bottom Wide Team Photo with Play Video button straddling green and white */}
             <div className="relative rounded-[28px] sm:rounded-[36px] overflow-hidden shadow-2xl border-[2.5px] border-[#1C1C1C] bg-gray-900 aspect-[16/9] sm:aspect-[21/10] w-full group">
               <img
-                src={IMAGES.factoryTeamCrew}
+                src={IMAGES.banner}
                 alt="GaurLink Manufacturing Team"
                 className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
               />

@@ -164,29 +164,29 @@ export const TestimonialsGrid: React.FC = () => {
             <div className="grid grid-cols-2 gap-2.5 sm:gap-3 mt-4">
               <div className="aspect-[4/3.1] rounded-xl overflow-hidden bg-gray-900 border border-emerald-900/40 shadow-inner">
                 <img
-                  src={IMAGES.workerBlue}
-                  alt="Carpenter fence picket fixing"
+                  src={IMAGES.supplyAction1}
+                  alt="Commercial chain link gate hardware"
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
                 />
               </div>
               <div className="aspect-[4/3.1] rounded-xl overflow-hidden bg-gray-900 border border-emerald-900/40 shadow-inner">
                 <img
-                  src={IMAGES.installerWork}
-                  alt="Technician in hard hat installing fence"
+                  src={IMAGES.supplyAction3}
+                  alt="Commercial fence hardware installation"
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
                 />
               </div>
               <div className="aspect-[4/3.1] rounded-xl overflow-hidden bg-gray-900 border border-emerald-900/40 shadow-inner">
                 <img
-                  src={IMAGES.drillRepair}
-                  alt="Drill screwing fence pickets"
+                  src={IMAGES.supplyAction5}
+                  alt="Galvanized fence fittings macro"
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
                 />
               </div>
               <div className="aspect-[4/3.1] rounded-xl overflow-hidden bg-gray-900 border border-emerald-900/40 shadow-inner">
                 <img
-                  src={IMAGES.gateRepair}
-                  alt="Fence technician at work"
+                  src={IMAGES.supplyAction7}
+                  alt="Industrial fence hardware manufacturing"
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
                 />
               </div>

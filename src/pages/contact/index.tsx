@@ -127,7 +127,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({
         <section className="relative bg-[#071910] text-white pt-32 sm:pt-40 lg:pt-44 pb-16 sm:pb-24 lg:pb-28 overflow-hidden">
           <div className="absolute inset-0 z-0 opacity-25">
             <img
-              src={IMAGES.installerWork || IMAGES.hero}
+              src={IMAGES.banner}
               alt="GaurLink Wholesale Desk"
               className="w-full h-full object-cover"
             />
