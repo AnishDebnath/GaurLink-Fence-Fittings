@@ -7,7 +7,7 @@ export type ProductCategory =
   | 'tension-bars'
   | 'gate-hardware'
   | 'industrial'
-  | 'custom';
+  | 'security';
 
 export interface ProductSpec {
   label: string;
@@ -17,7 +17,7 @@ export interface ProductSpec {
 export interface ProductItem {
   id: string;
   name: string;
-  category: 'hinges' | 'fittings' | 'tension-bars' | 'gate-hardware' | 'industrial' | 'custom';
+  category: 'hinges' | 'fittings' | 'tension-bars' | 'gate-hardware' | 'industrial' | 'security';
   categoryLabel: string;
   material: string;
   finish: string;

@@ -34,7 +34,7 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
     { id: 'gate-hardware', label: 'Gate Hardware', count: PRODUCTS_DATA.filter((p) => p.category === 'gate-hardware').length },
     { id: 'tension-bars', label: 'Tension Bars', count: PRODUCTS_DATA.filter((p) => p.category === 'tension-bars').length },
     { id: 'industrial', label: 'Industrial & Cantilever', count: PRODUCTS_DATA.filter((p) => p.category === 'industrial').length },
-    { id: 'custom', label: 'Custom & OEM', count: PRODUCTS_DATA.filter((p) => p.category === 'custom').length },
+    { id: 'security', label: 'Security & Perimeter', count: PRODUCTS_DATA.filter((p) => p.category === 'security').length },
   ];
 
   const filteredProducts = useMemo(() => {
@@ -179,7 +179,7 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
                 </button>
               </div>
             ) : (
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
                 {filteredProducts.map((product) => (
                   <div
                     key={product.id}
@@ -187,10 +187,10 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
                       onSelectProduct(product.id);
                       window.scrollTo({ top: 0, behavior: 'smooth' });
                     }}
-                    className="group bg-white rounded-[28px] overflow-hidden border-[2px] border-gray-900 shadow-sm hover:shadow-xl hover:border-[#0D3823] transition-all duration-300 flex flex-col justify-between cursor-pointer"
+                    className="group bg-white rounded-[20px] overflow-hidden border-[2px] border-gray-900 shadow-sm hover:shadow-xl hover:border-[#0D3823] transition-all duration-300 flex flex-col justify-between cursor-pointer"
                   >
                     {/* Clean Product Photo - No tags on image */}
-                    <div className="relative aspect-4/3 w-full overflow-hidden bg-gray-100 border-b-2 border-gray-900">
+                    <div className="relative aspect-square w-full overflow-hidden bg-gray-100 border-b-2 border-gray-900">
                       <img
                         src={product.imageSrc}
                         alt={product.name}
@@ -200,26 +200,26 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
                     </div>
 
                     {/* Card Body - Clean & Concise without right side tags */}
-                    <div className="p-5 flex-1 flex flex-col justify-between space-y-4">
+                    <div className="p-3.5 flex-1 flex flex-col justify-between space-y-3">
                       <div>
-                        <span className="text-[11px] font-bold text-gray-500 uppercase tracking-wider block mb-1 truncate whitespace-nowrap overflow-hidden text-ellipsis" title={product.material}>
+                        <span className="text-[10px] font-bold text-gray-500 uppercase tracking-wider block mb-0.5 truncate whitespace-nowrap overflow-hidden text-ellipsis" title={product.material}>
                           {product.material}
                         </span>
-                        <h3 className="text-base sm:text-lg font-black uppercase text-gray-900 group-hover:text-[#0D3823] transition-colors leading-snug line-clamp-2 min-h-[2.6em]">
+                        <h3 className="text-[13px] sm:text-sm font-black uppercase text-gray-900 group-hover:text-[#0D3823] transition-colors leading-snug line-clamp-2 min-h-[2.4em]">
                           {product.name}
                         </h3>
                       </div>
 
-                      {/* Bottom Button: Matches standard website CTA button with golden circle arrow */}
-                      <div className="pt-1">
-                        <div className="w-full h-[42px] sm:h-[44px] flex items-center justify-between bg-[#0D3823] group-hover:bg-[#072416] text-white pl-1.5 pr-4 sm:pr-5 rounded-full shadow-md group-hover:shadow-lg transition-all transform active:scale-95 group/btn shrink-0 ring-1 ring-[#E5A912]/30 border border-emerald-600/30">
-                          <span className="w-7 h-7 sm:w-7.5 sm:h-7.5 rounded-full bg-[#E5A912] flex items-center justify-center text-[#0D3823] shrink-0 group-hover:translate-x-0.5 transition-transform shadow-xs">
-                            <ArrowRight className="w-3.5 h-3.5 stroke-[2.5]" />
+                      {/* Bottom Button */}
+                      <div className="pt-0.5">
+                        <div className="w-full h-[36px] flex items-center justify-between bg-[#0D3823] group-hover:bg-[#072416] text-white pl-1 pr-3 rounded-full shadow-md group-hover:shadow-lg transition-all transform active:scale-95 group/btn shrink-0 ring-1 ring-[#E5A912]/30 border border-emerald-600/30">
+                          <span className="w-6 h-6 rounded-full bg-[#E5A912] flex items-center justify-center text-[#0D3823] shrink-0 group-hover:translate-x-0.5 transition-transform shadow-xs">
+                            <ArrowRight className="w-3 h-3 stroke-[2.5]" />
                           </span>
-                          <span className="text-[11.5px] sm:text-[12px] font-black uppercase tracking-wider text-white select-none whitespace-nowrap">
-                            VIEW PRODUCT DETAILS
+                          <span className="text-[10px] font-black uppercase tracking-wider text-white select-none whitespace-nowrap">
+                            VIEW DETAILS
                           </span>
-                          <span className="w-2" />
+                          <span className="w-1.5" />
                         </div>
                       </div>
                     </div>

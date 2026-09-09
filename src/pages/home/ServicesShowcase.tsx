@@ -41,7 +41,7 @@ export const ServicesShowcase: React.FC<ServicesShowcaseProps> = ({
     {
       id: 'box-hinge',
       title: 'BOX HINGE PRESS STEEL',
-      image: IMAGES.productBoxHinge,
+      image: IMAGES.productBoxHingeSteel,
       icon: Lock,
       category: 'Gate Hardware',
       desc: 'Pressed steel box hinge for commercial gate installations.',
@@ -65,7 +65,7 @@ export const ServicesShowcase: React.FC<ServicesShowcaseProps> = ({
     {
       id: 'post-cap',
       title: 'POST CAP PRESSED STEEL',
-      image: IMAGES.productPostCap,
+      image: IMAGES.productPostCapSteel,
       icon: Layers,
       category: 'Fittings',
       desc: 'Pressed steel post cap for chain link fence terminal and line posts.',
@@ -81,7 +81,7 @@ export const ServicesShowcase: React.FC<ServicesShowcaseProps> = ({
     {
       id: 'rail-end',
       title: 'RAIL END 1 HOLE PRESSED STEEL',
-      image: IMAGES.productRailEnd,
+      image: IMAGES.productRailEnd1Hole,
       icon: Wrench,
       category: 'Fittings',
       desc: 'Pressed steel rail end with 1 hole for top rail and line rail connections.',

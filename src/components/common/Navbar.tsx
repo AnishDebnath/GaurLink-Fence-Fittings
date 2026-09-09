@@ -68,18 +68,16 @@ export const Navbar: React.FC<NavbarProps> = ({
   return (
     <header className="fixed top-0 left-0 right-0 z-50 w-full pt-2.5 sm:pt-3 pb-1 px-3 sm:px-6 pointer-events-none">
       <div
-        className={`mx-auto pointer-events-auto transition-[max-width,padding] duration-500 ease-[cubic-bezier(0.2,0.8,0.2,1)] ${
-          showMenus || mobileMenuOpen
+        className={`mx-auto pointer-events-auto transition-[max-width,padding] duration-500 ease-[cubic-bezier(0.2,0.8,0.2,1)] ${showMenus || mobileMenuOpen
             ? 'max-w-[1280px] px-0'
             : 'max-w-[620px] sm:max-w-[650px] lg:max-w-[630px] px-1 sm:px-2'
-        }`}
+          }`}
       >
         <div
-          className={`rounded-full transition-[background-color,border-color,box-shadow,padding] duration-500 ease-[cubic-bezier(0.2,0.8,0.2,1)] flex items-center justify-between border backdrop-saturate-150 ${
-            !showMenus || isScrolled
+          className={`rounded-full transition-[background-color,border-color,box-shadow,padding] duration-500 ease-[cubic-bezier(0.2,0.8,0.2,1)] flex items-center justify-between border backdrop-saturate-150 ${!showMenus || isScrolled
               ? 'bg-white/95 backdrop-blur-xl shadow-[0_12px_32px_rgba(13,56,35,0.16),inset_0_1px_1px_rgba(255,255,255,0.9)] border-white/90 py-1.5 sm:py-2 px-3.5 sm:px-5 ring-1 ring-[#0D3823]/10'
               : 'bg-white/90 backdrop-blur-lg shadow-[0_10px_28px_rgba(0,0,0,0.09),inset_0_1px_1px_rgba(255,255,255,0.9)] border-white/70 py-1.5 sm:py-2 px-4 sm:px-6'
-          }`}
+            }`}
         >
           {/* Left: Logo */}
           <button
@@ -91,21 +89,49 @@ export const Navbar: React.FC<NavbarProps> = ({
             <FenceFixLogo size="md" />
           </button>
 
+          {/* Phone number after logo (mobile only) */}
+          <a
+            href="tel:7208053155"
+            className="flex lg:hidden items-center gap-2 shrink-0 group"
+          >
+            <div className="w-6 h-6 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#0D3823"
+                strokeWidth="2.2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="w-4.5 h-4.5"
+              >
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                <path d="M14.5 3a7 7 0 0 1 6.5 6.5" stroke="#E5A912" />
+                <path d="M14.5 7a3 3 0 0 1 2.5 2.5" stroke="#E5A912" />
+              </svg>
+            </div>
+            <div className="flex flex-col text-left">
+              <span className="text-[9px] font-bold text-gray-500 tracking-tight leading-none mb-0.5">
+                Wholesale Desk
+              </span>
+              <span className="text-[12px] sm:text-[13px] font-black text-gray-900 group-hover:text-[#0D3823] transition-colors leading-none tracking-tight">
+                (720) 805-3155
+              </span>
+            </div>
+          </a>
+
           {/* Center: Desktop Nav with smooth width and opacity animation */}
           <nav
-            className={`hidden lg:flex items-center overflow-hidden transition-[max-width,opacity,transform] duration-500 ease-[cubic-bezier(0.2,0.8,0.2,1)] will-change-[max-width,opacity] ${
-              showMenus
+            className={`hidden lg:flex items-center overflow-hidden transition-[max-width,opacity,transform] duration-500 ease-[cubic-bezier(0.2,0.8,0.2,1)] will-change-[max-width,opacity] ${showMenus
                 ? 'opacity-100 max-w-[500px] scale-100 gap-1 pointer-events-auto'
                 : 'opacity-0 max-w-0 scale-95 gap-0 pointer-events-none select-none'
-            }`}
+              }`}
           >
             <button
               onClick={() => onNavigatePage('home')}
-              className={`relative px-3.5 py-2 text-[14px] font-bold transition-colors whitespace-nowrap cursor-pointer ${
-                isActive('home')
+              className={`relative px-3.5 py-2 text-[14px] font-bold transition-colors whitespace-nowrap cursor-pointer ${isActive('home')
                   ? 'text-[#0D3823]'
                   : 'text-gray-600 hover:text-[#0D3823]'
-              }`}
+                }`}
             >
               Home
               {isActive('home') && (
@@ -113,7 +139,6 @@ export const Navbar: React.FC<NavbarProps> = ({
               )}
             </button>
 
-{/* Products button - commented out
             <button
               onClick={() => onNavigatePage('products')}
               className={`relative px-3.5 py-2 text-[14px] font-bold transition-colors whitespace-nowrap cursor-pointer ${
@@ -127,15 +152,13 @@ export const Navbar: React.FC<NavbarProps> = ({
                 <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-5 h-0.5 bg-[#0D3823] rounded-full" />
               )}
             </button>
-            */}
 
             <button
               onClick={() => onNavigatePage('about')}
-              className={`relative px-3.5 py-2 text-[14px] font-bold transition-colors whitespace-nowrap cursor-pointer ${
-                isActive('about')
+              className={`relative px-3.5 py-2 text-[14px] font-bold transition-colors whitespace-nowrap cursor-pointer ${isActive('about')
                   ? 'text-[#0D3823]'
                   : 'text-gray-600 hover:text-[#0D3823]'
-              }`}
+                }`}
             >
               About
               {isActive('about') && (
@@ -145,11 +168,10 @@ export const Navbar: React.FC<NavbarProps> = ({
 
             <button
               onClick={() => onNavigatePage('contact')}
-              className={`relative px-3.5 py-2 text-[14px] font-bold transition-colors whitespace-nowrap cursor-pointer ${
-                isActive('contact')
+              className={`relative px-3.5 py-2 text-[14px] font-bold transition-colors whitespace-nowrap cursor-pointer ${isActive('contact')
                   ? 'text-[#0D3823]'
                   : 'text-gray-600 hover:text-[#0D3823]'
-              }`}
+                }`}
             >
               Contact
               {isActive('contact') && (
@@ -162,7 +184,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           <div className="flex items-center gap-3 sm:gap-4">
             <a
               href="tel:7208053155"
-              className="hidden md:flex items-center gap-2 group"
+              className="hidden lg:flex items-center gap-2 group"
             >
               <div className="w-6.5 h-6.5 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
                 <svg
@@ -191,7 +213,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
             <button
               onClick={handleRequestQuote}
-              className="h-[40px] sm:h-[42px] flex items-center gap-2 sm:gap-2.5 bg-[#0D3823] hover:bg-[#072416] text-white pl-1.5 pr-4 sm:pr-5 rounded-full shadow-md hover:shadow-lg transition-all transform active:scale-95 group shrink-0 ring-1 ring-[#E5A912]/30 border border-emerald-600/30 cursor-pointer"
+              className="hidden lg:flex h-[40px] sm:h-[42px] items-center gap-2 sm:gap-2.5 bg-[#0D3823] hover:bg-[#072416] text-white pl-1.5 pr-4 sm:pr-5 rounded-full shadow-md hover:shadow-lg transition-all transform active:scale-95 group shrink-0 ring-1 ring-[#E5A912]/30 border border-emerald-600/30 cursor-pointer"
             >
               <span className="w-7 h-7 sm:w-7.5 sm:h-7.5 rounded-full bg-[#E5A912] flex items-center justify-center text-[#0D3823] shrink-0 group-hover:translate-x-0.5 transition-transform shadow-xs">
                 <ArrowRight className="w-3.5 h-3.5 stroke-[2.5]" />
@@ -218,11 +240,10 @@ export const Navbar: React.FC<NavbarProps> = ({
           <div className="lg:hidden mt-2 bg-white/95 backdrop-blur-xl rounded-3xl shadow-2xl border border-emerald-900/10 p-5 space-y-1 animate-in fade-in slide-in-from-top-3 duration-200">
             <button
               onClick={() => { setMobileMenuOpen(false); onNavigatePage('home'); }}
-              className={`relative block w-full text-left py-2.5 px-3 rounded-xl font-bold transition-all cursor-pointer ${
-                isActive('home')
+              className={`relative block w-full text-left py-2.5 px-3 rounded-xl font-bold transition-all cursor-pointer ${isActive('home')
                   ? 'text-[#0D3823] bg-emerald-50/80'
                   : 'text-gray-600 hover:bg-gray-50 hover:text-[#0D3823]'
-              }`}
+                }`}
             >
               Home
               {isActive('home') && (
@@ -230,7 +251,6 @@ export const Navbar: React.FC<NavbarProps> = ({
               )}
             </button>
 
-{/* Products Catalog - commented out
             <button
               onClick={() => { setMobileMenuOpen(false); onNavigatePage('products'); }}
               className={`relative block w-full text-left py-2.5 px-3 rounded-xl font-bold transition-all cursor-pointer ${
@@ -244,15 +264,13 @@ export const Navbar: React.FC<NavbarProps> = ({
                 <span className="absolute bottom-1 left-3 w-5 h-0.5 bg-[#0D3823] rounded-full" />
               )}
             </button>
-            */}
 
             <button
               onClick={() => { setMobileMenuOpen(false); onNavigatePage('about'); }}
-              className={`relative block w-full text-left py-2.5 px-3 rounded-xl font-bold transition-all cursor-pointer ${
-                isActive('about')
+              className={`relative block w-full text-left py-2.5 px-3 rounded-xl font-bold transition-all cursor-pointer ${isActive('about')
                   ? 'text-[#0D3823] bg-emerald-50/80'
                   : 'text-gray-600 hover:bg-gray-50 hover:text-[#0D3823]'
-              }`}
+                }`}
             >
               About
               {isActive('about') && (
@@ -262,13 +280,12 @@ export const Navbar: React.FC<NavbarProps> = ({
 
             <button
               onClick={() => { setMobileMenuOpen(false); onNavigatePage('contact'); }}
-              className={`relative block w-full text-left py-2.5 px-3 rounded-xl font-bold transition-all cursor-pointer ${
-                isActive('contact')
+              className={`relative block w-full text-left py-2.5 px-3 rounded-xl font-bold transition-all cursor-pointer ${isActive('contact')
                   ? 'text-[#0D3823] bg-emerald-50/80'
                   : 'text-gray-600 hover:bg-gray-50 hover:text-[#0D3823]'
-              }`}
+                }`}
             >
-              Contact &amp; Wholesale Quote
+              Contact
               {isActive('contact') && (
                 <span className="absolute bottom-1 left-3 w-5 h-0.5 bg-[#0D3823] rounded-full" />
               )}
