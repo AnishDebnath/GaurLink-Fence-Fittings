@@ -3,7 +3,7 @@ import { IMAGES } from '../../data/images';
 
 export const HowItWorks: React.FC = () => {
   const [activeStep, setActiveStep] = useState(0);
-  const timerRef = useRef<number | undefined>(undefined);
+  const timerRef = useRef<ReturnType<typeof setInterval> | undefined>(undefined);
 
   const resetTimer = () => {
     clearInterval(timerRef.current);

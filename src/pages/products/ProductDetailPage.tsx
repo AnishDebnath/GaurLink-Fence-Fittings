@@ -1,25 +1,14 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { 
   ChevronRight, 
   ArrowRight, 
-  ShieldCheck, 
-  Download, 
-  Phone, 
-  Package, 
-  Truck, 
-  FileText, 
   ArrowLeft, 
-  Share2, 
-  Check, 
-  Building2, 
-  Star
+  Check 
 } from 'lucide-react';
 import { PRODUCTS_DATA } from '../../data/products';
 import { ProductItem } from '../../types';
 import { Navbar } from '../../components/common/Navbar';
 import { Footer } from '../../components/common/Footer';
-import { MarqueeTicker } from '../home/MarqueeTicker';
-import { ConversionBanner } from '../home/ConversionBanner';
 
 interface ProductDetailPageProps {
   productId: string;
@@ -28,45 +17,117 @@ interface ProductDetailPageProps {
   onSelectProduct: (productId: string) => void;
 }
 
+interface SpecRow {
+  code: string;
+  size: string;
+  pcsPerBag: number | string;
+  bagPerPallet: number | string;
+  pcsPerPallet: number | string;
+}
+
+// Industry-standard packaging matrix for fence fittings & hardware
+function getProductPackagingRows(product: ProductItem): SpecRow[] {
+  const id = product.id.toLowerCase();
+
+  if (id.includes('barbed-arm') || id.includes('barbed-y-arm') || id.includes('barbed-arm-vertical') || id.includes('barbed-arm-cup')) {
+    return [
+      { code: '350', size: '1 5/8"', pcsPerBag: 25, bagPerPallet: 48, pcsPerPallet: 1200 },
+      { code: '370', size: '2"', pcsPerBag: 25, bagPerPallet: 40, pcsPerPallet: 1000 },
+      { code: '390', size: '2 1/2"', pcsPerBag: 25, bagPerPallet: 32, pcsPerPallet: 800 },
+      { code: '410', size: '3"', pcsPerBag: 20, bagPerPallet: 32, pcsPerPallet: 640 },
+    ];
+  }
+
+  if (id.includes('tension-band') || id.includes('brace-band')) {
+    return [
+      { code: '210', size: '1 3/8"', pcsPerBag: 100, bagPerPallet: 40, pcsPerPallet: 4000 },
+      { code: '220', size: '1 5/8"', pcsPerBag: 100, bagPerPallet: 40, pcsPerPallet: 4000 },
+      { code: '230', size: '2"', pcsPerBag: 100, bagPerPallet: 36, pcsPerPallet: 3600 },
+      { code: '240', size: '2 1/2"', pcsPerBag: 50, bagPerPallet: 40, pcsPerPallet: 2000 },
+      { code: '250', size: '3"', pcsPerBag: 50, bagPerPallet: 32, pcsPerPallet: 1600 },
+      { code: '260', size: '4"', pcsPerBag: 25, bagPerPallet: 40, pcsPerPallet: 1000 },
+    ];
+  }
+
+  if (id.includes('hinge') || id.includes('male-hinge') || id.includes('female-hinge') || id.includes('box-hinge')) {
+    return [
+      { code: '110', size: '1 3/8" x 2 3/8"', pcsPerBag: 50, bagPerPallet: 36, pcsPerPallet: 1800 },
+      { code: '120', size: '1 5/8" x 2 3/8"', pcsPerBag: 50, bagPerPallet: 32, pcsPerPallet: 1600 },
+      { code: '130', size: '1 5/8" x 2 7/8"', pcsPerBag: 25, bagPerPallet: 40, pcsPerPallet: 1000 },
+      { code: '140', size: '2" x 4"', pcsPerBag: 20, bagPerPallet: 32, pcsPerPallet: 640 },
+    ];
+  }
+
+  if (id.includes('post-cap') || id.includes('bullet-cap') || id.includes('loop-cap')) {
+    return [
+      { code: '510', size: '1 5/8"', pcsPerBag: 100, bagPerPallet: 48, pcsPerPallet: 4800 },
+      { code: '520', size: '2"', pcsPerBag: 50, bagPerPallet: 50, pcsPerPallet: 2500 },
+      { code: '530', size: '2 1/2"', pcsPerBag: 50, bagPerPallet: 40, pcsPerPallet: 2000 },
+      { code: '540', size: '3"', pcsPerBag: 25, bagPerPallet: 40, pcsPerPallet: 1000 },
+      { code: '550', size: '4"', pcsPerBag: 20, bagPerPallet: 36, pcsPerPallet: 720 },
+    ];
+  }
+
+  if (id.includes('rail-end') || id.includes('boulevard') || id.includes('clamp') || id.includes('collar') || id.includes('fork')) {
+    return [
+      { code: '420', size: '1 3/8"', pcsPerBag: 50, bagPerPallet: 48, pcsPerPallet: 2400 },
+      { code: '430', size: '1 5/8"', pcsPerBag: 50, bagPerPallet: 40, pcsPerPallet: 2000 },
+      { code: '440', size: '2"', pcsPerBag: 25, bagPerPallet: 48, pcsPerPallet: 1200 },
+      { code: '450', size: '2 1/2"', pcsPerBag: 25, bagPerPallet: 36, pcsPerPallet: 900 },
+    ];
+  }
+
+  if (id.includes('roller') || id.includes('cantilever') || id.includes('wheel') || id.includes('track')) {
+    return [
+      { code: '610', size: '2 3/8" Post / 2" Pipe', pcsPerBag: 4, bagPerPallet: 60, pcsPerPallet: 240 },
+      { code: '620', size: '2 7/8" Post / 2" Pipe', pcsPerBag: 4, bagPerPallet: 48, pcsPerPallet: 192 },
+      { code: '630', size: '4" Post / 2" Pipe', pcsPerBag: 2, bagPerPallet: 60, pcsPerPallet: 120 },
+      { code: '640', size: '4" Post / 2 3/8" Pipe', pcsPerBag: 2, bagPerPallet: 48, pcsPerPallet: 96 },
+    ];
+  }
+
+  if (product.commonSizes && product.commonSizes.length > 0 && product.commonSizes[0] !== 'Standard') {
+    return product.commonSizes.map((size, idx) => ({
+      code: `${350 + idx * 20}`,
+      size,
+      pcsPerBag: idx === 0 ? 50 : 25,
+      bagPerPallet: 48 - idx * 8,
+      pcsPerPallet: (idx === 0 ? 50 : 25) * (48 - idx * 8),
+    }));
+  }
+
+  return [
+    { code: '350', size: '1 5/8"', pcsPerBag: 25, bagPerPallet: 48, pcsPerPallet: 1200 },
+    { code: '370', size: '2"', pcsPerBag: 25, bagPerPallet: 40, pcsPerPallet: 1000 },
+    { code: '390', size: '2 1/2"', pcsPerBag: 25, bagPerPallet: 32, pcsPerPallet: 800 },
+    { code: '410', size: '3"', pcsPerBag: 20, bagPerPallet: 32, pcsPerPallet: 640 },
+  ];
+}
+
 export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
   productId,
   onNavigateSection,
   onNavigatePage,
   onSelectProduct,
 }) => {
-  const [selectedSize, setSelectedSize] = useState<string>('');
-  const [activeTab, setActiveTab] = useState<'specs' | 'features' | 'applications' | 'shipping'>('specs');
-  const [copiedLink, setCopiedLink] = useState(false);
-  const [downloadSuccess, setDownloadSuccess] = useState(false);
-
   const product: ProductItem = 
     PRODUCTS_DATA.find((p) => p.id === productId) || PRODUCTS_DATA[0];
 
-  // Initialize selected size
-  React.useEffect(() => {
-    if (product.commonSizes && product.commonSizes.length > 0) {
-      setSelectedSize(product.commonSizes[0]);
-    }
-  }, [product]);
-
-  // Related products from same category or others
-  const relatedProducts = PRODUCTS_DATA
+  // Similar products from same category or catalog (4 items)
+  const similarProducts = PRODUCTS_DATA
     .filter((p) => p.id !== product.id)
     .sort((a) => (a.category === product.category ? -1 : 1))
-    .slice(0, 3);
+    .slice(0, 4);
 
-  const handleCopyLink = () => {
-    if (typeof window !== 'undefined') {
-      navigator.clipboard.writeText(window.location.href);
-      setCopiedLink(true);
-      setTimeout(() => setCopiedLink(false), 2000);
-    }
-  };
+  const packagingRows = getProductPackagingRows(product);
 
-  const handleDownloadSpec = () => {
-    setDownloadSuccess(true);
-    setTimeout(() => setDownloadSuccess(false), 3000);
-  };
+  const keyFeatures = [
+    'Premium quality material',
+    'Durable construction',
+    'Industry standard compliance',
+    'Global quality certified',
+    ...(product.features && product.features.length > 0 ? product.features.slice(0, 2) : []),
+  ];
 
   return (
     <div className="min-h-screen flex flex-col bg-white text-gray-900 font-sans selection:bg-[#0D3823] selection:text-[#E5A912]">
@@ -77,11 +138,13 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
         currentRoute="products"
       />
 
-      <main className="flex-1">
-        {/* Top Breadcrumb Bar */}
-        <section className="bg-[#FBFBFA] border-b border-gray-200 pt-28 sm:pt-32 pb-4 px-4 sm:px-6 lg:px-8">
-          <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-3 text-xs">
-            <div className="flex items-center gap-2 font-bold text-gray-600 uppercase tracking-wider">
+      <main className="flex-1 pt-24 sm:pt-28">
+        {/* Product Details Section with Section-Width Page Menu at the Top */}
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-10">
+          
+          {/* Top Breadcrumb Navigation */}
+          <div className="flex flex-wrap items-center justify-between gap-3 text-xs mb-6 sm:mb-8 pb-3 border-b border-gray-200">
+            <div className="flex items-center gap-2 text-xs font-bold text-gray-500 uppercase tracking-wider">
               <button
                 onClick={() => onNavigatePage('home')}
                 className="hover:text-[#0D3823] transition-colors cursor-pointer"
@@ -103,21 +166,18 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
 
             <button
               onClick={() => onNavigatePage('products')}
-              className="inline-flex items-center gap-2 text-xs font-black uppercase tracking-wider text-gray-700 hover:text-[#0D3823] cursor-pointer"
+              className="h-[36px] px-4 inline-flex items-center gap-2 bg-white hover:bg-gray-50 text-gray-900 font-black text-xs uppercase tracking-wider rounded-full border border-gray-300 hover:border-gray-900 transition-all cursor-pointer shadow-2xs"
             >
               <ArrowLeft className="w-3.5 h-3.5" />
               <span>Back to Catalog</span>
             </button>
           </div>
-        </section>
 
-        {/* Product Main Showcase */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
             
-            {/* Left Column: Framed Image Showcase */}
-            <div className="lg:col-span-6 space-y-4">
-              <div className="relative rounded-[32px] overflow-hidden bg-white border-[2.5px] border-[#1C1C1C] shadow-lg aspect-4/3 sm:aspect-16/11">
+            {/* Left Column: Product Image in 1:1 Aspect Ratio with GaurLink Theme Frame (Edge to Edge, No Inner Padding) */}
+            <div className="lg:col-span-6">
+              <div className="w-full aspect-square rounded-[32px] overflow-hidden bg-white border-[2.5px] border-[#1C1C1C] shadow-lg">
                 {product.imageSrc ? (
                   <img
                     src={product.imageSrc}
@@ -125,65 +185,18 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
                     className="w-full h-full object-cover"
                   />
                 ) : (
-                  <div className="w-full h-full flex items-center justify-center bg-emerald-950 text-white font-black text-xl">
+                  <div className="w-full h-full flex items-center justify-center bg-[#0D3823] text-white font-black text-xl">
                     {product.name}
                   </div>
                 )}
-
-                {/* Badges on Image */}
-                <div className="absolute top-4 left-4 flex flex-col gap-2">
-                  <span className="bg-[#0D3823] text-[#E5A912] text-xs font-black uppercase tracking-wider px-3.5 py-1.5 rounded-full shadow-md border border-[#E5A912]/30">
-                    {product.categoryLabel}
-                  </span>
-                  {product.tag && (
-                    <span className="bg-[#E5A912] text-[#071910] text-xs font-black uppercase tracking-wider px-3 py-1 rounded-full shadow-md self-start">
-                      {product.tag}
-                    </span>
-                  )}
-                </div>
-
-                {/* ASTM Badge */}
-                {product.astmCompliance && (
-                  <div className="absolute bottom-4 left-4 flex items-center gap-1.5 bg-[#071910]/95 text-white text-xs font-black px-3.5 py-1.5 rounded-full border border-emerald-500/40 shadow-lg">
-                    <ShieldCheck className="w-4 h-4 text-[#E5A912]" />
-                    <span>{product.astmCompliance}</span>
-                  </div>
-                )}
-              </div>
-
-              {/* Quality & Trust Badges Strip */}
-              <div className="grid grid-cols-3 gap-3 p-4 bg-[#FBFBFA] rounded-[24px] border border-gray-200 text-center">
-                <div className="space-y-1">
-                  <span className="text-[11px] font-black text-gray-400 uppercase tracking-wider block">Finish</span>
-                  <span className="text-xs font-black text-gray-900 block truncate">{product.finish}</span>
-                </div>
-                <div className="space-y-1 border-x border-gray-200">
-                  <span className="text-[11px] font-black text-gray-400 uppercase tracking-wider block">Material</span>
-                  <span className="text-xs font-black text-gray-900 block truncate">{product.material}</span>
-                </div>
-                <div className="space-y-1">
-                  <span className="text-[11px] font-black text-gray-400 uppercase tracking-wider block">Production</span>
-                  <span className="text-xs font-black text-[#0D3823] block truncate">ISO 9001:2015</span>
-                </div>
               </div>
             </div>
 
-            {/* Right Column: Title, Specs, Sizes, and Home Page Pill CTAs */}
+            {/* Right Column: Structured Details styled in GaurLink Website Theme */}
             <div className="lg:col-span-6 space-y-6">
+              
+              {/* Product Header: Product Name & Sub-heading */}
               <div>
-                {/* 5.0 Star Rating */}
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="flex text-[#E5A912] gap-0.5">
-                    {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="w-4 h-4 fill-current text-[#E5A912]" />
-                    ))}
-                  </div>
-                  <span className="text-xs font-black text-gray-900 uppercase tracking-wider">
-                    5.0 • ASTM CERTIFIED HARDWARE
-                  </span>
-                </div>
-
-                {/* Eyebrow Pill */}
                 <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-gray-800 text-[11px] font-bold tracking-wider text-gray-900 uppercase font-sans mb-3">
                   <span className="w-2 h-2 rounded-full bg-[#0D3823]"></span>
                   <span>COMMERCIAL HARDWARE SPEC</span>
@@ -192,93 +205,106 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
                 <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black uppercase text-gray-900 tracking-tight leading-tight font-sans">
                   {product.name}
                 </h1>
-                <p className="mt-3 text-gray-600 text-sm sm:text-base leading-relaxed font-normal">
-                  {product.description || product.shortDesc}
+                <p className="mt-2 text-gray-600 text-sm sm:text-base leading-relaxed font-normal">
+                  {product.shortDesc || product.description}
                 </p>
               </div>
 
-              {/* Sizes Selection */}
-              {product.commonSizes && product.commonSizes.length > 0 && (
-                <div className="space-y-2 pt-2 border-t border-gray-200">
+              {/* Product Information Card */}
+              <div className="bg-[#FBFBFA] rounded-[24px] p-5 sm:p-6 border-[2.5px] border-[#1C1C1C] shadow-xs">
+                <h2 className="text-sm font-black uppercase tracking-wider text-gray-900 mb-4 pb-2 border-b border-gray-200">
+                  Product Information
+                </h2>
+                <div className="space-y-3 text-xs sm:text-sm">
                   <div className="flex items-center justify-between">
-                    <span className="text-xs font-black text-gray-900 uppercase tracking-wider">
-                      Select Post &amp; Pipe Size:
-                    </span>
-                    <span className="text-xs font-bold text-gray-500">
-                      Active: <strong className="text-[#0D3823]">{selectedSize || 'All Sizes'}</strong>
+                    <span className="font-bold text-gray-500 uppercase tracking-wider">Product ID</span>
+                    <span className="font-black text-[#0D3823] font-mono">{product.id}</span>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="font-bold text-gray-500 uppercase tracking-wider">Category</span>
+                    <span className="inline-flex items-center gap-2 font-black text-gray-900 uppercase">
+                      <span className="w-2.5 h-2.5 rounded-full bg-[#0D3823] ring-2 ring-[#E5A912]/40" />
+                      {product.categoryLabel}
                     </span>
                   </div>
-                  <div className="flex flex-wrap gap-2">
-                    {product.commonSizes.map((size) => (
-                      <button
-                        key={size}
-                        onClick={() => setSelectedSize(size)}
-                        className={`h-[40px] px-4 rounded-full text-xs font-black uppercase tracking-wider transition-all cursor-pointer border ${
-                          selectedSize === size
-                            ? 'bg-[#0D3823] text-white border-[#0D3823] shadow-md ring-1 ring-[#E5A912]/40'
-                            : 'bg-white text-gray-800 border-gray-300 hover:border-gray-900 hover:bg-gray-50'
-                        }`}
-                      >
-                        {size}
-                      </button>
-                    ))}
+                  <div className="flex items-center justify-between">
+                    <span className="font-bold text-gray-500 uppercase tracking-wider">Size Available</span>
+                    <span className="font-black text-[#0D3823]">
+                      {Array.from(new Set(packagingRows.map((r) => r.size))).length} Sizes Available
+                    </span>
                   </div>
                 </div>
-              )}
+              </div>
 
-              {/* Specs Summary Table */}
-              <div className="bg-[#FBFBFA] rounded-[24px] p-5 border border-gray-200 space-y-2.5">
-                <span className="text-xs font-black text-gray-900 uppercase tracking-wider block mb-2">
-                  Technical Parameters:
-                </span>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
-                  {product.specs.map((spec, idx) => (
-                    <div key={idx} className="flex items-center justify-between p-2 rounded-xl bg-white border border-gray-200">
-                      <span className="font-bold text-gray-500">{spec.label}:</span>
-                      <span className="font-black text-gray-900">{spec.value}</span>
-                    </div>
+              {/* Specifications / Packaging Table in Theme Color */}
+              <div className="overflow-hidden rounded-[24px] border-[2.5px] border-[#1C1C1C] shadow-xs bg-white">
+                <div className="overflow-x-auto">
+                  <table className="w-full text-center text-xs sm:text-sm border-collapse">
+                    <thead>
+                      <tr className="bg-[#0D3823] text-white uppercase text-[11px] sm:text-xs font-black tracking-wider border-b-2 border-[#1C1C1C]">
+                        <th className="py-3.5 px-3 sm:px-4">CODE</th>
+                        <th className="py-3.5 px-3 sm:px-4">SIZE</th>
+                        <th className="py-3.5 px-3 sm:px-4">PCS PER BAG</th>
+                        <th className="py-3.5 px-3 sm:px-4">BAG PER PALLET</th>
+                        <th className="py-3.5 px-3 sm:px-4">PCS PER PALLET</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-gray-200 bg-white">
+                      {packagingRows.map((row, idx) => (
+                        <tr 
+                          key={idx} 
+                          className={idx % 2 === 0 ? 'bg-white hover:bg-[#F8FAF7] transition-colors' : 'bg-[#FBFBFA] hover:bg-[#F8FAF7] transition-colors'}
+                        >
+                          <td className="py-3.5 px-3 font-black text-gray-900">{row.code}</td>
+                          <td className="py-3.5 px-3 font-black text-[#0D3823]">{row.size}</td>
+                          <td className="py-3.5 px-3 font-bold text-gray-700">{row.pcsPerBag}</td>
+                          <td className="py-3.5 px-3 font-bold text-gray-700">{row.bagPerPallet}</td>
+                          <td className="py-3.5 px-3 font-black text-gray-900">{row.pcsPerPallet}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              {/* Key Features Card */}
+              <div className="bg-[#F0F5F2] border-[2.5px] border-[#0D3823]/30 rounded-[24px] p-5 sm:p-6 shadow-xs">
+                <h3 className="text-sm font-black uppercase tracking-wider text-gray-900 mb-4 pb-2 border-b border-[#0D3823]/15">
+                  Key Features
+                </h3>
+                <ul className="space-y-3">
+                  {keyFeatures.map((feat, idx) => (
+                    <li key={idx} className="flex items-center gap-3.5 text-xs sm:text-sm font-bold text-gray-900 uppercase tracking-wide">
+                      <div className="w-6 h-6 rounded-full bg-[#0D3823] text-[#E5A912] flex items-center justify-center shrink-0 shadow-xs">
+                        <Check className="w-3.5 h-3.5 stroke-[3]" />
+                      </div>
+                      <span>{feat}</span>
+                    </li>
                   ))}
-                </div>
+                </ul>
               </div>
 
-              {/* Action Buttons matching Home Page Pill Buttons */}
-              <div className="space-y-3 pt-2">
-                <div className="flex flex-col sm:flex-row gap-3">
-                  <button
-                    onClick={() => onNavigatePage('contact', { quote: true, productId: product.id })}
-                    className="h-[52px] sm:h-[54px] flex-1 inline-flex items-center justify-center gap-3 bg-[#0D3823] hover:bg-[#072416] text-white font-black text-xs sm:text-sm uppercase tracking-wider pl-2 pr-6 rounded-full shadow-lg border border-emerald-500/30 hover:shadow-xl transition-all transform active:scale-95 group ring-1 ring-[#E5A912]/20 cursor-pointer"
-                  >
-                    <span className="w-8 h-8 rounded-full bg-[#E5A912] text-[#0D3823] font-black flex items-center justify-center group-hover:translate-x-0.5 transition-transform shadow-xs shrink-0">
-                      <ArrowRight className="w-4 h-4 stroke-[3]" />
-                    </span>
-                    <span className="whitespace-nowrap">REQUEST WHOLESALE RFQ</span>
-                  </button>
-
-                  <a
-                    href="tel:7208053155"
-                    className="h-[52px] sm:h-[54px] inline-flex items-center justify-center gap-2.5 bg-white hover:bg-gray-100 text-gray-950 font-black text-xs sm:text-sm uppercase tracking-wider px-6 rounded-full shadow-md transition-all group shrink-0 cursor-pointer border-2 border-gray-900"
-                  >
-                    <Phone className="w-4 h-4 text-[#0D3823] fill-current" />
-                    <span>(720) 805-3155</span>
-                  </a>
-                </div>
-
-                <div className="flex items-center gap-3">
-                  <button
-                    onClick={handleDownloadSpec}
-                    className="flex-1 py-2.5 px-4 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-800 text-xs font-bold transition-all flex items-center justify-center gap-2 cursor-pointer border border-gray-200"
-                  >
-                    <Download className="w-3.5 h-3.5 text-gray-600" />
-                    <span>{downloadSuccess ? 'Specification Sheet Downloaded!' : 'Download Technical Submittal (PDF)'}</span>
-                  </button>
-
-                  <button
-                    onClick={handleCopyLink}
-                    className="py-2.5 px-4 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-800 text-xs font-bold transition-all flex items-center justify-center gap-1.5 cursor-pointer border border-gray-200"
-                  >
-                    <Share2 className="w-3.5 h-3.5 text-gray-600" />
-                    <span>{copiedLink ? 'Copied!' : 'Share SKU'}</span>
-                  </button>
+              {/* Interested In This Product CTA Card matching site theme */}
+              <div className="bg-gradient-to-br from-[#0D3823] via-[#0A2D1C] to-[#071910] rounded-[28px] p-6 sm:p-8 text-center text-white border-[2.5px] border-[#1C1C1C] shadow-xl relative overflow-hidden">
+                <div className="relative z-10 space-y-3">
+                  <h4 className="text-lg sm:text-xl lg:text-2xl font-black uppercase text-white tracking-tight">
+                    Interested in this product?
+                  </h4>
+                  <p className="text-emerald-100/90 text-xs sm:text-sm max-w-md mx-auto font-normal leading-relaxed">
+                    Contact us for direct factory wholesale rates, volume pallet pricing, and custom requirements.
+                  </p>
+                  
+                  <div className="pt-2">
+                    <button
+                      onClick={() => onNavigatePage('contact', { quote: true, productId: product.id })}
+                      className="h-[48px] sm:h-[50px] inline-flex items-center gap-2.5 bg-[#E5A912] hover:bg-[#D89A08] text-[#071910] font-black text-xs sm:text-sm uppercase tracking-wider pl-2.5 pr-6 rounded-full shadow-lg transition-all transform active:scale-95 group cursor-pointer border border-[#E5A912]/40"
+                    >
+                      <span className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#0D3823] text-[#E5A912] font-black flex items-center justify-center group-hover:translate-x-0.5 transition-transform shadow-xs shrink-0">
+                        <ArrowRight className="w-3.5 h-3.5 stroke-[3]" />
+                      </span>
+                      <span>REQUEST A QUOTE</span>
+                    </button>
+                  </div>
                 </div>
               </div>
 
@@ -287,244 +313,78 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
           </div>
         </section>
 
-        {/* Marquee Ticker */}
-        <MarqueeTicker
-          variant="deep-green"
-          items={[
-            `${product.name.toUpperCase()} SPECIFICATION`,
-            'ASTM A153 GALVANIZED',
-            'ISO 9001:2015 CERTIFIED',
-            'PALLET & CONTAINER DIRECT SUPPLY',
-            'COMMERCIAL CONTRACTOR GRADE',
-            'DDP US NATIONWIDE LOGISTICS',
-          ]}
-        />
-
-        {/* Technical Details Tabs with Home Page styling */}
-        <section className="py-14 sm:py-20 bg-[#FBFBFA] border-b border-gray-200">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            
-            <div className="mb-8">
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-gray-800 text-[12px] font-bold tracking-wider text-gray-900 uppercase font-sans mb-3">
-                <span className="w-2 h-2 rounded-full bg-[#0D3823]"></span>
-                <span>ENGINEERING SUBMITTAL</span>
-              </div>
-              <h2 className="text-2xl sm:text-3xl font-black uppercase text-gray-900 tracking-tight">
-                COMPREHENSIVE SPECIFICATIONS &amp; SUBMITTALS
-              </h2>
-            </div>
-
-            {/* Tab Buttons */}
-            <div className="flex flex-wrap items-center gap-2.5 pb-4 border-b border-gray-300">
-              {[
-                { id: 'specs', label: 'Technical Specs', icon: FileText },
-                { id: 'features', label: 'Engineering Features', icon: ShieldCheck },
-                { id: 'applications', label: 'Commercial Applications', icon: Building2 },
-                { id: 'shipping', label: 'Packaging & Freight (DDP)', icon: Truck },
-              ].map((tab) => {
-                const Icon = tab.icon;
-                const isActive = activeTab === tab.id;
-                return (
-                  <button
-                    key={tab.id}
-                    onClick={() => setActiveTab(tab.id as any)}
-                    className={`h-[44px] px-5 sm:px-6 rounded-full text-xs font-black uppercase tracking-wider transition-all flex items-center gap-2 cursor-pointer border ${
-                      isActive
-                        ? 'bg-[#0D3823] text-white border-[#0D3823] shadow-md ring-1 ring-[#E5A912]/40'
-                        : 'bg-white text-gray-700 border-gray-300 hover:border-gray-900 hover:bg-gray-50'
-                    }`}
-                  >
-                    <Icon className={`w-4 h-4 ${isActive ? 'text-[#E5A912]' : 'text-gray-500'}`} />
-                    <span>{tab.label}</span>
-                  </button>
-                );
-              })}
-            </div>
-
-            {/* Tab Contents in Home Page Card Container */}
-            <div className="mt-8 bg-white rounded-[32px] p-6 sm:p-10 border-[2.5px] border-[#1C1C1C] shadow-md">
-              {activeTab === 'specs' && (
-                <div className="space-y-6">
-                  <h3 className="text-lg font-black uppercase text-gray-900">
-                    Product Parameters &amp; ASTM Standards
-                  </h3>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    {product.specs.map((s, idx) => (
-                      <div key={idx} className="flex items-center justify-between p-4 rounded-2xl bg-[#FBFBFA] border border-gray-200">
-                        <span className="font-bold text-gray-600 text-sm">{s.label}</span>
-                        <span className="font-black text-gray-900 text-sm text-right">{s.value}</span>
-                      </div>
-                    ))}
-                    <div className="flex items-center justify-between p-4 rounded-2xl bg-[#FBFBFA] border border-gray-200">
-                      <span className="font-bold text-gray-600 text-sm">Finishing Process</span>
-                      <span className="font-black text-[#0D3823] text-sm text-right">{product.finish}</span>
-                    </div>
-                    <div className="flex items-center justify-between p-4 rounded-2xl bg-[#FBFBFA] border border-gray-200">
-                      <span className="font-bold text-gray-600 text-sm">Quality Compliance</span>
-                      <span className="font-black text-[#0D3823] text-sm text-right">ISO 9001:2015 Certified</span>
-                    </div>
-                  </div>
-                </div>
-              )}
-
-              {activeTab === 'features' && (
-                <div className="space-y-6">
-                  <h3 className="text-lg font-black uppercase text-gray-900">
-                    Precision Manufacturing &amp; Structural Integrity
-                  </h3>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                    {product.features.map((feat, idx) => (
-                      <div key={idx} className="flex items-start gap-3.5 p-4 rounded-2xl bg-[#FBFBFA] border border-gray-200">
-                        <div className="w-6 h-6 rounded-full bg-[#0D3823] text-[#E5A912] flex items-center justify-center shrink-0 shadow-xs mt-0.5">
-                          <Check className="w-3.5 h-3.5 stroke-[3]" />
-                        </div>
-                        <span className="text-xs sm:text-sm font-bold text-gray-900 leading-relaxed uppercase tracking-wide">
-                          {feat}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
-
-              {activeTab === 'applications' && (
-                <div className="space-y-6">
-                  <h3 className="text-lg font-black uppercase text-gray-900">
-                    Recommended Project Sectors &amp; Installations
-                  </h3>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-                    {product.applications.map((app, idx) => (
-                      <div key={idx} className="p-5 rounded-2xl bg-[#FBFBFA] border border-gray-200 flex items-center gap-3">
-                        <div className="w-8 h-8 rounded-full bg-emerald-100 text-[#0D3823] flex items-center justify-center font-black text-xs shrink-0">
-                          0{idx + 1}
-                        </div>
-                        <span className="text-xs sm:text-sm font-black uppercase text-gray-900">{app}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
-
-              {activeTab === 'shipping' && (
-                <div className="space-y-6">
-                  <h3 className="text-lg font-black uppercase text-gray-900">
-                    Packaging Configurations &amp; Freight Options
-                  </h3>
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <div className="p-5 rounded-2xl bg-[#FBFBFA] border border-gray-200 space-y-2">
-                      <Package className="w-6 h-6 text-[#0D3823]" />
-                      <h4 className="font-black text-gray-900 uppercase text-sm">Master Carton Packing</h4>
-                      <p className="text-xs text-gray-600 leading-relaxed font-normal">
-                        Heavy-duty export corrugated boxes packed with moisture-resistant PE liners and clear SKU barcoding.
-                      </p>
-                    </div>
-
-                    <div className="p-5 rounded-2xl bg-[#FBFBFA] border border-gray-200 space-y-2">
-                      <Truck className="w-6 h-6 text-[#0D3823]" />
-                      <h4 className="font-black text-gray-900 uppercase text-sm">Palletized &amp; Banded</h4>
-                      <p className="text-xs text-gray-600 leading-relaxed font-normal">
-                        Heat-treated ISPM-15 export pallets, corner-board protected, and high-tension steel or PET banded.
-                      </p>
-                    </div>
-
-                    <div className="p-5 rounded-2xl bg-[#FBFBFA] border border-gray-200 space-y-2">
-                      <Building2 className="w-6 h-6 text-[#0D3823]" />
-                      <h4 className="font-black text-gray-900 uppercase text-sm">DDP US Direct Freight</h4>
-                      <p className="text-xs text-gray-600 leading-relaxed font-normal">
-                        Full customs clearance, tariffs, harbor duties, and domestic inland trucking delivered to your supply yard.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              )}
-            </div>
-
-          </div>
-        </section>
-
-        {/* Related Products Grid matching Home Page Cards */}
-        {relatedProducts.length > 0 && (
-          <section className="py-16 sm:py-20 bg-white">
+        {/* Similar Products Section (4 cards in a row matching Products Showcase page) */}
+        {similarProducts.length > 0 && (
+          <section className="pt-8 sm:pt-12 pb-16 sm:pb-20 bg-white">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               
-              <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-10 gap-4">
+              <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 sm:mb-10 gap-4">
                 <div>
-                  <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-gray-800 text-[12px] font-bold tracking-wider text-gray-900 uppercase font-sans mb-3">
+                  <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-gray-800 text-[11px] font-bold tracking-wider text-gray-900 uppercase font-sans mb-3">
                     <span className="w-2 h-2 rounded-full bg-[#0D3823]"></span>
-                    <span>RELATED HARDWARE</span>
+                    <span>SIMILAR PRODUCTS</span>
                   </div>
-                  <h2 className="text-2xl sm:text-3xl font-black uppercase text-gray-900 tracking-tight">
+                  <h2 className="text-2xl sm:text-3xl font-black uppercase text-gray-900 tracking-tight font-sans">
                     FREQUENTLY ORDERED TOGETHER
                   </h2>
                 </div>
                 <button
                   onClick={() => onNavigatePage('products')}
-                  className="inline-flex items-center gap-2 text-xs font-black uppercase tracking-wider text-[#0D3823] hover:underline cursor-pointer self-start sm:self-auto"
+                  className="h-[36px] px-4 inline-flex items-center gap-2 bg-white hover:bg-gray-50 text-gray-900 font-black text-xs uppercase tracking-wider rounded-full border border-gray-300 hover:border-gray-900 transition-all cursor-pointer shadow-2xs self-start sm:self-auto"
                 >
                   <span>View Complete Catalog</span>
-                  <ArrowRight className="w-4 h-4" />
+                  <ArrowRight className="w-3.5 h-3.5" />
                 </button>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                {relatedProducts.map((rel) => (
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
+                {similarProducts.map((rel) => (
                   <div
                     key={rel.id}
-                    className="group bg-white rounded-[30px] overflow-hidden border-[2.5px] border-[#1C1C1C] shadow-md hover:shadow-xl transition-all duration-300 flex flex-col justify-between"
+                    onClick={() => {
+                      onSelectProduct(rel.id);
+                      window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }}
+                    className="group bg-white rounded-[20px] overflow-hidden border-[2px] border-gray-900 shadow-sm hover:shadow-xl hover:border-[#0D3823] transition-all duration-300 flex flex-col justify-between cursor-pointer"
                   >
-                    <div>
-                      <div 
-                        className="relative h-52 w-full overflow-hidden bg-gray-100 cursor-pointer border-b-[2.5px] border-[#1C1C1C]"
-                        onClick={() => {
-                          onSelectProduct(rel.id);
-                          window.scrollTo({ top: 0, behavior: 'smooth' });
-                        }}
-                      >
-                        <img
-                          src={rel.imageSrc}
-                          alt={rel.name}
-                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                        />
-                        <div className="absolute top-3 left-3">
-                          <span className="bg-[#0D3823] text-[#E5A912] text-[10px] font-black uppercase px-2.5 py-1 rounded-full shadow-md border border-[#E5A912]/30">
-                            {rel.categoryLabel}
+                    {/* Clean Product Photo - 1:1 Aspect Ratio without on-image tags */}
+                    <div className="relative aspect-square w-full overflow-hidden bg-gray-100 border-b-2 border-gray-900">
+                      <img
+                        src={rel.imageSrc}
+                        alt={rel.name}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        loading="lazy"
+                      />
+                    </div>
+
+                    {/* Card Body - Clean & Concise without right side tags */}
+                    <div className="p-3.5 flex-1 flex flex-col justify-between space-y-3">
+                      <div>
+                        <span 
+                          className="text-[10px] font-bold text-gray-500 uppercase tracking-wider block mb-0.5 truncate whitespace-nowrap overflow-hidden text-ellipsis" 
+                          title={rel.material}
+                        >
+                          {rel.material}
+                        </span>
+                        <h3 className="text-[13px] sm:text-sm font-black uppercase text-gray-900 group-hover:text-[#0D3823] transition-colors leading-snug line-clamp-2 min-h-[2.4em]">
+                          {rel.name}
+                        </h3>
+                      </div>
+
+                      {/* Bottom Button matching showcase page */}
+                      <div className="pt-0.5">
+                        <div className="w-full h-[36px] flex items-center justify-between bg-[#0D3823] group-hover:bg-[#072416] text-white pl-1 pr-3 rounded-full shadow-md group-hover:shadow-lg transition-all transform active:scale-95 group/btn shrink-0 ring-1 ring-[#E5A912]/30 border border-emerald-600/30">
+                          <span className="w-6 h-6 rounded-full bg-[#E5A912] flex items-center justify-center text-[#0D3823] shrink-0 group-hover:translate-x-0.5 transition-transform shadow-xs">
+                            <ArrowRight className="w-3 h-3 stroke-[2.5]" />
                           </span>
+                          <span className="text-[10px] font-black uppercase tracking-wider text-white select-none whitespace-nowrap">
+                            VIEW DETAILS
+                          </span>
+                          <span className="w-1.5" />
                         </div>
                       </div>
-
-                      <div className="p-6">
-                        <h4 
-                          onClick={() => {
-                            onSelectProduct(rel.id);
-                            window.scrollTo({ top: 0, behavior: 'smooth' });
-                          }}
-                          className="text-base font-black uppercase text-gray-900 group-hover:text-[#0D3823] transition-colors cursor-pointer leading-tight mb-2 line-clamp-2 min-h-[2.4em]"
-                        >
-                          {rel.name}
-                        </h4>
-                        <p className="text-gray-600 text-xs leading-relaxed line-clamp-2 font-normal">
-                          {rel.shortDesc}
-                        </p>
-                      </div>
                     </div>
 
-                    <div className="px-6 pb-6 pt-0">
-                      <button
-                        onClick={() => {
-                          onSelectProduct(rel.id);
-                          window.scrollTo({ top: 0, behavior: 'smooth' });
-                        }}
-                        className="w-full h-[42px] sm:h-[44px] flex items-center justify-between bg-[#0D3823] hover:bg-[#072416] text-white pl-1.5 pr-4 sm:pr-5 rounded-full shadow-md hover:shadow-lg transition-all transform active:scale-95 group/btn shrink-0 ring-1 ring-[#E5A912]/30 border border-emerald-600/30 cursor-pointer"
-                      >
-                        <span className="w-7 h-7 sm:w-7.5 sm:h-7.5 rounded-full bg-[#E5A912] flex items-center justify-center text-[#0D3823] shrink-0 group-hover/btn:translate-x-0.5 transition-transform shadow-xs">
-                          <ArrowRight className="w-3.5 h-3.5 stroke-[2.5]" />
-                        </span>
-                        <span className="text-[11.5px] sm:text-[12px] font-black uppercase tracking-wider text-white select-none whitespace-nowrap">
-                          VIEW PRODUCT DETAILS
-                        </span>
-                        <span className="w-2" />
-                      </button>
-                    </div>
                   </div>
                 ))}
               </div>
@@ -532,9 +392,6 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
             </div>
           </section>
         )}
-
-        {/* Conversion Banner */}
-        <ConversionBanner onOpenSchedule={() => onNavigatePage('contact', { quote: true, productId: product.id })} />
       </main>
 
       <Footer
