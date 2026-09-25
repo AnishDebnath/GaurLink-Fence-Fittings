@@ -70,12 +70,12 @@ export const Navbar: React.FC<NavbarProps> = ({
       <div
         className={`mx-auto pointer-events-auto transition-[max-width,padding] duration-500 ease-[cubic-bezier(0.2,0.8,0.2,1)] ${showMenus || mobileMenuOpen
             ? 'max-w-[1280px] px-0'
-            : 'max-w-[620px] sm:max-w-[650px] lg:max-w-[630px] px-1 sm:px-2'
+            : 'w-full max-w-[580px] sm:max-w-[600px] lg:max-w-[595px] px-1 sm:px-2'
           }`}
       >
         <div
           className={`rounded-full transition-[background-color,border-color,box-shadow,padding] duration-500 ease-[cubic-bezier(0.2,0.8,0.2,1)] flex items-center justify-between border backdrop-saturate-150 ${!showMenus || isScrolled
-              ? 'bg-white/95 backdrop-blur-xl shadow-[0_12px_32px_rgba(13,56,35,0.16),inset_0_1px_1px_rgba(255,255,255,0.9)] border-white/90 py-1.5 sm:py-2 px-3.5 sm:px-5 ring-1 ring-[#0D3823]/10'
+              ? 'bg-white/95 backdrop-blur-xl shadow-[0_12px_32px_rgba(13,56,35,0.16),inset_0_1px_1px_rgba(255,255,255,0.9)] border-white/90 py-1.5 px-3 sm:px-4.5 ring-1 ring-[#0D3823]/10'
               : 'bg-white/90 backdrop-blur-lg shadow-[0_10px_28px_rgba(0,0,0,0.09),inset_0_1px_1px_rgba(255,255,255,0.9)] border-white/70 py-1.5 sm:py-2 px-4 sm:px-6'
             }`}
         >
@@ -91,7 +91,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
           {/* Phone number after logo (mobile only) */}
           <a
-            href="tel:7208053155"
+            href="tel:13464337572"
             className="flex lg:hidden items-center gap-2 shrink-0 group"
           >
             <div className="w-6 h-6 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
@@ -114,7 +114,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 Wholesale Desk
               </span>
               <span className="text-[12px] sm:text-[13px] font-black text-gray-900 group-hover:text-[#0D3823] transition-colors leading-none tracking-tight">
-                (720) 805-3155
+                +1 (346) 433-7572
               </span>
             </div>
           </a>
@@ -183,7 +183,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           {/* Right: Phone + CTA + Mobile Toggle */}
           <div className="flex items-center gap-3 sm:gap-4">
             <a
-              href="tel:7208053155"
+              href="tel:13464337572"
               className="hidden lg:flex items-center gap-2 group"
             >
               <div className="w-6.5 h-6.5 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
@@ -202,11 +202,11 @@ export const Navbar: React.FC<NavbarProps> = ({
                 </svg>
               </div>
               <div className="flex flex-col text-left">
-                <span className="text-[10.5px] font-bold text-gray-500 tracking-tight leading-none mb-0.5">
+                <span className="text-[10px] font-bold text-gray-500 tracking-tight leading-none mb-0.5 uppercase">
                   Wholesale Desk
                 </span>
-                <span className="text-[13.5px] sm:text-[14px] font-black text-gray-900 group-hover:text-[#0D3823] transition-colors leading-none tracking-tight">
-                  (720) 805-3155
+                <span className="text-[13px] sm:text-[13.5px] font-black text-gray-900 group-hover:text-[#0D3823] transition-colors leading-none tracking-tight">
+                  +1 (346) 433-7572
                 </span>
               </div>
             </a>
@@ -219,7 +219,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 <ArrowRight className="w-3.5 h-3.5 stroke-[2.5]" />
               </span>
               <span className="text-[11.5px] sm:text-[12.5px] font-black uppercase tracking-wider text-white select-none whitespace-nowrap">
-                REQUEST WHOLESALE QUOTE
+                Get Wholesale Quote
               </span>
             </button>
 
@@ -293,15 +293,15 @@ export const Navbar: React.FC<NavbarProps> = ({
 
             <div className="pt-3 border-t border-gray-100 flex flex-col gap-3 mt-2">
               <a
-                href="tel:7208053155"
+                href="tel:13464337572"
                 className="flex items-center gap-2.5 font-bold text-gray-900 py-1"
               >
                 <div className="w-7 h-7 rounded-full bg-emerald-50 flex items-center justify-center text-[#0D3823]">
                   <Phone className="w-4 h-4" />
                 </div>
                 <div>
-                  <div className="text-[10px] text-gray-500 font-bold">Wholesale Trade Desk</div>
-                  <div className="text-sm font-bold text-gray-900">(720) 805-3155</div>
+                  <div className="text-[10px] text-gray-500 font-bold uppercase">Wholesale Desk</div>
+                  <div className="text-sm font-bold text-gray-900">+1 (346) 433-7572</div>
                 </div>
               </a>
               <button
@@ -311,7 +311,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 <span className="w-6 h-6 rounded-full bg-[#E5A912] text-[#0D3823] flex items-center justify-center">
                   <ArrowRight className="w-3.5 h-3.5 stroke-[2.5]" />
                 </span>
-                <span>REQUEST WHOLESALE QUOTE</span>
+                <span>Get Wholesale Quote</span>
               </button>
             </div>
           </div>

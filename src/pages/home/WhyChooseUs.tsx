@@ -8,9 +8,10 @@ interface WhyChooseUsProps {
 
 export const WhyChooseUs: React.FC<WhyChooseUsProps> = ({ onOpenSchedule }) => {
   const points = [
-    'DIRECT WHOLESALE BULK RATES ACROSS THE USA',
-    'HOT-DIP GALVANIZED ASTM A153 HARDWARE',
-    'IN-HOUSE TOOL & DIE PRECISION STAMPING',
+    '55+ YEARS HERITAGE • 150M+ PIECES MANUFACTURED',
+    'HOT-DIP GALVANIZED ASTM A153 & POWDER COATED',
+    'OCEAN FREIGHT & DUTY PAID (DDP) TO YOUR DOCK',
+    'IN-HOUSE DIE & TOOLING FOR CUSTOM STAMPING',
   ];
 
   return (
@@ -18,7 +19,7 @@ export const WhyChooseUs: React.FC<WhyChooseUsProps> = ({ onOpenSchedule }) => {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
           
-          {/* Left Column: Framed Photo matching reference image layout */}
+          {/* Left Column: Framed Photo */}
           <div className="lg:col-span-6 flex justify-center">
             <div className="relative w-full max-w-lg aspect-[4/4.5] sm:aspect-[4/4.2] rounded-[32px] overflow-hidden border-[2.5px] border-[#1C1C1C] shadow-md bg-gray-100">
               <img
@@ -29,41 +30,41 @@ export const WhyChooseUs: React.FC<WhyChooseUsProps> = ({ onOpenSchedule }) => {
             </div>
           </div>
 
-          {/* Right Column: Eyebrow pill, Headline, Description, 3 Checkmarks, and Pill CTA */}
+          {/* Right Column */}
           <div className="lg:col-span-6 flex flex-col items-start space-y-6 lg:space-y-6">
             
-            {/* Pill Badge: • WHY CHOOSE US */}
+            {/* Pill Badge */}
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-gray-800 text-[12px] font-bold tracking-wider text-gray-900 uppercase font-sans">
               <span className="w-2 h-2 rounded-full bg-[#0D3823]"></span>
               <span>WHY CHOOSE GAURLINK</span>
             </div>
 
-            {/* Display Headline - Reduced size to fit cleanly in 2 lines */}
+            {/* Display Headline */}
             <h2 className="text-2xl sm:text-3xl lg:text-[32px] xl:text-[36px] font-black uppercase text-gray-900 tracking-tight leading-[1.12] font-sans max-w-xl">
               PRECISION FENCE &amp; FITTINGS<br />
               MANUFACTURING AT WHOLESALE RATES
             </h2>
 
-            {/* Description matching reference copy */}
+            {/* Description */}
             <p className="text-sm sm:text-base text-gray-600 leading-relaxed font-normal max-w-lg">
-              GaurLink is a USA-based fence and fittings manufacturing company. We supply high-grade chain link fittings, commercial gate hardware, and custom-stamped perimeter components at direct factory wholesale rates to supply yards and contractors nationwide.
+              GaurLink is a USA-based commercial fence and fittings manufacturer. We supply pressed steel, malleable iron, and aluminum fence hardware directly to supply yards and commercial contractors with guaranteed zero defects and factory-direct pricing.
             </p>
 
-            {/* 3 Checkmarked items with website color theme */}
-            <div className="space-y-3.5 w-full pt-1">
+            {/* 4 Checkmarked items */}
+            <div className="space-y-3 w-full pt-1">
               {points.map((point, idx) => (
                 <div key={idx} className="flex items-center gap-3">
                   <div className="w-6 h-6 rounded-full bg-[#0D3823] text-[#E5A912] flex items-center justify-center shrink-0 shadow-xs">
                     <Check className="w-3.5 h-3.5 stroke-[3]" />
                   </div>
-                  <span className="text-xs sm:text-sm font-black uppercase text-gray-900 tracking-wide">
+                  <span className="text-xs sm:text-[13px] font-black uppercase text-gray-900 tracking-wide">
                     {point}
                   </span>
                 </div>
               ))}
             </div>
 
-            {/* CTA Pill Button with circle arrow on left matching website theme */}
+            {/* CTA Pill Button */}
             <div className="pt-2">
               <button
                 onClick={onOpenSchedule}
@@ -73,7 +74,7 @@ export const WhyChooseUs: React.FC<WhyChooseUsProps> = ({ onOpenSchedule }) => {
                 <span className="w-8 h-8 rounded-full bg-[#E5A912] text-[#0D3823] font-black flex items-center justify-center group-hover:translate-x-0.5 transition-transform shadow-xs shrink-0">
                   <ArrowRight className="w-4 h-4 stroke-[3]" />
                 </span>
-                <span className="whitespace-nowrap">REQUEST WHOLESALE QUOTE</span>
+                <span className="whitespace-nowrap">GET A QUOTE</span>
               </button>
             </div>
 

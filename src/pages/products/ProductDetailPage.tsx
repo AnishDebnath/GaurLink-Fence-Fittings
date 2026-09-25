@@ -169,7 +169,7 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
               className="h-[36px] px-4 inline-flex items-center gap-2 bg-white hover:bg-gray-50 text-gray-900 font-black text-xs uppercase tracking-wider rounded-full border border-gray-300 hover:border-gray-900 transition-all cursor-pointer shadow-2xs"
             >
               <ArrowLeft className="w-3.5 h-3.5" />
-              <span>Back to Catalog</span>
+              <span>Catalog</span>
             </button>
           </div>
 
@@ -302,7 +302,7 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
                       <span className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#0D3823] text-[#E5A912] font-black flex items-center justify-center group-hover:translate-x-0.5 transition-transform shadow-xs shrink-0">
                         <ArrowRight className="w-3.5 h-3.5 stroke-[3]" />
                       </span>
-                      <span>REQUEST A QUOTE</span>
+                      <span>GET A QUOTE</span>
                     </button>
                   </div>
                 </div>

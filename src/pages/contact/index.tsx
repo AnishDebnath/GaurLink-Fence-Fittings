@@ -378,7 +378,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({
                       className="w-full h-[48px] inline-flex items-center justify-center gap-2.5 bg-[#0D3823] hover:bg-[#072416] text-white font-black text-xs uppercase tracking-wider rounded-full shadow-md transition-all cursor-pointer"
                     >
                       <Send className="w-3.5 h-3.5" />
-                      <span>Request Wholesale Quote</span>
+                      <span>Request Quote</span>
                     </button>
                   </form>
                 ) : (
@@ -490,13 +490,19 @@ export const ContactPage: React.FC<ContactPageProps> = ({
                   </div>
                   <div>
                     <span className="text-[11px] font-bold text-gray-500 uppercase tracking-wider block">
-                      Wholesale Phone Desk
+                      USA Wholesale Phone Desk
                     </span>
                     <a
-                      href="tel:7208053155"
-                      className="text-base sm:text-lg font-black text-gray-900 hover:text-[#0D3823] transition-colors"
+                      href="tel:13464337572"
+                      className="text-base sm:text-lg font-black text-gray-900 hover:text-[#0D3823] transition-colors block"
                     >
-                      (720) 805-3155
+                      USA No. +1 (346) 433-7572
+                    </a>
+                    <a
+                      href="tel:18327499118"
+                      className="text-xs font-bold text-gray-600 hover:text-[#0D3823] transition-colors"
+                    >
+                      USA No. +1 (832) 749-9118
                     </a>
                   </div>
                 </div>
@@ -508,13 +514,19 @@ export const ContactPage: React.FC<ContactPageProps> = ({
                   </div>
                   <div>
                     <span className="text-[11px] font-bold text-gray-500 uppercase tracking-wider block">
-                      Email Inquiries
+                      Wholesale RFQ &amp; Support Email
                     </span>
                     <a
-                      href="mailto:contact@gaurlink.com"
-                      className="text-base sm:text-lg font-black text-gray-900 hover:text-[#0D3823] transition-colors"
+                      href="mailto:sales@gaurlink.com"
+                      className="text-base sm:text-lg font-black text-gray-900 hover:text-[#0D3823] transition-colors block"
                     >
-                      contact@gaurlink.com
+                      sales@gaurlink.com
+                    </a>
+                    <a
+                      href="mailto:som83777@gmail.com"
+                      className="text-xs font-bold text-gray-600 hover:text-[#0D3823] transition-colors"
+                    >
+                      Direct: som83777@gmail.com
                     </a>
                   </div>
                 </div>
@@ -526,10 +538,10 @@ export const ContactPage: React.FC<ContactPageProps> = ({
                   </div>
                   <div>
                     <span className="text-[11px] font-bold text-gray-500 uppercase tracking-wider block">
-                      Manufacturing Facility
+                      USA Logistics &amp; Manufacturing Hub
                     </span>
                     <span className="text-sm font-black text-gray-900 block">
-                      20,000 Sq.Ft Plant • DDP US Shipping
+                      Houston, Texas • DDP Direct Delivery
                     </span>
                   </div>
                 </div>
@@ -537,14 +549,15 @@ export const ContactPage: React.FC<ContactPageProps> = ({
                 {/* Wholesale Guarantees - Clean Green Box */}
                 <div className="bg-[#0D3823] rounded-[24px] p-5 text-white shadow-md space-y-2.5">
                   <span className="text-xs font-black uppercase text-[#E5A912] tracking-wider block">
-                    Wholesale Standards
+                    Manufacturing Guarantees
                   </span>
                   <div className="space-y-2">
                     {[
-                      '12-24h quote turnaround',
-                      'ASTM A153 Mill test reports',
-                      'DDP delivery to your yard dock',
-                      'Custom tooling samples in 15-25 days',
+                      '100% Satisfaction • Zero Defects Policy',
+                      'Ocean freight & duty-paid (DDP) to your dock',
+                      'Product samples & references on request',
+                      'Custom sheet metal fabrication & tooling',
+                      '12–24h wholesale RFQ turnaround',
                     ].map((item, idx) => (
                       <div key={idx} className="flex items-center gap-2.5 text-xs font-bold text-gray-200">
                         <Check className="w-3.5 h-3.5 text-[#E5A912] shrink-0" />

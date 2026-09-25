@@ -1,27 +1,27 @@
 import React from 'react';
-import { Factory, ShieldCheck, PackageCheck, Truck } from 'lucide-react';
+import { Factory, ShieldCheck, Award, Truck } from 'lucide-react';
 
 export const TrustBar: React.FC = () => {
   const stats = [
     {
       icon: Factory,
-      title: 'Factory Direct',
-      subtitle: 'Wholesale Rates',
+      title: '55+ Years Heritage',
+      subtitle: 'Mfg Since 1969',
     },
     {
       icon: ShieldCheck,
-      title: 'ASTM Certified',
-      subtitle: 'A153 Spec Grade',
+      title: 'ISO 9001:2015',
+      subtitle: 'Zero Defects Policy',
     },
     {
-      icon: PackageCheck,
-      title: 'Bulk Inventory',
-      subtitle: 'Ready to Ship',
+      icon: Award,
+      title: '150M+ Produced',
+      subtitle: 'FENCETECH 30+ Yrs',
     },
     {
       icon: Truck,
-      title: 'Fast Freight',
-      subtitle: 'US Nationwide',
+      title: 'DDP US Freight',
+      subtitle: 'Duty-Paid To Your Dock',
     },
   ];
 

@@ -175,24 +175,32 @@ export const Footer: React.FC<FooterProps> = ({ onNavigateSection, onOpenSchedul
 
             <div className="space-y-2.5 text-sm text-emerald-100/85">
               <a
-                href="tel:7208053155"
+                href="tel:13464337572"
                 className="flex items-center gap-2.5 hover:text-[#E5A912] transition-colors"
               >
                 <Phone className="w-4 h-4 text-[#E5A912] shrink-0" />
-                <span>(720) 805-3155</span>
+                <span>USA No. +1 (346) 433-7572</span>
               </a>
 
               <a
-                href="mailto:trade@gaurlink.com"
+                href="tel:18327499118"
+                className="flex items-center gap-2.5 hover:text-[#E5A912] transition-colors"
+              >
+                <Phone className="w-4 h-4 text-[#E5A912] shrink-0" />
+                <span>USA No. +1 (832) 749-9118</span>
+              </a>
+
+              <a
+                href="mailto:sales@gaurlink.com"
                 className="flex items-center gap-2.5 hover:text-[#E5A912] transition-colors"
               >
                 <Mail className="w-4 h-4 text-[#E5A912] shrink-0" />
-                <span>trade@gaurlink.com</span>
+                <span>sales@gaurlink.com</span>
               </a>
 
-              <div className="flex items-start gap-2.5">
+              <div className="flex items-start gap-2.5 text-xs sm:text-sm">
                 <MapPin className="w-4 h-4 text-[#E5A912] shrink-0 mt-0.5" />
-                <span>20,000 SQ.FT Manufacturing Plant (DDP USA Freight)</span>
+                <span>USA Distribution &amp; DDP Freight to Your Yard</span>
               </div>
             </div>
 
@@ -200,7 +208,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigateSection, onOpenSchedul
             <div className="relative w-full h-28 rounded-xl overflow-hidden border border-emerald-800/50 shadow-md bg-black mt-2">
               <iframe
                 title="Footer Texas Mini Map"
-                src={`https://maps.google.com/maps?q=Texas,USA&t=m&z=${zoomLevel}&ie=UTF8&iwloc=&output=embed`}
+                src={`https://maps.google.com/maps?q=Houston,Texas,USA&t=m&z=${zoomLevel}&ie=UTF8&iwloc=&output=embed`}
                 className="w-full h-full border-0 grayscale-[15%] contrast-[105%]"
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"

@@ -48,17 +48,17 @@ export const ConversionBanner: React.FC<ConversionBannerProps> = ({ onOpenSchedu
                 <span className="w-6 h-6 rounded-full bg-[#0D3823] text-[#E5A912] font-black flex items-center justify-center group-hover:translate-x-0.5 transition-transform shadow-xs shrink-0">
                   <ArrowRight className="w-3.5 h-3.5 stroke-[3]" />
                 </span>
-                <span className="whitespace-nowrap">REQUEST WHOLESALE QUOTE</span>
+                <span className="whitespace-nowrap">GET A QUOTE</span>
               </button>
 
               {/* Secondary Phone Button (White Capsule) */}
               <a
-                href="tel:7208053155"
+                href="tel:13464337572"
                 className="h-[48px] sm:h-[50px] inline-flex items-center gap-2.5 bg-white hover:bg-gray-100 text-gray-950 font-black text-xs sm:text-sm uppercase tracking-wider px-6 rounded-full shadow-md transition-all group shrink-0 cursor-pointer"
                 id="cta-phone-btn"
               >
                 <Phone className="w-4 h-4 text-[#0D3823] fill-current" />
-                <span className="whitespace-nowrap">(720) 805-3155</span>
+                <span className="whitespace-nowrap">USA No. +1 (346) 433-7572</span>
               </a>
             </div>
           </div>

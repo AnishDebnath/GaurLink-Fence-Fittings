@@ -139,17 +139,17 @@ export const Hero: React.FC<HeroProps> = ({ onOpenSchedule }) => {
                 <span className="w-8 h-8 rounded-full bg-[#E5A912] text-[#0D3823] font-black flex items-center justify-center group-hover:translate-x-0.5 transition-transform shadow-xs shrink-0">
                   <ArrowRight className="w-4 h-4 stroke-[3]" />
                 </span>
-                <span className="whitespace-nowrap">REQUEST WHOLESALE QUOTE</span>
+                <span className="whitespace-nowrap">GET A QUOTE</span>
               </button>
 
               {/* White Pill Button with Telephone Receiver */}
               <a
-                href="tel:7208053155"
+                href="tel:13464337572"
                 className="h-[50px] sm:h-[52px] inline-flex items-center gap-2.5 bg-white hover:bg-gray-100 text-gray-900 font-black text-xs sm:text-sm px-6 rounded-full shadow-md transition-all group shrink-0"
                 id="hero-phone-btn"
               >
                 <PhoneCall className="w-4 h-4 text-[#0D3823] stroke-[2.4] shrink-0" />
-                <span className="whitespace-nowrap">(720) 805-3155</span>
+                <span className="whitespace-nowrap">USA No. +1 (346) 433-7572</span>
               </a>
             </div>
 
