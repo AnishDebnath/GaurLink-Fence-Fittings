@@ -29,13 +29,13 @@ export const Footer: React.FC<FooterProps> = ({ onNavigateSection, onOpenSchedul
   ];
 
   const productCategories = [
-    'Gate Hinges (Male & Box)',
-    'Fence Fittings & Post Clamps',
-    'Rolling Gate Hardware Kits',
-    'Industrial Cantilever Rollers',
-    'Galvanized Tension Bars',
-    'Barbed Wire Extension Arms',
-    'Custom Stamping & OEM Tooling',
+    'Barbed Arms (Cup & Vertical)',
+    'Cantilever Gate Rollers',
+    'Brace Bands (3/4" x 12 GA)',
+    'Pressed Steel Box Hinges',
+    'Boulevard Line Rail Clamps',
+    'Post Caps & Rail Ends',
+    'Custom Sheet Metal Fabrication',
   ];
 
   const handleZoomIn = () => setZoomLevel((prev) => Math.min(prev + 1, 14));

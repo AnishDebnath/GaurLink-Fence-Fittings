@@ -8,10 +8,10 @@ interface WhyChooseUsProps {
 
 export const WhyChooseUs: React.FC<WhyChooseUsProps> = ({ onOpenSchedule }) => {
   const points = [
-    '55+ YEARS HERITAGE • 150M+ PIECES MANUFACTURED',
-    'HOT-DIP GALVANIZED ASTM A153 & POWDER COATED',
-    'OCEAN FREIGHT & DUTY PAID (DDP) TO YOUR DOCK',
-    'IN-HOUSE DIE & TOOLING FOR CUSTOM STAMPING',
+    '55+ YEARS EXPERIENCE • 150M+ PIECES MADE',
+    'PRESSED STEEL, MALLEABLE & ALUMINUM FITTINGS',
+    'CUSTOM SHEET METAL TO YOUR EXACT SPECS',
+    'OCEAN FREIGHT & DUTY PAID (DDP) TO YOUR DOOR',
   ];
 
   return (
@@ -24,7 +24,7 @@ export const WhyChooseUs: React.FC<WhyChooseUsProps> = ({ onOpenSchedule }) => {
             <div className="relative w-full max-w-lg aspect-[4/4.5] sm:aspect-[4/4.2] rounded-[32px] overflow-hidden border-[2.5px] border-[#1C1C1C] shadow-md bg-gray-100">
               <img
                 src={IMAGES.aboutUsGaurlink}
-                alt="GaurLink USA fence and fittings manufacturing"
+                alt="Fence and fittings manufacturing facility"
                 className="w-full h-full object-cover object-center transform hover:scale-102 transition-transform duration-500"
               />
             </div>
@@ -36,18 +36,18 @@ export const WhyChooseUs: React.FC<WhyChooseUsProps> = ({ onOpenSchedule }) => {
             {/* Pill Badge */}
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-gray-800 text-[12px] font-bold tracking-wider text-gray-900 uppercase font-sans">
               <span className="w-2 h-2 rounded-full bg-[#0D3823]"></span>
-              <span>WHY CHOOSE GAURLINK</span>
+              <span>WHY CHOOSE US</span>
             </div>
 
             {/* Display Headline */}
             <h2 className="text-2xl sm:text-3xl lg:text-[32px] xl:text-[36px] font-black uppercase text-gray-900 tracking-tight leading-[1.12] font-sans max-w-xl">
-              PRECISION FENCE &amp; FITTINGS<br />
-              MANUFACTURING AT WHOLESALE RATES
+              WHOLESALE FENCE FITTINGS<br />
+              AT DIRECT FACTORY RATES
             </h2>
 
             {/* Description */}
             <p className="text-sm sm:text-base text-gray-600 leading-relaxed font-normal max-w-lg">
-              GaurLink is a USA-based commercial fence and fittings manufacturer. We supply pressed steel, malleable iron, and aluminum fence hardware directly to supply yards and commercial contractors with guaranteed zero defects and factory-direct pricing.
+              Over 55 years of manufacturing excellence with 150M+ fence fittings produced. We deliver ISO 9001 certified hardware directly to your warehouse.
             </p>
 
             {/* 4 Checkmarked items */}
@@ -74,7 +74,7 @@ export const WhyChooseUs: React.FC<WhyChooseUsProps> = ({ onOpenSchedule }) => {
                 <span className="w-8 h-8 rounded-full bg-[#E5A912] text-[#0D3823] font-black flex items-center justify-center group-hover:translate-x-0.5 transition-transform shadow-xs shrink-0">
                   <ArrowRight className="w-4 h-4 stroke-[3]" />
                 </span>
-                <span className="whitespace-nowrap">GET A QUOTE</span>
+                <span className="whitespace-nowrap">Get Wholesale Quote</span>
               </button>
             </div>
 

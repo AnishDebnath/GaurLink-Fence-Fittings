@@ -123,9 +123,9 @@ export const Hero: React.FC<HeroProps> = ({ onOpenSchedule }) => {
               <span className="text-[#E5A912]">WHOLESALE RATES</span>
             </h1>
 
-            {/* Subtitle matching reference format */}
-            <p className="text-gray-200 text-sm sm:text-base max-w-xl leading-relaxed font-normal">
-              GaurLink is a USA-based fence and fittings manufacturing company, supplying commercial fence and fittings items at direct factory wholesale rates to supply yards, distributors, and contractors nationwide.
+            {/* Subtitle matching PDF information */}
+            <p className="text-gray-200 text-sm sm:text-base max-w-lg leading-relaxed font-normal">
+              Direct manufacturer of Pressed Steel, Malleable, and Aluminum fence fittings &amp; tension bars at factory wholesale rates, delivered duty-paid (DDP) to your warehouse.
             </p>
 
             {/* Action Buttons matching reference image layout in website color theme */}
@@ -133,27 +133,27 @@ export const Hero: React.FC<HeroProps> = ({ onOpenSchedule }) => {
               {/* Primary CTA Button: Deep Green #0D3823 with Golden Circle Arrow */}
               <button
                 onClick={onOpenSchedule}
-                className="h-[50px] sm:h-[52px] inline-flex items-center gap-3 bg-[#0D3823] hover:bg-[#072416] text-white font-black text-xs sm:text-sm uppercase tracking-wider pl-2 pr-6 rounded-full shadow-lg border border-emerald-500/30 hover:border-emerald-400/50 hover:shadow-emerald-950/40 transition-all transform active:scale-95 group ring-1 ring-[#E5A912]/20 shrink-0"
+                className="h-[50px] sm:h-[52px] inline-flex items-center gap-3 bg-[#0D3823] hover:bg-[#072416] text-white font-black text-xs sm:text-sm uppercase tracking-wider pl-2 pr-6 rounded-full shadow-lg border border-emerald-500/30 hover:border-emerald-400/50 hover:shadow-emerald-950/40 transition-all transform active:scale-95 group ring-1 ring-[#E5A912]/20 shrink-0 cursor-pointer"
                 id="hero-get-estimate-btn"
               >
                 <span className="w-8 h-8 rounded-full bg-[#E5A912] text-[#0D3823] font-black flex items-center justify-center group-hover:translate-x-0.5 transition-transform shadow-xs shrink-0">
                   <ArrowRight className="w-4 h-4 stroke-[3]" />
                 </span>
-                <span className="whitespace-nowrap">GET A QUOTE</span>
+                <span className="whitespace-nowrap">Get Wholesale Quote</span>
               </button>
 
               {/* White Pill Button with Telephone Receiver */}
               <a
                 href="tel:13464337572"
-                className="h-[50px] sm:h-[52px] inline-flex items-center gap-2.5 bg-white hover:bg-gray-100 text-gray-900 font-black text-xs sm:text-sm px-6 rounded-full shadow-md transition-all group shrink-0"
+                className="h-[50px] sm:h-[52px] inline-flex items-center gap-2.5 bg-white hover:bg-gray-100 text-gray-900 hover:text-[#0D3823] font-black text-xs sm:text-sm px-6 rounded-full shadow-md hover:shadow-xl border border-white/90 hover:border-gray-300 ring-1 ring-black/5 hover:ring-2 hover:ring-[#E5A912]/40 transition-all duration-200 transform active:scale-95 group shrink-0 cursor-pointer"
                 id="hero-phone-btn"
               >
-                <PhoneCall className="w-4 h-4 text-[#0D3823] stroke-[2.4] shrink-0" />
-                <span className="whitespace-nowrap">USA No. +1 (346) 433-7572</span>
+                <PhoneCall className="w-4 h-4 text-[#0D3823] stroke-[2.4] shrink-0 group-hover:scale-110 group-hover:-rotate-6 transition-transform duration-200" />
+                <span className="whitespace-nowrap transition-colors duration-200">+1 (346) 433-7572</span>
               </a>
             </div>
 
-            {/* Bottom 3 Prominent Glass Badges matching reference image */}
+            {/* Bottom 3 Prominent Glass Badges matching reference layout */}
             <div className="pt-2 sm:pt-3 grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-3.5 max-w-[560px] sm:max-w-[600px] w-full">
               {/* Card 1: FACTORY DIRECT / Wholesale Rates */}
               <div

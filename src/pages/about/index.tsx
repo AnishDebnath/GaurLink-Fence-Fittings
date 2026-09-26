@@ -1,15 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
   ArrowRight, 
   ChevronRight, 
   Package,
   Play,
   X,
-  CheckCircle2,
-  ShieldCheck,
-  Award,
-  Factory,
-  Sparkles
+  CheckCircle2
 } from 'lucide-react';
 import { Navbar } from '../../components/common/Navbar';
 import { Footer } from '../../components/common/Footer';
@@ -31,6 +27,21 @@ export const AboutPage: React.FC<AboutPageProps> = ({
   onNavigatePage,
 }) => {
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
+
+  // Lock background scroll when video modal is open
+  useEffect(() => {
+    if (isVideoModalOpen) {
+      document.body.style.overflow = 'hidden';
+      document.documentElement.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+      document.documentElement.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+      document.documentElement.style.overflow = '';
+    };
+  }, [isVideoModalOpen]);
 
   return (
     <div className="min-h-screen flex flex-col bg-white text-gray-900 font-sans selection:bg-[#0D3823] selection:text-[#E5A912]">
@@ -158,34 +169,14 @@ export const AboutPage: React.FC<AboutPageProps> = ({
                 </div>
               </div>
 
-              {/* Right Column: Plant & 20,000 SQFT Facility */}
+              {/* Right Column: Plant & Facility Image */}
               <div className="lg:col-span-6 flex justify-center lg:justify-end">
                 <div className="relative rounded-[28px] sm:rounded-[32px] overflow-hidden shadow-xl border-[2.5px] border-[#1C1C1C] bg-gray-900 aspect-[4/4.2] w-full max-w-md lg:max-w-none group">
                   <img
                     src={IMAGES.aboutUsHomePage}
-                    alt="GaurLink 20,000 SQFT Manufacturing Facility"
+                    alt="GaurLink Manufacturing Facility"
                     className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent pointer-events-none" />
-                  
-                  {/* Floating Facility Info Badge */}
-                  <div className="absolute bottom-5 left-5 right-5">
-                    <div className="bg-[#071910]/95 backdrop-blur-md rounded-2xl p-4 border border-emerald-500/30 text-white shadow-xl space-y-1">
-                      <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 rounded-xl bg-[#E5A912] text-[#071910] flex items-center justify-center font-black shrink-0">
-                          <Factory className="w-5 h-5" />
-                        </div>
-                        <div>
-                          <h3 className="text-sm font-black uppercase text-white font-sans">
-                            20,000 SQ.FT Facility
-                          </h3>
-                          <p className="text-[11px] text-emerald-200/90 font-medium">
-                            In-house galvanizing plant, die &amp; mold development, and testing lab
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
                 </div>
               </div>
             </div>
@@ -226,128 +217,6 @@ export const AboutPage: React.FC<AboutPageProps> = ({
                 <span className="text-xs sm:text-[12px] font-bold text-gray-700 uppercase tracking-wide">
                   FENCETECH Exhibitor
                 </span>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Founders & Leadership Section (According to PDF details) */}
-        <section className="py-14 sm:py-20 bg-[#FBFBFA] border-y border-gray-200">
-          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-gray-300 bg-white text-[11px] sm:text-xs font-bold tracking-wider text-gray-800 uppercase font-sans shadow-xs mb-3">
-                <span className="w-2 h-2 rounded-full bg-[#0D3823]"></span>
-                <span>EXECUTIVE LEADERSHIP</span>
-              </div>
-              <h2 className="text-2xl sm:text-3xl lg:text-[38px] font-black uppercase tracking-tight text-gray-900 font-sans">
-                Our Founders &amp; Executive Team
-              </h2>
-              <p className="text-xs sm:text-sm text-gray-600 mt-2">
-                Decades of engineering mastery, global trade governance, and dedication to American supply partnerships.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
-              {/* Founder 1: Mr. OP Maskara */}
-              <div className="bg-white rounded-[24px] p-6 sm:p-8 border-2 border-gray-900 shadow-sm flex flex-col justify-between space-y-5">
-                <div className="space-y-3">
-                  <div className="flex items-center justify-between border-b border-gray-100 pb-3.5">
-                    <div>
-                      <h3 className="text-xl sm:text-2xl font-black uppercase text-gray-900 font-sans tracking-tight">
-                        Mr. OP Maskara
-                      </h3>
-                      <p className="text-xs font-bold text-[#0D3823] uppercase tracking-wider mt-0.5">
-                        Founder President &amp; Chairman
-                      </p>
-                    </div>
-                    <span className="px-3 py-1 bg-emerald-50 text-[#0D3823] text-xs font-black rounded-full border border-emerald-200">
-                      62+ Yrs Exp.
-                    </span>
-                  </div>
-                  
-                  <p className="text-xs sm:text-sm text-gray-700 leading-relaxed font-normal">
-                    With 62 years of expertise in hardware engineering and global manufacturing, Mr. OP Maskara established our progressive stamping standards and zero-defect quality systems.
-                  </p>
-                  
-                  <p className="text-xs sm:text-sm text-gray-600 leading-relaxed font-normal">
-                    He served as Deputy Regional Chairman of the Engineering Export Promotion Council, and has been a distinguished Lions Clubs International member for 57 years and former Deputy District Governor. His lifelong philosophy of discipline and mindful leadership guides our company's culture.
-                  </p>
-                </div>
-
-                <div className="text-[11px] font-bold text-gray-500 uppercase tracking-wider flex items-center gap-2 pt-2 border-t border-gray-100">
-                  <ShieldCheck className="w-4 h-4 text-[#0D3823] shrink-0" />
-                  <span>Quality Governance &amp; Manufacturing Integrity</span>
-                </div>
-              </div>
-
-              {/* Founder 2: Mr. Som Maskara */}
-              <div className="bg-white rounded-[24px] p-6 sm:p-8 border-2 border-gray-900 shadow-sm flex flex-col justify-between space-y-5">
-                <div className="space-y-3">
-                  <div className="flex items-center justify-between border-b border-gray-100 pb-3.5">
-                    <div>
-                      <h3 className="text-xl sm:text-2xl font-black uppercase text-gray-900 font-sans tracking-tight">
-                        Mr. Som Maskara
-                      </h3>
-                      <p className="text-xs font-bold text-[#0D3823] uppercase tracking-wider mt-0.5">
-                        Vice President &amp; Managing Director (Americas)
-                      </p>
-                    </div>
-                    <span className="px-3 py-1 bg-[#E5A912]/20 text-gray-900 text-xs font-black rounded-full border border-[#E5A912]/50">
-                      USA Operations
-                    </span>
-                  </div>
-
-                  <p className="text-xs sm:text-sm text-gray-700 leading-relaxed font-normal">
-                    Mr. Som Maskara leads our North American commercial contracts, distributor partnerships, and nationwide supply logistics.
-                  </p>
-
-                  <p className="text-xs sm:text-sm text-gray-600 leading-relaxed font-normal">
-                    A dedicated humanitarian and former President of Leo Club International, he brings the focus, discipline, and precision of competitive sports (badminton &amp; rifle shooting) to every wholesale partnership, ensuring rapid turnaround, accurate orders, and dependable US customer service.
-                  </p>
-                </div>
-
-                <div className="text-[11px] font-bold text-gray-500 uppercase tracking-wider flex items-center gap-2 pt-2 border-t border-gray-100">
-                  <Award className="w-4 h-4 text-[#0D3823] shrink-0" />
-                  <span>North America Supply Desk &amp; Commercial Partnerships</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Custom Stamping & Capability Box */}
-        <section className="py-12 sm:py-16 bg-white">
-          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="rounded-[28px] bg-[#0D3823] text-white p-6 sm:p-10 border border-emerald-900 shadow-xl relative overflow-hidden">
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center relative z-10">
-                <div className="lg:col-span-8 space-y-3">
-                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#E5A912] text-[#071910] text-[11px] font-black uppercase tracking-wider">
-                    <Sparkles className="w-3.5 h-3.5" />
-                    <span>CUSTOM OEM FABRICATION</span>
-                  </div>
-                  <h3 className="text-xl sm:text-2xl lg:text-3xl font-black uppercase tracking-tight text-white font-sans">
-                    We Can Make Any Sheet Metal Fabrication Item As Per Your Requirements
-                  </h3>
-                  <p className="text-xs sm:text-sm text-emerald-100/90 leading-relaxed font-normal">
-                    Custom sizes, tooling runs, and OEM stampings available on request. In-house mold design and rapid sample production with complete references available for US distributors.
-                  </p>
-                </div>
-
-                <div className="lg:col-span-4 flex flex-col sm:flex-row lg:flex-col gap-3 justify-center">
-                  <button
-                    onClick={() => onNavigatePage('contact', { quote: true })}
-                    className="h-[48px] px-6 inline-flex items-center justify-center gap-2.5 bg-[#E5A912] hover:bg-[#D89A08] text-[#071910] font-black text-xs uppercase tracking-wider rounded-full shadow-lg transition-all cursor-pointer"
-                  >
-                    <span>Custom Tooling</span>
-                    <ArrowRight className="w-4 h-4 stroke-[3]" />
-                  </button>
-                  <button
-                    onClick={() => onNavigatePage('products')}
-                    className="h-[48px] px-6 inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 text-white font-black text-xs uppercase tracking-wider rounded-full border border-white/20 transition-all cursor-pointer"
-                  >
-                    <span>View Catalog</span>
-                  </button>
-                </div>
               </div>
             </div>
           </div>
@@ -406,42 +275,40 @@ export const AboutPage: React.FC<AboutPageProps> = ({
           </div>
         </section>
 
-        {/* Video Player Modal */}
+        {/* Video Player Modal with default controls and no text */}
         {isVideoModalOpen && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/85 backdrop-blur-md p-4 sm:p-6 animate-in fade-in duration-200">
-            <div className="relative w-full max-w-4xl bg-[#071910] rounded-[28px] border border-emerald-500/30 overflow-hidden shadow-2xl">
-              <div className="flex items-center justify-between px-6 py-4 border-b border-emerald-900/60 bg-[#0D3823]/60">
-                <div className="flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-[#E5A912]"></span>
-                  <span className="text-xs font-bold uppercase tracking-wider text-white font-sans">
-                    GaurLink Facility &amp; Stamping Plant
-                  </span>
-                </div>
-                <button
-                  onClick={() => setIsVideoModalOpen(false)}
-                  className="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors cursor-pointer"
-                >
-                  <X className="w-4 h-4" />
-                </button>
-              </div>
+          <div 
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-md p-3 sm:p-6 animate-in fade-in duration-200"
+            onClick={() => setIsVideoModalOpen(false)}
+          >
+            <div 
+              className="relative w-full max-w-4xl bg-black rounded-2xl overflow-hidden shadow-2xl border border-white/10"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Close Button */}
+              <button
+                onClick={() => setIsVideoModalOpen(false)}
+                className="absolute top-3 right-3 z-30 w-10 h-10 rounded-full bg-black/70 hover:bg-black text-white flex items-center justify-center border border-white/20 shadow-lg transition-all cursor-pointer"
+                aria-label="Close video"
+              >
+                <X className="w-5 h-5" />
+              </button>
 
-              <div className="relative aspect-video bg-black flex items-center justify-center overflow-hidden">
-                <img
-                  src={IMAGES.manufacturingPlant}
-                  alt="GaurLink Plant Video Preview"
-                  className="w-full h-full object-cover opacity-60"
-                />
-                <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-6 bg-black/40">
-                  <div className="w-16 h-16 rounded-full bg-[#E5A912] text-[#071910] flex items-center justify-center mb-4 shadow-xl animate-pulse">
-                    <Play className="w-7 h-7 fill-current ml-1" />
-                  </div>
-                  <h3 className="text-lg sm:text-xl font-black uppercase text-white font-sans tracking-tight">
-                    Facility &amp; Quality Control Tour
-                  </h3>
-                  <p className="text-xs sm:text-sm text-gray-300 max-w-md mt-1">
-                    Progressive stamping presses, in-house tooling, and ASTM A153 hot-dip galvanizing lines.
-                  </p>
-                </div>
+              {/* Video Player with native default controls */}
+              <div className="relative aspect-video bg-black flex items-center justify-center">
+                <video
+                  controls
+                  autoPlay
+                  playsInline
+                  className="w-full h-full object-contain"
+                  poster={IMAGES.manufacturingPlant}
+                >
+                  <source
+                    src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4"
+                    type="video/mp4"
+                  />
+                  Your browser does not support the video tag.
+                </video>
               </div>
             </div>
           </div>

@@ -28,13 +28,13 @@ export const ConversionBanner: React.FC<ConversionBannerProps> = ({ onOpenSchedu
           {/* Content matching exact layout and typography */}
           <div className="relative z-10 max-w-2xl mx-auto space-y-4">
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black uppercase text-white tracking-tight leading-[1.15] font-sans drop-shadow-md">
-              LOOKING FOR WHOLESALE FENCE FITTINGS?
+              NEED WHOLESALE FENCE FITTINGS?
               <br />
-              GET FACTORY DIRECT PRICING
+              GET DIRECT FACTORY RATES
             </h2>
 
             <p className="text-sm sm:text-[15px] text-emerald-100/90 leading-relaxed max-w-xl mx-auto font-normal">
-              Supply your yard with ASTM-certified fence fittings, commercial gate hardware, and custom die stampings at direct wholesale rates. Fast freight delivery across the USA.
+              Pressed steel, malleable iron, and custom sheet metal fabrication with duty-paid delivery directly to your warehouse dock.
             </p>
 
             {/* Buttons Row matching exact image layout with website theme colors */}

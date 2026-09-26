@@ -11,28 +11,28 @@ export const FaqSection: React.FC<FaqSectionProps> = () => {
 
   const faqs = [
     {
-      q: 'What fence fittings and hardware does GaurLink manufacture?',
-      a: 'We manufacture commercial chain link fittings, malleable iron gate hinges, cantilever slide gate rollers, tension bands, brace bands, barbed wire extension arms, and custom stamped brackets.',
+      q: 'What fence fittings and hardware do you manufacture?',
+      a: 'We manufacture pressed steel, malleable iron, and aluminum fence fittings—including barbed arms, cantilever rollers, brace bands, box hinges, boulevard clamps, post caps, and custom sheet metal items.',
     },
     {
-      q: 'Are your fence fittings compliant with ASTM standards?',
-      a: 'Yes. All GaurLink steel fittings are hot-dip galvanized to ASTM A153 and ASTM F626 standards for heavy commercial corrosion resistance and long service life.',
+      q: 'Are your fence fittings ASTM compliant?',
+      a: 'Yes. All steel fittings are hot-dip galvanized to ASTM A153 standards for long-lasting corrosion protection.',
     },
     {
-      q: 'What are your minimum order quantities (MOQ) for wholesale rates?',
-      a: 'We provide tiered wholesale pricing for master carton, pallet, and full container volumes. Contact our trade desk with your bill of materials for custom volume discounts.',
+      q: 'Can you manufacture custom sheet metal parts?',
+      a: 'Yes. Our in-house tool & die division can manufacture any custom sheet metal item according to your drawings and specifications.',
     },
     {
-      q: 'Where are GaurLink products shipped from?',
-      a: 'GaurLink is a USA-based manufacturing and supply company headquartered in Houston, Texas, with nationwide freight logistics serving all 50 states.',
+      q: 'What is your quality and inspection policy?',
+      a: 'We operate under ISO 9001:2015 standards with a strict Zero Defects Policy and 100% product satisfaction guarantee.',
     },
     {
-      q: 'Do you offer custom tool & die manufacturing for OEM hardware?',
-      a: 'Yes. Our in-house tool & die division produces custom progressive dies and stamped brackets according to contractor, distributor, or OEM CAD drawings.',
+      q: 'How does shipping work for US buyers?',
+      a: 'We handle everything from factory to your warehouse with ocean freight and customs duty fully paid (DDP).',
     },
     {
-      q: 'What are standard shipping lead times for wholesale bulk orders?',
-      a: 'In-stock inventory ships within 24 to 48 hours via LTL or dedicated FTL freight. Custom die-stamped orders ship in 2 to 4 weeks based on tooling and volume requirements.',
+      q: 'How fast can I get a wholesale quote?',
+      a: 'Send us your part numbers and quantities. We deliver transparent factory-direct pricing within 12 to 24 hours.',
     },
   ];
 

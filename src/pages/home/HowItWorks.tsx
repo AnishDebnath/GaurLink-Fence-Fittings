@@ -20,26 +20,26 @@ export const HowItWorks: React.FC = () => {
   const steps = [
     {
       num: '01',
-      title: 'SUBMIT SPECIFICATIONS & RFQ',
-      desc: 'Send your part numbers, quantities, pipe diameters, or custom CAD drawings directly to our wholesale trade desk.',
+      title: 'SEND YOUR REQUIREMENTS',
+      desc: 'Send your part numbers, quantities, or custom drawings to our team.',
       image: IMAGES.wholesaleProcess1,
     },
     {
       num: '02',
-      title: 'ITEMIZED FACTORY QUOTE',
-      desc: 'Receive transparent tiered wholesale pricing for pallet and container volumes within 12–24 business hours.',
+      title: 'GET DIRECT FACTORY QUOTE',
+      desc: 'Receive clear wholesale pricing and freight details within 24 hours.',
       image: IMAGES.wholesaleProcess2,
     },
     {
       num: '03',
-      title: 'HIGH-TONNAGE PRODUCTION',
-      desc: 'Components are stamped, forged, and hot-dip galvanized to ASTM A153 with strict in-house quality inspection.',
+      title: 'PRECISION PRODUCTION & QC',
+      desc: 'Manufactured to ASTM standards with ISO 9001 zero-defect inspection.',
       image: IMAGES.wholesaleProcess3,
     },
     {
       num: '04',
-      title: 'DDP NATIONWIDE FREIGHT',
-      desc: 'Your order is packaged in reinforced crates or banded pallets and delivered directly to your commercial dock across the USA.',
+      title: 'DDP DELIVERY TO YOUR DOOR',
+      desc: 'Duty-paid freight shipped directly to your warehouse across the USA.',
       image: IMAGES.wholesaleProcess4,
     },
   ];
@@ -49,7 +49,7 @@ export const HowItWorks: React.FC = () => {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Section Heading matching reference UI */}
-        <div className="text-center max-w-3xl mx-auto space-y-4 mb-12 sm:mb-16">
+        <div className="text-center max-w-3xl mx-auto space-y-3.5 mb-12 sm:mb-16">
           {/* Eyebrow Pill Badge: • HOW IT WORKS */}
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-gray-800 text-[12px] font-bold tracking-wider text-gray-900 uppercase font-sans">
             <span className="w-2 h-2 rounded-full bg-[#0D3823]"></span>
@@ -57,10 +57,14 @@ export const HowItWorks: React.FC = () => {
           </div>
 
           {/* Heading in 2 bold lines */}
-          <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-black uppercase text-gray-900 tracking-tight leading-[1.08] font-sans">
-            STREAMLINED WHOLESALE SUPPLY<br />
-            FROM PRODUCTION TO YOUR YARD
+          <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-black uppercase text-gray-900 tracking-tight leading-[1.1] font-sans">
+            EASY FACTORY-DIRECT ORDERING<br />
+            FROM PRODUCTION TO YOUR DOCK
           </h2>
+          
+          <p className="text-sm sm:text-base text-gray-600 max-w-xl mx-auto font-normal">
+            Simple 4-step process for wholesale fence fittings with duty-paid delivery.
+          </p>
         </div>
 
         {/* 2-Column Grid */}
