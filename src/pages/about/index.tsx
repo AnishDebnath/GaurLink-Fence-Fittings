@@ -16,6 +16,7 @@ import { ServiceAreasMap } from '../home/ServiceAreasMap';
 import { FaqSection } from '../home/FaqSection';
 import { ConversionBanner } from '../home/ConversionBanner';
 import { IMAGES } from '../../data/images';
+import introVideo from '../../assets/intro-video.mp4';
 
 interface AboutPageProps {
   onNavigateSection: (sectionId: string) => void;
@@ -253,11 +254,15 @@ export const AboutPage: React.FC<AboutPageProps> = ({
 
             {/* Video preview container */}
             <div className="relative rounded-[28px] sm:rounded-[36px] overflow-hidden shadow-2xl border-[2.5px] border-[#1C1C1C] bg-gray-900 aspect-[16/9] sm:aspect-[21/10] w-full group">
-              <img
-                src={IMAGES.banner}
-                alt="GaurLink Manufacturing Team"
+              <video
+                autoPlay
+                muted
+                loop
+                playsInline
                 className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
-              />
+              >
+                <source src={introVideo} type="video/mp4" />
+              </video>
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20 pointer-events-none" />
 
               <div className="absolute inset-0 flex items-center justify-center">
@@ -304,7 +309,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({
                   poster={IMAGES.manufacturingPlant}
                 >
                   <source
-                    src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4"
+                    src={introVideo}
                     type="video/mp4"
                   />
                   Your browser does not support the video tag.
