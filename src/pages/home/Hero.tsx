@@ -1,25 +1,15 @@
+import bannerImg from '../../assets/banner.jpeg';
 import React, { useState, useEffect } from 'react';
 import { PhoneCall, ArrowRight, ShieldCheck, CheckCircle2, Award, Star } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
-import { IMAGES } from '../../data/images';
+import { HERO_HARDWARE_OBJECTS } from '../../data/hero';
 
 interface HeroProps {
   onOpenSchedule: () => void;
   onExploreServices?: () => void;
 }
 
-const HARDWARE_OBJECTS = [
-  { id: 'gaurlink-1', name: 'GaurLink Product 1', image: IMAGES.gaurlink1 },
-  { id: 'gaurlink-2', name: 'GaurLink Product 2', image: IMAGES.gaurlink2 },
-  { id: 'gaurlink-3', name: 'GaurLink Product 3', image: IMAGES.gaurlink3 },
-  { id: 'gaurlink-4', name: 'GaurLink Product 4', image: IMAGES.gaurlink4 },
-  { id: 'gaurlink-5', name: 'GaurLink Product 5', image: IMAGES.gaurlink5 },
-  { id: 'gaurlink-6', name: 'GaurLink Product 6', image: IMAGES.gaurlink6 },
-  { id: 'gaurlink-7', name: 'GaurLink Product 7', image: IMAGES.gaurlink7 },
-  { id: 'gaurlink-8', name: 'GaurLink Product 8', image: IMAGES.gaurlink8 },
-  { id: 'gaurlink-9', name: 'GaurLink Product 9', image: IMAGES.gaurlink9 },
-  { id: 'gaurlink-10', name: 'GaurLink Product 10', image: IMAGES.gaurlink10 },
-];
+
 
 export const Hero: React.FC<HeroProps> = ({ onOpenSchedule }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -27,23 +17,23 @@ export const Hero: React.FC<HeroProps> = ({ onOpenSchedule }) => {
   // Auto-advance items right to left
   useEffect(() => {
     const timer = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % HARDWARE_OBJECTS.length);
+      setCurrentIndex((prev) => (prev + 1) % HERO_HARDWARE_OBJECTS.length);
     }, 3600);
     return () => clearInterval(timer);
   }, []);
 
   const handleNext = () => {
-    setCurrentIndex((prev) => (prev + 1) % HARDWARE_OBJECTS.length);
+    setCurrentIndex((prev) => (prev + 1) % HERO_HARDWARE_OBJECTS.length);
   };
 
-  const currentObject = HARDWARE_OBJECTS[currentIndex];
+  const currentObject = HERO_HARDWARE_OBJECTS[currentIndex];
 
   return (
     <section id="home" className="relative min-h-[640px] lg:min-h-[740px] flex items-center bg-[#071910] text-white overflow-hidden pt-32 sm:pt-36 lg:pt-40 pb-16 sm:pb-20 lg:pb-24">
       {/* Background Photography matching reference */}
       <div className="absolute inset-0 z-0">
         <img
-          src={IMAGES.banner}
+          src={bannerImg}
           alt="GaurLink USA fence and fittings manufacturing specialist"
           className="w-full h-full object-cover object-center scale-105 filter brightness-75 contrast-110"
         />

@@ -1,14 +1,15 @@
 import { Hero } from './Hero';
-import { WhyChooseUs } from './WhyChooseUs';
-import { TrustBar } from './TrustBar';
-import { ServicesShowcase } from './ServicesShowcase';
-import { MarqueeTicker } from './MarqueeTicker';
-import { HowItWorks } from './HowItWorks';
-import { CaseStudies } from './CaseStudies';
-import { TestimonialsGrid } from './TestimonialsGrid';
-import { ServiceAreasMap } from './ServiceAreasMap';
-import { FaqSection } from './FaqSection';
-import { ConversionBanner } from './ConversionBanner';
+import { WhyChooseUs } from '../../components/common/WhyUs';
+import { TrustBar } from './Stats';
+import { ServicesShowcase } from './Carousel';
+import { MarqueeTicker } from '../../components/common/Ticker';
+import { TICKER_HOME_TOP, TICKER_HOME_BOTTOM } from '../../data/ticker';
+import { HowItWorks } from './Process';
+import { CaseStudies } from './Gallery';
+import { TestimonialsGrid } from '../../components/common/Reviews';
+import { ServiceAreasMap } from '../../components/common/Areas';
+import { FaqSection } from '../../components/common/Faq';
+import { ConversionBanner } from '../../components/common/Cta';
 import { Navbar } from '../../components/common/Navbar';
 import { Footer } from '../../components/common/Footer';
 
@@ -45,32 +46,14 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigateSection, onNavigat
         />
         <MarqueeTicker
           variant="deep-green"
-          items={[
-            'USA-BASED MANUFACTURER',
-            'WHOLESALE FENCE & FITTINGS',
-            'ASTM A153 HOT-DIP GALVANIZED',
-            'FACTORY-DIRECT BULK RATES',
-            'COMMERCIAL GATE HARDWARE',
-            'CHAIN LINK FITTINGS & POST CLAMPS',
-            'IN-HOUSE TOOL & DIE DIVISION',
-            'DDP US NATIONWIDE FREIGHT',
-          ]}
+          items={TICKER_HOME_TOP}
         />
         <HowItWorks />
         <CaseStudies />
         <TestimonialsGrid />
         <MarqueeTicker
           variant="deep-green"
-          items={[
-            'DIRECT WHOLESALE SUPPLY',
-            'PALLET & CONTAINER VOLUME',
-            'PRECISION PRESSED STEEL',
-            'MALLEABLE IRON GATE HINGES',
-            'NATIONWIDE CONTRACTOR SUPPLY',
-            'CUSTOM OEM TOOLING',
-            '12-24H RFQ TURNAROUND',
-            'ASTM F626 COMPLIANT',
-          ]}
+          items={TICKER_HOME_BOTTOM}
         />
         <ServiceAreasMap onOpenSchedule={() => handleOpenQuote()} />
         <FaqSection onOpenSchedule={() => handleOpenQuote()} />

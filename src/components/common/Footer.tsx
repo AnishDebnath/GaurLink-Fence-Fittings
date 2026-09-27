@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Phone, Mail, MapPin, Plus, Minus } from 'lucide-react';
 import logo from '../../assets/logo/logo.png';
+import { FOOTER_QUICK_LINKS, FOOTER_PRODUCT_CATEGORIES } from '../../data/footer';
 
 interface FooterProps {
   onNavigateSection: (sectionId: string) => void;
@@ -21,22 +22,9 @@ export const Footer: React.FC<FooterProps> = ({ onNavigateSection, onOpenSchedul
     }
   };
 
-  const quickLinks = [
-    { label: 'Home', page: 'home' as const },
-    { label: 'Products Catalog', page: 'products' as const },
-    { label: 'About Us', page: 'about' as const },
-    { label: 'Contact & Wholesale Quote', page: 'contact' as const },
-  ];
+  const quickLinks = FOOTER_QUICK_LINKS;
 
-  const productCategories = [
-    'Barbed Arms (Cup & Vertical)',
-    'Cantilever Gate Rollers',
-    'Brace Bands (3/4" x 12 GA)',
-    'Pressed Steel Box Hinges',
-    'Boulevard Line Rail Clamps',
-    'Post Caps & Rail Ends',
-    'Custom Sheet Metal Fabrication',
-  ];
+  const productCategories = FOOTER_PRODUCT_CATEGORIES;
 
   const handleZoomIn = () => setZoomLevel((prev) => Math.min(prev + 1, 14));
   const handleZoomOut = () => setZoomLevel((prev) => Math.max(prev - 1, 4));
