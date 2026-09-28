@@ -1,3 +1,4 @@
+import { motion } from 'motion/react';
 import React from 'react';
 import { Search, Filter } from 'lucide-react';
 import { PRODUCTS_DATA } from '../../data/products';
@@ -40,7 +41,7 @@ export const Catalog: React.FC<CatalogProps> = ({
   });
 
   return (
-    <section className="py-10 sm:py-14 bg-white">
+    <motion.section initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '0px 0px -60px 0px' }} transition={{ duration: 0.6, ease: 'easeOut' }} className="py-10 sm:py-14 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Filter & Search Controls */}
@@ -112,13 +113,13 @@ export const Catalog: React.FC<CatalogProps> = ({
           </div>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
-            {filteredProducts.map((product) => (
-              <ProductCard key={product.id} product={product} onSelectProduct={onSelectProduct} />
+            {filteredProducts.map((product, idx) => (
+              <ProductCard key={product.id} product={product} index={idx} onSelectProduct={onSelectProduct} />
             ))}
           </div>
         )}
 
       </div>
-    </section>
+    </motion.section>
   );
 };

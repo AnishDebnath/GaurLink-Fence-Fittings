@@ -38,7 +38,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigateSection, onOpenSchedul
           
           {/* Col 1: Brand Mascot, Bio, Socials & Review Badges */}
           <div className="lg:col-span-4 space-y-4">
-            <img src={logoImg} alt="Gaur Link Fence & Fittings" className="h-14 w-auto object-contain" />
+            <img loading="lazy" decoding="async" src={logoImg} alt="Gaur Link Fence & Fittings" className="h-14 w-auto object-contain" />
 
             <p className="text-sm text-emerald-100/80 leading-relaxed max-w-[310px] font-normal">
               Direct manufacturer of pressed steel, malleable iron, and custom OEM fence hardware for commercial fence contractors and supply yards across the USA.

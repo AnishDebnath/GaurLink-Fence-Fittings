@@ -1,3 +1,4 @@
+import { motion } from 'motion/react';
 import { assetUrl } from '../../lib/cdn';
 import React from 'react';
 import { ArrowRight, Check } from 'lucide-react';
@@ -11,14 +12,14 @@ export const WhyChooseUs: React.FC<WhyChooseUsProps> = ({ onOpenSchedule }) => {
   const points = WHY_US_POINTS;
 
   return (
-    <section id="why-choose-us" className="py-16 sm:py-20 lg:py-24 bg-white text-gray-900">
+    <motion.section initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '0px 0px -60px 0px' }} transition={{ duration: 0.6, ease: 'easeOut' }} id="why-choose-us" className="py-16 sm:py-20 lg:py-24 bg-white text-gray-900">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
           
           {/* Left Column: Framed Photo */}
           <div className="lg:col-span-6 flex justify-center">
             <div className="relative w-full max-w-lg aspect-[4/4.5] sm:aspect-[4/4.2] rounded-[32px] overflow-hidden border-[2.5px] border-[#1C1C1C] shadow-md bg-gray-100">
-              <img
+              <img loading="lazy" decoding="async"
                 src={assetUrl('About-us-GAURLINK.jpg')}
                 alt="Fence and fittings manufacturing facility"
                 className="w-full h-full object-cover object-center transform hover:scale-102 transition-transform duration-500"
@@ -78,6 +79,6 @@ export const WhyChooseUs: React.FC<WhyChooseUsProps> = ({ onOpenSchedule }) => {
 
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 };

@@ -1,3 +1,4 @@
+import { motion } from 'motion/react';
 import React, { useState, useEffect, useRef } from 'react';
 import { HOW_IT_WORKS_STEPS } from '../../data/process';
 
@@ -20,7 +21,7 @@ export const HowItWorks: React.FC = () => {
   const steps = HOW_IT_WORKS_STEPS;
 
   return (
-    <section id="how-it-works" className="py-16 sm:py-20 lg:py-24 bg-white text-gray-900 relative">
+    <motion.section initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '0px 0px -60px 0px' }} transition={{ duration: 0.6, ease: 'easeOut' }} id="how-it-works" className="py-16 sm:py-20 lg:py-24 bg-white text-gray-900 relative">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Section Heading matching reference UI */}
@@ -48,7 +49,7 @@ export const HowItWorks: React.FC = () => {
           {/* Left Column: Framed Photo matching active step */}
           <div className="lg:col-span-5 relative flex justify-center pl-4 sm:pl-8 lg:pl-4">
             <div className="relative w-full max-w-[420px] aspect-[4/4.7] rounded-[32px] overflow-hidden shadow-sm bg-gray-100">
-              <img
+              <img loading="lazy" decoding="async"
                 src={steps[activeStep].image}
                 alt={steps[activeStep].title}
                 className="w-full h-full object-cover object-center transition-opacity duration-300"
@@ -105,7 +106,7 @@ export const HowItWorks: React.FC = () => {
 
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 

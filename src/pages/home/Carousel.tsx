@@ -149,7 +149,7 @@ export const ServicesShowcase: React.FC<ServicesShowcaseProps> = ({
                     >
                       {/* Photo Container with rounded corners */}
                       <div className="relative w-full aspect-[4/4.5] sm:aspect-[4/4.4] rounded-[24px] overflow-hidden bg-gray-100 shadow-md">
-                        <img
+                        <img loading="lazy" decoding="async"
                           src={service.image}
                           alt={service.title}
                           className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"

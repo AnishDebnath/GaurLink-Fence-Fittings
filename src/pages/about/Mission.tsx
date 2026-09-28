@@ -1,9 +1,28 @@
+import { motion } from 'motion/react';
 import { assetUrl } from '../../lib/cdn';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Play, X } from 'lucide-react';
 
 export const Mission: React.FC = () => {
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
+  const [showPreviewVideo, setShowPreviewVideo] = useState(false);
+  const previewRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = previewRef.current;
+    if (!el || showPreviewVideo) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0]?.isIntersecting) {
+          setShowPreviewVideo(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: '200px 0px' }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [showPreviewVideo]);
 
   useEffect(() => {
     if (isVideoModalOpen) {
@@ -21,7 +40,7 @@ export const Mission: React.FC = () => {
 
   return (
     <>
-      <section className="relative bg-white pt-16 sm:pt-20 lg:pt-24 pb-14 sm:pb-18 lg:pb-20 overflow-hidden">
+      <motion.section initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '0px 0px -60px 0px' }} transition={{ duration: 0.6, ease: 'easeOut' }} className="relative bg-white pt-16 sm:pt-20 lg:pt-24 pb-14 sm:pb-18 lg:pb-20 overflow-hidden">
         <div className="absolute top-0 left-0 right-0 h-[60%] sm:h-[64%] lg:h-[66%] bg-[#071910] pointer-events-none" />
         <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-emerald-900/15 rounded-full blur-3xl pointer-events-none" />
 
@@ -50,16 +69,19 @@ export const Mission: React.FC = () => {
           </div>
 
           {/* Video preview container */}
-          <div className="relative rounded-[28px] sm:rounded-[36px] overflow-hidden shadow-2xl border-[2.5px] border-[#1C1C1C] bg-gray-900 aspect-[16/9] sm:aspect-[21/10] w-full group">
-            <video
-              autoPlay
-              muted
-              loop
-              playsInline
-              className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
-            >
-              <source src={assetUrl('about-video.mp4')} type="video/mp4" />
-            </video>
+          <div ref={previewRef} className="relative rounded-[28px] sm:rounded-[36px] overflow-hidden shadow-2xl border-[2.5px] border-[#1C1C1C] bg-gray-900 aspect-[16/9] sm:aspect-[21/10] w-full group">
+            {showPreviewVideo && (
+              <video
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="none"
+                className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
+              >
+                <source src={assetUrl('about-video.mp4')} type="video/mp4" />
+              </video>
+            )}
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20 pointer-events-none" />
 
             <div className="absolute inset-0 flex items-center justify-center">
@@ -75,7 +97,7 @@ export const Mission: React.FC = () => {
             </div>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Video Player Modal */}
       {isVideoModalOpen && (
@@ -100,6 +122,7 @@ export const Mission: React.FC = () => {
                 controls
                 autoPlay
                 playsInline
+                preload="none"
                 className="w-full h-full object-contain"
               >
                 <source src={assetUrl('about-video.mp4')} type="video/mp4" />

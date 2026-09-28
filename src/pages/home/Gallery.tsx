@@ -1,3 +1,4 @@
+import { motion } from 'motion/react';
 import React, { useRef, useState, useEffect } from 'react';
 import { ArrowRight } from 'lucide-react';
 import { CASE_STUDIES } from '../../data/case-studies';
@@ -110,7 +111,7 @@ export const CaseStudies: React.FC = () => {
   };
 
   return (
-    <section id="case-studies" className="py-16 sm:py-20 lg:py-24 bg-[#071910] text-white relative overflow-hidden select-none">
+    <motion.section initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '0px 0px -60px 0px' }} transition={{ duration: 0.6, ease: 'easeOut' }} id="case-studies" className="py-16 sm:py-20 lg:py-24 bg-[#071910] text-white relative overflow-hidden select-none">
       {/* Subtle background glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-emerald-900/10 rounded-full blur-3xl pointer-events-none" />
 
@@ -165,7 +166,7 @@ export const CaseStudies: React.FC = () => {
             >
               {/* Photo */}
               <div className="relative w-full aspect-[4/4.6] sm:aspect-[4/4.5] overflow-hidden bg-gray-900">
-                <img
+                <img loading="lazy" decoding="async"
                   src={item.image}
                   alt={item.alt}
                   draggable={false}
@@ -198,6 +199,6 @@ export const CaseStudies: React.FC = () => {
           ))}
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 };

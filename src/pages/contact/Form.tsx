@@ -1,3 +1,4 @@
+import { motion } from 'motion/react';
 import React from 'react';
 import { 
   Phone, 
@@ -67,7 +68,7 @@ export const Form: React.FC<FormProps> = ({
   onNavigatePage,
 }) => {
   return (
-    <section id="contact-form" className="py-12 sm:py-16 bg-white">
+    <motion.section initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '0px 0px -60px 0px' }} transition={{ duration: 0.6, ease: 'easeOut' }} id="contact-form" className="py-12 sm:py-16 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
           
@@ -466,6 +467,6 @@ export const Form: React.FC<FormProps> = ({
 
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 };

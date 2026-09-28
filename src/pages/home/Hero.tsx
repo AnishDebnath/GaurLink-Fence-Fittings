@@ -32,7 +32,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenSchedule }) => {
     <section id="home" className="relative min-h-[640px] lg:min-h-[740px] flex items-center bg-[#071910] text-white overflow-hidden pt-32 sm:pt-36 lg:pt-40 pb-16 sm:pb-20 lg:pb-24">
       {/* Background Photography matching reference */}
       <div className="absolute inset-0 z-0">
-        <img
+        <img loading="eager" fetchPriority="high" decoding="async"
           src={bannerImg}
           alt="GaurLink USA fence and fittings manufacturing specialist"
           className="w-full h-full object-cover object-center scale-105 filter brightness-75 contrast-110"
@@ -221,7 +221,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenSchedule }) => {
                     transition={{ repeat: Infinity, duration: 3.6, ease: 'easeInOut' }}
                     className="relative w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 lg:w-[440px] lg:h-[440px] flex items-center justify-center"
                   >
-                    <img
+                    <img loading="eager" decoding="async"
                       src={currentObject.image}
                       alt={currentObject.name}
                       referrerPolicy="no-referrer"

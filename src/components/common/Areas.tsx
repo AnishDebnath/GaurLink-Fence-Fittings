@@ -1,3 +1,4 @@
+import { motion } from 'motion/react';
 import React, { useState } from 'react';
 import { ArrowRight } from 'lucide-react';
 import { SERVICE_CITIES } from '../../data/areas';
@@ -17,7 +18,7 @@ export const ServiceAreasMap: React.FC<ServiceAreasMapProps> = ({ onOpenSchedule
   )}&t=m&z=${activeCity.zoom}&ie=UTF8&iwloc=&output=embed`;
 
   return (
-    <section id="service-areas" className="relative w-full min-h-[580px] sm:min-h-[640px] bg-[#E8ECE9] overflow-hidden">
+    <motion.section initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '0px 0px -60px 0px' }} transition={{ duration: 0.6, ease: 'easeOut' }} id="service-areas" className="relative w-full min-h-[580px] sm:min-h-[640px] bg-[#E8ECE9] overflow-hidden">
       
       {/* Real Original Google Map Container */}
       <div className="absolute inset-0 w-full h-full z-0 pointer-events-auto">
@@ -81,6 +82,6 @@ export const ServiceAreasMap: React.FC<ServiceAreasMapProps> = ({ onOpenSchedule
           </button>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 };

@@ -1,3 +1,4 @@
+import { motion } from 'motion/react';
 import React from 'react';
 import { Star, ArrowRight } from 'lucide-react';
 import {
@@ -62,7 +63,7 @@ const TestimonialCard: React.FC<{ item: Testimonial }> = ({ item }) => (
 
 export const TestimonialsGrid: React.FC = () => {
   return (
-    <section id="testimonials" className="py-14 sm:py-20 bg-white text-gray-900">
+    <motion.section initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '0px 0px -60px 0px' }} transition={{ duration: 0.6, ease: 'easeOut' }} id="testimonials" className="py-14 sm:py-20 bg-white text-gray-900">
       <div className="max-w-[1120px] mx-auto px-4 sm:px-6">
 
         {/* Section Header matching reference */}
@@ -138,7 +139,7 @@ export const TestimonialsGrid: React.FC = () => {
             <div className="grid grid-cols-2 gap-2.5 sm:gap-3 mt-4">
               {FEATURED_REVIEW_PHOTOS.map((photo) => (
                 <div key={photo.alt} className="aspect-[4/3.1] rounded-xl overflow-hidden bg-gray-900 border border-emerald-900/40 shadow-inner">
-                  <img
+                  <img loading="lazy" decoding="async"
                     src={photo.image}
                     alt={photo.alt}
                     className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
@@ -158,6 +159,6 @@ export const TestimonialsGrid: React.FC = () => {
         </div>
 
       </div>
-    </section>
+    </motion.section>
   );
 };

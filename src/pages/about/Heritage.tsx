@@ -1,10 +1,11 @@
+import { motion } from 'motion/react';
 import { assetUrl } from '../../lib/cdn';
 import React from 'react';
 import { CheckCircle2 } from 'lucide-react';
 
 export const Heritage: React.FC = () => {
   return (
-    <section className="py-16 sm:py-20 lg:py-24 bg-white">
+    <motion.section initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '0px 0px -60px 0px' }} transition={{ duration: 0.6, ease: 'easeOut' }} className="py-16 sm:py-20 lg:py-24 bg-white">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
           {/* Left Column */}
@@ -50,7 +51,7 @@ export const Heritage: React.FC = () => {
           {/* Right Column: Plant & Facility Image */}
           <div className="lg:col-span-6 flex justify-center lg:justify-end">
             <div className="relative rounded-[28px] sm:rounded-[32px] overflow-hidden shadow-xl border-[2.5px] border-[#1C1C1C] bg-gray-900 aspect-[4/4.2] w-full max-w-md lg:max-w-none group">
-              <img
+              <img loading="lazy" decoding="async"
                 src={assetUrl('About-us-home-page.jpg')}
                 alt="GaurLink Manufacturing Facility"
                 className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
@@ -98,6 +99,6 @@ export const Heritage: React.FC = () => {
           </div>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 };

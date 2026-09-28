@@ -1,3 +1,4 @@
+import { motion } from 'motion/react';
 import React from 'react';
 import { TRUST_BAR_STATS } from '../../data/stats';
 
@@ -5,7 +6,7 @@ export const TrustBar: React.FC = () => {
   const stats = TRUST_BAR_STATS;
 
   return (
-    <section className="bg-[#0D3823] text-white py-6 sm:py-8 px-4 sm:px-6 lg:px-8 relative overflow-hidden shadow-lg border-y border-emerald-800/40">
+    <motion.section initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '0px 0px -60px 0px' }} transition={{ duration: 0.6, ease: 'easeOut' }} className="bg-[#0D3823] text-white py-6 sm:py-8 px-4 sm:px-6 lg:px-8 relative overflow-hidden shadow-lg border-y border-emerald-800/40">
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-8 items-center">
           {stats.map((stat, idx) => {
@@ -34,6 +35,6 @@ export const TrustBar: React.FC = () => {
           })}
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 };

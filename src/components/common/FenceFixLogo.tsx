@@ -19,7 +19,7 @@ export const FenceFixLogo: React.FC<FenceFixLogoProps> = ({
 
   return (
     <div className={`flex items-center gap-2 select-none shrink-0 ${height} ${className}`}>
-      <img
+      <img loading="eager" decoding="async"
         src={logoOriginalImg}
         alt="Gaur Link Fence & Fittings"
         className="h-full w-auto object-contain"

@@ -1,3 +1,4 @@
+import { motion } from 'motion/react';
 import bannerImg from '../../assets/banner.jpeg';
 import { useState, useEffect } from 'react';
 import { Sparkles } from 'lucide-react';
@@ -37,17 +38,15 @@ export const LaunchingSoon: React.FC = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#071910] text-white flex flex-col justify-between selection:bg-[#E5A912] selection:text-[#071910] relative overflow-hidden font-sans">
+    <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, ease: 'easeOut' }} className="min-h-screen bg-[#071910] text-white flex flex-col justify-between selection:bg-[#E5A912] selection:text-[#071910] relative overflow-hidden font-sans">
 
       {/* Fence Manufacturing Background with Gaur Green Gradient */}
       <div className="absolute inset-0 z-0 pointer-events-none">
-        <img
+        <img loading="eager" fetchPriority="high" decoding="async"
           src={bannerImg}
           alt="Fence and fittings background"
           width={1920}
           height={1080}
-          fetchPriority="high"
-          decoding="async"
           className="w-full h-full object-cover object-center filter brightness-35 contrast-120 saturate-80"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-[#071910]/90 via-[#071910]/80 to-[#071910]/95" />
@@ -110,6 +109,6 @@ export const LaunchingSoon: React.FC = () => {
         Copyright © 2026 GaurLink. All Rights Reserved.
       </footer>
 
-    </div>
+    </motion.div>
   );
 };

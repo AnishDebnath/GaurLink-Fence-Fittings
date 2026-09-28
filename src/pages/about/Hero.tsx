@@ -1,3 +1,4 @@
+import { motion } from 'motion/react';
 import { assetUrl } from '../../lib/cdn';
 import React from 'react';
 import { ArrowRight, ChevronRight, Package } from 'lucide-react';
@@ -8,9 +9,9 @@ interface HeroProps {
 
 export const Hero: React.FC<HeroProps> = ({ onNavigatePage }) => {
   return (
-    <section className="relative bg-[#071910] text-white pt-28 sm:pt-36 lg:pt-40 pb-14 sm:pb-16 lg:pb-20 overflow-hidden">
+    <motion.section initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '0px 0px -60px 0px' }} transition={{ duration: 0.6, ease: 'easeOut' }} className="relative bg-[#071910] text-white pt-28 sm:pt-36 lg:pt-40 pb-14 sm:pb-16 lg:pb-20 overflow-hidden">
       <div className="absolute inset-0 z-0 opacity-25">
-        <img
+        <img loading="eager" fetchPriority="high" decoding="async"
           src={assetUrl('banner-about.jpg')}
           alt="GaurLink USA Fence and Fittings Manufacturing"
           className="w-full h-full object-cover"
@@ -64,6 +65,6 @@ export const Hero: React.FC<HeroProps> = ({ onNavigatePage }) => {
           </div>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 };

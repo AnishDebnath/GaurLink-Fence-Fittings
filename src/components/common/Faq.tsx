@@ -1,3 +1,4 @@
+import { motion } from 'motion/react';
 import React, { useState } from 'react';
 import { Plus, Minus } from 'lucide-react';
 import { FAQS } from '../../data/faq';
@@ -17,7 +18,7 @@ export const FaqSection: React.FC<FaqSectionProps> = () => {
   };
 
   return (
-    <section id="faq" className="py-16 sm:py-24 bg-white text-gray-900">
+    <motion.section initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '0px 0px -60px 0px' }} transition={{ duration: 0.6, ease: 'easeOut' }} id="faq" className="py-16 sm:py-24 bg-white text-gray-900">
       <div className="max-w-[960px] mx-auto px-4 sm:px-6">
         
         {/* Section Header matching exact image layout */}
@@ -86,7 +87,7 @@ export const FaqSection: React.FC<FaqSectionProps> = () => {
         </div>
 
       </div>
-    </section>
+    </motion.section>
   );
 };
 

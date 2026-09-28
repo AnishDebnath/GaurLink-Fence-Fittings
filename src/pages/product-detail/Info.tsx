@@ -1,3 +1,4 @@
+import { motion } from 'motion/react';
 import React from 'react';
 import { ChevronRight, ArrowRight, ArrowLeft, Check } from 'lucide-react';
 import { ProductItem } from '../../types';
@@ -24,7 +25,7 @@ export const Info: React.FC<InfoProps> = ({
   onNavigatePage,
 }) => {
   return (
-    <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-10">
+    <motion.section initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '0px 0px -60px 0px' }} transition={{ duration: 0.6, ease: 'easeOut' }} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-10">
 
       {/* Top Breadcrumb Navigation */}
       <div className="flex flex-wrap items-center justify-between gap-3 text-xs mb-6 sm:mb-8 pb-3 border-b border-gray-200">
@@ -63,7 +64,7 @@ export const Info: React.FC<InfoProps> = ({
         <div className="lg:col-span-6">
           <div className="w-full aspect-square rounded-[32px] overflow-hidden bg-white border-[2.5px] border-[#1C1C1C] shadow-lg">
             {product.imageSrc ? (
-              <img
+              <img loading="eager" fetchPriority="high" decoding="async"
                 src={product.imageSrc}
                 alt={product.name}
                 className="w-full h-full object-cover"
@@ -195,6 +196,6 @@ export const Info: React.FC<InfoProps> = ({
         </div>
 
       </div>
-    </section>
+    </motion.section>
   );
 };

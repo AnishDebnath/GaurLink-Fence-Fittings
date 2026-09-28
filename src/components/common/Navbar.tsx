@@ -1,3 +1,4 @@
+import { motion } from 'motion/react';
 import { useState, useEffect } from 'react';
 import { ArrowRight, Menu, X, Phone } from 'lucide-react';
 import { FenceFixLogo } from './FenceFixLogo';
@@ -81,7 +82,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   const isActive = (page: string) => currentRoute === page;
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 w-full pt-2.5 sm:pt-3 pb-1 px-3 sm:px-6 pointer-events-none">
+    <motion.header initial={{ y: -40, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.5, ease: 'easeOut' }} className="fixed top-0 left-0 right-0 z-50 w-full pt-2.5 sm:pt-3 pb-1 px-3 sm:px-6 pointer-events-none">
       <div
         className={`mx-auto pointer-events-auto transition-[max-width,padding] duration-500 ease-[cubic-bezier(0.2,0.8,0.2,1)] ${showMenus || mobileMenuOpen
             ? 'max-w-[1280px] px-0'
@@ -332,6 +333,6 @@ export const Navbar: React.FC<NavbarProps> = ({
           </div>
         )}
       </div>
-    </header>
+    </motion.header>
   );
 };
