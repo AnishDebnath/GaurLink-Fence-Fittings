@@ -1,4 +1,4 @@
-import aboutUsGaurlinkImg from '../../assets/images/about us/About-us-GAURLINK.jpg';
+import aboutUsGaurlinkImg from '../../assets/about-us/About-us-GAURLINK.jpg';
 import React from 'react';
 import { ArrowRight, Check } from 'lucide-react';
 import { WHY_US_POINTS } from '../../data/why-us';

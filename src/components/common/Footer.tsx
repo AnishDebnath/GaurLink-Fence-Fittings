@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Phone, Mail, MapPin, Plus, Minus } from 'lucide-react';
-import logo from '../../assets/logo/logo.png';
+import logo from '../../assets/logo.png';
 import { FOOTER_QUICK_LINKS, FOOTER_PRODUCT_CATEGORIES } from '../../data/footer';
 
 interface FooterProps {

@@ -1,6 +1,6 @@
-import bannerImg from '../../assets/banner.jpeg';
+import bannerImg from '../../assets/banner/banner.jpeg';
 import React, { useState, useEffect } from 'react';
-import { PhoneCall, ArrowRight, ShieldCheck, CheckCircle2, Award, Star } from 'lucide-react';
+import { PhoneCall, ArrowRight, ShieldCheck, CheckCircle2, Award } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { HERO_HARDWARE_OBJECTS } from '../../data/hero';
 
@@ -48,10 +48,10 @@ export const Hero: React.FC<HeroProps> = ({ onOpenSchedule }) => {
           {/* Left Column: Headline, Reviews, CTAs & 3 Glass Cards */}
           <div className="lg:col-span-7 flex flex-col space-y-6 lg:space-y-7">
             
-            {/* Top Row: Facebook, Google, Yelp 5.0 Rating Badges (Clean floating style matching reference image) */}
+            {/* Top Row: Facebook, Google, Yelp 5.0 Rating Badges — COMMENTED OUT
             <div className="flex flex-wrap items-center gap-6 sm:gap-8">
-              
-              {/* Facebook 5.0 Rating Badge */}
+
+              Facebook 5.0 Rating Badge
               <div className="flex items-center gap-2.5">
                 <div className="w-8 h-8 rounded-full bg-[#1877F2] text-white flex items-center justify-center font-bold text-sm shadow-md shrink-0">
                   <span className="font-sans font-black leading-none">f</span>
@@ -68,7 +68,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenSchedule }) => {
                 </div>
               </div>
 
-              {/* Google 5.0 Rating Badge */}
+              Google 5.0 Rating Badge
               <div className="flex items-center gap-2.5">
                 <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center font-bold text-xs shadow-md shrink-0">
                   <span className="font-black text-sm">
@@ -87,7 +87,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenSchedule }) => {
                 </div>
               </div>
 
-              {/* Yelp 5.0 Rating Badge */}
+              Yelp 5.0 Rating Badge
               <div className="flex items-center gap-2.5">
                 <div className="w-8 h-8 rounded-full bg-[#D32323] text-white flex items-center justify-center font-bold text-xs shadow-md shrink-0">
                   <span className="font-serif font-black text-xs italic">★</span>
@@ -105,6 +105,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenSchedule }) => {
               </div>
 
             </div>
+            */}
 
             {/* Display Headline matching image bold style with website color theme */}
             <h1 className="text-3xl sm:text-5xl lg:text-[54px] xl:text-[58px] font-black text-white uppercase tracking-tight leading-[1.05] drop-shadow-md font-sans">

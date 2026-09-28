@@ -1,4 +1,4 @@
-import aboutUsHomePageImg from '../../assets/images/about us/About-us-home-page.jpg';
+import aboutUsHomePageImg from '../../assets/about-us/About-us-home-page.jpg';
 import React from 'react';
 import { CheckCircle2 } from 'lucide-react';
 

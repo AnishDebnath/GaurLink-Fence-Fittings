@@ -1,14 +1,14 @@
-import supplyAction1Img from '../assets/images/supply in action/commercial-chain-link-gate-hardware.jpg';
-import supplyAction2Img from '../assets/images/supply in action/commercial-fence-gate-and-hardware.jpg';
-import supplyAction3Img from '../assets/images/supply in action/commercial-fence-hardware-insta.jpg';
-import supplyAction4Img from '../assets/images/supply in action/commercial-security-gate-and-fence.jpg';
-import supplyAction5Img from '../assets/images/supply in action/galvanized-fence-fittings-macro.jpg';
-import supplyAction6Img from '../assets/images/supply in action/galvanized-fence-hardware-system.jpg';
-import supplyAction7Img from '../assets/images/supply in action/industrial-fence-hardware-manufa.jpg';
-import supplyAction8Img from '../assets/images/supply in action/industrial-security-fence-hardwa.jpg';
-import supplyAction9Img from '../assets/images/supply in action/installing-commercial-chain-link.jpg';
-import supplyAction10Img from '../assets/images/supply in action/technician-inspecting-fence-hard.jpg';
-import supplyAction11Img from '../assets/images/supply in action/warehouse-inventory-of-fence-har.jpg';
+import supplyAction1Img from '../assets/case-study/commercial-chain-link-gate-hardware.jpg';
+import supplyAction2Img from '../assets/case-study/commercial-fence-gate-and-hardware.jpg';
+import supplyAction3Img from '../assets/case-study/commercial-fence-hardware-insta.jpg';
+import supplyAction4Img from '../assets/case-study/commercial-security-gate-and-fence.jpg';
+import supplyAction5Img from '../assets/case-study/galvanized-fence-fittings-macro.jpg';
+import supplyAction6Img from '../assets/case-study/galvanized-fence-hardware-system.jpg';
+import supplyAction7Img from '../assets/case-study/industrial-fence-hardware-manufa.jpg';
+import supplyAction8Img from '../assets/case-study/industrial-security-fence-hardwa.jpg';
+import supplyAction9Img from '../assets/case-study/installing-commercial-chain-link.jpg';
+import supplyAction10Img from '../assets/case-study/technician-inspecting-fence-hard.jpg';
+import supplyAction11Img from '../assets/case-study/warehouse-inventory-of-fence-har.jpg';
 
 export interface CaseStudy {
   id: string;

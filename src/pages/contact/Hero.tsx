@@ -1,4 +1,4 @@
-import bannerImg from '../../assets/images/banner-contact.jpg';
+import bannerImg from '../../assets/banner/banner-contact.jpg';
 import React from 'react';
 import { ChevronRight } from 'lucide-react';
 

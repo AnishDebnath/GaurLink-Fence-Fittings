@@ -6,7 +6,7 @@ interface LogoProps {
   showSubtitle?: boolean;
 }
 
-import logo from '../../assets/logo/logo.png';
+import logo from '../../assets/logo.png';
 
 export const GaurLinkLogo: React.FC<LogoProps> = ({
   className = '',

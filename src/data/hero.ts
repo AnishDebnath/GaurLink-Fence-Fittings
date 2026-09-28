@@ -1,13 +1,13 @@
-import gaurlink1Img from '../assets/images/product png/gaurlink-1.png';
-import gaurlink2Img from '../assets/images/product png/gaurlink-2.png';
-import gaurlink3Img from '../assets/images/product png/gaurlink-3.png';
-import gaurlink4Img from '../assets/images/product png/gaurlink-4.png';
-import gaurlink5Img from '../assets/images/product png/gaurlink-5.png';
-import gaurlink6Img from '../assets/images/product png/gaurlink-6.png';
-import gaurlink7Img from '../assets/images/product png/gaurlink-7.png';
-import gaurlink8Img from '../assets/images/product png/gaurlink-8.png';
-import gaurlink9Img from '../assets/images/product png/gaurlink-9.png';
-import gaurlink10Img from '../assets/images/product png/gaurlink-10.png';
+import gaurlink1Img from '../assets/product-png/gaurlink-1.png';
+import gaurlink2Img from '../assets/product-png/gaurlink-2.png';
+import gaurlink3Img from '../assets/product-png/gaurlink-3.png';
+import gaurlink4Img from '../assets/product-png/gaurlink-4.png';
+import gaurlink5Img from '../assets/product-png/gaurlink-5.png';
+import gaurlink6Img from '../assets/product-png/gaurlink-6.png';
+import gaurlink7Img from '../assets/product-png/gaurlink-7.png';
+import gaurlink8Img from '../assets/product-png/gaurlink-8.png';
+import gaurlink9Img from '../assets/product-png/gaurlink-9.png';
+import gaurlink10Img from '../assets/product-png/gaurlink-10.png';
 
 export interface HeroObject {
   id: string;

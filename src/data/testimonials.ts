@@ -1,7 +1,7 @@
-import clientSatisfaction1Img from '../assets/images/client-reviews/client-satisfaction-1.jpg';
-import clientSatisfaction2Img from '../assets/images/client-reviews/client-satisfaction-2.jpg';
-import clientSatisfaction3Img from '../assets/images/client-reviews/client-satisfaction-3.jpg';
-import clientSatisfaction4Img from '../assets/images/client-reviews/client-satisfaction-4.jpg';
+import clientSatisfaction1Img from '../assets/client-reviews/client-satisfaction-1.jpg';
+import clientSatisfaction2Img from '../assets/client-reviews/client-satisfaction-2.jpg';
+import clientSatisfaction3Img from '../assets/client-reviews/client-satisfaction-3.jpg';
+import clientSatisfaction4Img from '../assets/client-reviews/client-satisfaction-4.jpg';
 
 export interface Testimonial {
   name: string;

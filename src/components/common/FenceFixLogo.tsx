@@ -1,6 +1,6 @@
 import React from 'react';
 
-import logoOriginal from '../../assets/logo/logo-original.png';
+import logoOriginal from '../../assets/logo-original.png';
 
 interface FenceFixLogoProps {
   className?: string;

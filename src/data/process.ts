@@ -1,7 +1,7 @@
-import wholesaleProcess1Img from '../assets/images/wholesale process/01-send-your-requirements.jpg';
-import wholesaleProcess2Img from '../assets/images/wholesale process/02-get-direct-factory-quote.jpg';
-import wholesaleProcess3Img from '../assets/images/wholesale process/03-precision-production-and-qc.jpg';
-import wholesaleProcess4Img from '../assets/images/wholesale process/04-ddp-delivery-to-your-door.jpg';
+import wholesaleProcess1Img from '../assets/wholesale-process/01-send-your-requirements.jpg';
+import wholesaleProcess2Img from '../assets/wholesale-process/02-get-direct-factory-quote.jpg';
+import wholesaleProcess3Img from '../assets/wholesale-process/03-precision-production-and-qc.jpg';
+import wholesaleProcess4Img from '../assets/wholesale-process/04-ddp-delivery-to-your-door.jpg';
 
 export interface ProcessStep {
   num: string;

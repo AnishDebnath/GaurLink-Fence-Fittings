@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Play, X } from 'lucide-react';
-import introVideo from '../../assets/images/about us/about-video.mp4';
+import introVideo from '../../assets/about-us/about-video.mp4';
 
 export const Mission: React.FC = () => {
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);

@@ -1,13 +1,13 @@
-import productBarbedArmCupImg from '../assets/images/product image/3-barbed-arm-cup-type.jpg';
-import productCantileverRollerImg from '../assets/images/product image/12-cantilever-roller-nylon-pressed-steel-with-cover.jpg';
-import productBraceBandImg from '../assets/images/product image/8-brace-band-regular-34-x-12-ga.jpg';
-import productBoxHingeSteelImg from '../assets/images/product image/7-box-hinge-press-steel.jpg';
-import productBoulevardClampImg from '../assets/images/product image/5-boulevard-clamp-14-ga-and-16-ga-line-rail-clamp.jpg';
-import productBarbedArmVerticalImg from '../assets/images/product image/2-barbed-arm-vertical-16-ga.jpg';
-import productPostCapSteelImg from '../assets/images/product image/33-post-cap-pressed-steel.jpg';
-import productCarriageBoltImg from '../assets/images/product image/11-carriage-bolt-and-nut.jpg';
-import productRailEnd1HoleImg from '../assets/images/product image/37-rail-end-1-hole-pressed-steel.jpg';
-import productSleeveTopRailImg from '../assets/images/product image/44-sleeve-top-rail.jpg';
+import productBarbedArmCupImg from '../assets/product-image/3-barbed-arm-cup-type.jpg';
+import productCantileverRollerImg from '../assets/product-image/12-cantilever-roller-nylon-pressed-steel-with-cover.jpg';
+import productBraceBandImg from '../assets/product-image/8-brace-band-regular-34-x-12-ga.jpg';
+import productBoxHingeSteelImg from '../assets/product-image/7-box-hinge-press-steel.jpg';
+import productBoulevardClampImg from '../assets/product-image/5-boulevard-clamp-14-ga-and-16-ga-line-rail-clamp.jpg';
+import productBarbedArmVerticalImg from '../assets/product-image/2-barbed-arm-vertical-16-ga.jpg';
+import productPostCapSteelImg from '../assets/product-image/33-post-cap-pressed-steel.jpg';
+import productCarriageBoltImg from '../assets/product-image/11-carriage-bolt-and-nut.jpg';
+import productRailEnd1HoleImg from '../assets/product-image/37-rail-end-1-hole-pressed-steel.jpg';
+import productSleeveTopRailImg from '../assets/product-image/44-sleeve-top-rail.jpg';
 import { Wrench, Shield, Drill, Hammer, Lock, Layers } from 'lucide-react';
 
 export interface ShowcaseService {
