@@ -1,4 +1,4 @@
-import bannerImg from '../../assets/banner/banner.jpeg';
+import bannerImg from '../../assets/banner.jpeg';
 import React, { useState, useEffect } from 'react';
 import { PhoneCall, ArrowRight, ShieldCheck, CheckCircle2, Award } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';

@@ -1,4 +1,4 @@
-import bannerImg from '../../assets/banner/banner.jpeg';
+import bannerImg from '../../assets/banner.jpeg';
 import { useState, useEffect } from 'react';
 import { Sparkles } from 'lucide-react';
 import { GaurLinkLogo } from './Logo';

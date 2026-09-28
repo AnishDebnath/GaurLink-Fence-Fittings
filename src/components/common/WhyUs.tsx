@@ -1,4 +1,4 @@
-import aboutUsGaurlinkImg from '../../assets/about-us/About-us-GAURLINK.jpg';
+import { assetUrl } from '../../lib/cdn';
 import React from 'react';
 import { ArrowRight, Check } from 'lucide-react';
 import { WHY_US_POINTS } from '../../data/why-us';
@@ -19,7 +19,7 @@ export const WhyChooseUs: React.FC<WhyChooseUsProps> = ({ onOpenSchedule }) => {
           <div className="lg:col-span-6 flex justify-center">
             <div className="relative w-full max-w-lg aspect-[4/4.5] sm:aspect-[4/4.2] rounded-[32px] overflow-hidden border-[2.5px] border-[#1C1C1C] shadow-md bg-gray-100">
               <img
-                src={aboutUsGaurlinkImg}
+                src={assetUrl('About-us-GAURLINK.jpg')}
                 alt="Fence and fittings manufacturing facility"
                 className="w-full h-full object-cover object-center transform hover:scale-102 transition-transform duration-500"
               />

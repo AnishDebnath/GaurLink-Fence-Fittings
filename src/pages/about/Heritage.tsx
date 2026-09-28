@@ -1,4 +1,4 @@
-import aboutUsHomePageImg from '../../assets/about-us/About-us-home-page.jpg';
+import { assetUrl } from '../../lib/cdn';
 import React from 'react';
 import { CheckCircle2 } from 'lucide-react';
 
@@ -51,7 +51,7 @@ export const Heritage: React.FC = () => {
           <div className="lg:col-span-6 flex justify-center lg:justify-end">
             <div className="relative rounded-[28px] sm:rounded-[32px] overflow-hidden shadow-xl border-[2.5px] border-[#1C1C1C] bg-gray-900 aspect-[4/4.2] w-full max-w-md lg:max-w-none group">
               <img
-                src={aboutUsHomePageImg}
+                src={assetUrl('About-us-home-page.jpg')}
                 alt="GaurLink Manufacturing Facility"
                 className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
               />

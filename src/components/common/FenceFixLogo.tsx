@@ -1,6 +1,6 @@
+import logoOriginalImg from '../../assets/logo-original.png';
 import React from 'react';
 
-import logoOriginal from '../../assets/logo-original.png';
 
 interface FenceFixLogoProps {
   className?: string;
@@ -20,7 +20,7 @@ export const FenceFixLogo: React.FC<FenceFixLogoProps> = ({
   return (
     <div className={`flex items-center gap-2 select-none shrink-0 ${height} ${className}`}>
       <img
-        src={logoOriginal}
+        src={logoOriginalImg}
         alt="Gaur Link Fence & Fittings"
         className="h-full w-auto object-contain"
       />

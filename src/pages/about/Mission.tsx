@@ -1,6 +1,6 @@
+import { assetUrl } from '../../lib/cdn';
 import React, { useState, useEffect } from 'react';
 import { Play, X } from 'lucide-react';
-import introVideo from '../../assets/about-us/about-video.mp4';
 
 export const Mission: React.FC = () => {
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
@@ -58,7 +58,7 @@ export const Mission: React.FC = () => {
               playsInline
               className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
             >
-              <source src={introVideo} type="video/mp4" />
+              <source src={assetUrl('about-video.mp4')} type="video/mp4" />
             </video>
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20 pointer-events-none" />
 
@@ -102,7 +102,7 @@ export const Mission: React.FC = () => {
                 playsInline
                 className="w-full h-full object-contain"
               >
-                <source src={introVideo} type="video/mp4" />
+                <source src={assetUrl('about-video.mp4')} type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
             </div>

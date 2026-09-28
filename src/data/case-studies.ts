@@ -1,14 +1,4 @@
-import supplyAction1Img from '../assets/case-study/commercial-chain-link-gate-hardware.jpg';
-import supplyAction2Img from '../assets/case-study/commercial-fence-gate-and-hardware.jpg';
-import supplyAction3Img from '../assets/case-study/commercial-fence-hardware-insta.jpg';
-import supplyAction4Img from '../assets/case-study/commercial-security-gate-and-fence.jpg';
-import supplyAction5Img from '../assets/case-study/galvanized-fence-fittings-macro.jpg';
-import supplyAction6Img from '../assets/case-study/galvanized-fence-hardware-system.jpg';
-import supplyAction7Img from '../assets/case-study/industrial-fence-hardware-manufa.jpg';
-import supplyAction8Img from '../assets/case-study/industrial-security-fence-hardwa.jpg';
-import supplyAction9Img from '../assets/case-study/installing-commercial-chain-link.jpg';
-import supplyAction10Img from '../assets/case-study/technician-inspecting-fence-hard.jpg';
-import supplyAction11Img from '../assets/case-study/warehouse-inventory-of-fence-har.jpg';
+import { assetUrl } from '../lib/cdn';
 
 export interface CaseStudy {
   id: string;
@@ -24,7 +14,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     id: 'chain-link-gate-hardware',
     title: 'CHAIN LINK GATE HARDWARE',
     tag: 'GAURLINK • SUPPLY IN ACTION',
-    image: supplyAction1Img,
+    image: assetUrl('commercial-chain-link-gate-hardware.jpg'),
     alt: 'Commercial chain link gate hardware',
     desc: 'Heavy-duty gate hardware for commercial perimeter fencing.',
   },
@@ -32,7 +22,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     id: 'fence-gate-hardware',
     title: 'PRESSED STEEL FITTINGS',
     tag: 'GAURLINK • SUPPLY IN ACTION',
-    image: supplyAction2Img,
+    image: assetUrl('commercial-fence-gate-and-hardware.jpg'),
     alt: 'Pressed steel fence fittings',
     desc: 'Precision-stamped galvanized fittings for wholesale supply yards.',
   },
@@ -40,7 +30,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     id: 'fence-hardware-installation',
     title: 'COMMERCIAL FENCE HARDWARE',
     tag: 'GAURLINK • SUPPLY IN ACTION',
-    image: supplyAction3Img,
+    image: assetUrl('commercial-fence-hardware-insta.jpg'),
     alt: 'Commercial fence hardware installation',
     desc: 'Galvanized chain link fittings installed across commercial sites.',
   },
@@ -48,7 +38,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     id: 'security-gate-fence',
     title: 'HIGH-SECURITY PERIMETER HARDWARE',
     tag: 'GAURLINK • SUPPLY IN ACTION',
-    image: supplyAction4Img,
+    image: assetUrl('commercial-security-gate-and-fence.jpg'),
     alt: 'High-security perimeter hardware',
     desc: 'Heavy-duty barbed arms and gate locks for secure industrial facilities.',
   },
@@ -56,7 +46,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     id: 'fittings-macro',
     title: 'ASTM A153 HOT-DIP GALVANIZING',
     tag: 'GAURLINK • SUPPLY IN ACTION',
-    image: supplyAction5Img,
+    image: assetUrl('galvanized-fence-fittings-macro.jpg'),
     alt: 'ASTM A153 galvanized coating',
     desc: 'Heavy zinc coating engineered for maximum outdoor corrosion resistance.',
   },
@@ -64,7 +54,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     id: 'hardware-system',
     title: 'WHOLESALE HARDWARE PACKAGING',
     tag: 'GAURLINK • SUPPLY IN ACTION',
-    image: supplyAction6Img,
+    image: assetUrl('galvanized-fence-hardware-system.jpg'),
     alt: 'Wholesale hardware packaging',
     desc: 'Palletized and crate-packed hardware ready for bulk warehouse distribution.',
   },
@@ -72,7 +62,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     id: 'manufacturing',
     title: 'IN-HOUSE TOOL & DIE DIVISION',
     tag: 'GAURLINK • SUPPLY IN ACTION',
-    image: supplyAction7Img,
+    image: assetUrl('industrial-fence-hardware-manufa.jpg'),
     alt: 'In-house tool and die division',
     desc: 'Custom tooling and high-tonnage stamping made to exact customer drawings.',
   },
@@ -80,7 +70,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     id: 'security-hardware',
     title: 'GATE ROLLERS & BOX HINGES',
     tag: 'GAURLINK • SUPPLY IN ACTION',
-    image: supplyAction8Img,
+    image: assetUrl('industrial-security-fence-hardwa.jpg'),
     alt: 'Gate rollers and hinges',
     desc: 'Industrial cantilever rollers and pressed steel box hinges.',
   },
@@ -88,7 +78,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     id: 'chain-link-installation',
     title: 'NATIONWIDE FENCE CONTRACTORS',
     tag: 'GAURLINK • SUPPLY IN ACTION',
-    image: supplyAction9Img,
+    image: assetUrl('installing-commercial-chain-link.jpg'),
     alt: 'Nationwide contractor supply',
     desc: 'Reliable bulk supply for regional fence contractors across the USA.',
   },
@@ -96,7 +86,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     id: 'quality-inspection',
     title: 'ISO 9001:2015 ZERO DEFECTS QC',
     tag: 'GAURLINK • SUPPLY IN ACTION',
-    image: supplyAction10Img,
+    image: assetUrl('technician-inspecting-fence-hard.jpg'),
     alt: 'ISO 9001 zero defects inspection',
     desc: '100% item inspection before palletizing and container loading.',
   },
@@ -104,7 +94,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     id: 'warehouse-inventory',
     title: 'DDP DIRECT WAREHOUSE DELIVERY',
     tag: 'GAURLINK • SUPPLY IN ACTION',
-    image: supplyAction11Img,
+    image: assetUrl('warehouse-inventory-of-fence-har.jpg'),
     alt: 'DDP warehouse delivery',
     desc: 'Ocean freight and customs duty paid, delivered straight to your dock.',
   },

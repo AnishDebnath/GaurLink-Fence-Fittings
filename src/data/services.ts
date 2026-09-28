@@ -1,13 +1,4 @@
-import productBarbedArmCupImg from '../assets/product-image/3-barbed-arm-cup-type.jpg';
-import productCantileverRollerImg from '../assets/product-image/12-cantilever-roller-nylon-pressed-steel-with-cover.jpg';
-import productBraceBandImg from '../assets/product-image/8-brace-band-regular-34-x-12-ga.jpg';
-import productBoxHingeSteelImg from '../assets/product-image/7-box-hinge-press-steel.jpg';
-import productBoulevardClampImg from '../assets/product-image/5-boulevard-clamp-14-ga-and-16-ga-line-rail-clamp.jpg';
-import productBarbedArmVerticalImg from '../assets/product-image/2-barbed-arm-vertical-16-ga.jpg';
-import productPostCapSteelImg from '../assets/product-image/33-post-cap-pressed-steel.jpg';
-import productCarriageBoltImg from '../assets/product-image/11-carriage-bolt-and-nut.jpg';
-import productRailEnd1HoleImg from '../assets/product-image/37-rail-end-1-hole-pressed-steel.jpg';
-import productSleeveTopRailImg from '../assets/product-image/44-sleeve-top-rail.jpg';
+import { assetUrl } from '../lib/cdn';
 import { Wrench, Shield, Drill, Hammer, Lock, Layers } from 'lucide-react';
 
 export interface ShowcaseService {
@@ -25,7 +16,7 @@ export const SHOWCASE_SERVICES: ShowcaseService[] = [
   {
     id: 'barbed-arm-cup',
     title: 'BARBED ARM (CUP TYPE)',
-    image: productBarbedArmCupImg,
+    image: assetUrl('3-barbed-arm-cup-type.jpg'),
     icon: Shield,
     tag: 'High Security',
     category: 'Perimeter Security',
@@ -35,7 +26,7 @@ export const SHOWCASE_SERVICES: ShowcaseService[] = [
   {
     id: 'cantilever-roller',
     title: 'CANTILEVER GATE ROLLER',
-    image: productCantileverRollerImg,
+    image: assetUrl('12-cantilever-roller-nylon-pressed-steel-with-cover.jpg'),
     icon: Wrench,
     tag: 'Heavy Duty',
     category: 'Gate Hardware',
@@ -45,7 +36,7 @@ export const SHOWCASE_SERVICES: ShowcaseService[] = [
   {
     id: 'brace-band',
     title: 'BRACE BAND (3/4" X 12 GA)',
-    image: productBraceBandImg,
+    image: assetUrl('8-brace-band-regular-34-x-12-ga.jpg'),
     icon: Layers,
     tag: 'Best Seller',
     category: 'Commercial Hardware',
@@ -55,7 +46,7 @@ export const SHOWCASE_SERVICES: ShowcaseService[] = [
   {
     id: 'box-hinge',
     title: 'BOX HINGE (PRESSED STEEL)',
-    image: productBoxHingeSteelImg,
+    image: assetUrl('7-box-hinge-press-steel.jpg'),
     icon: Lock,
     tag: 'Heavy Duty',
     category: 'Gate Hardware',
@@ -65,7 +56,7 @@ export const SHOWCASE_SERVICES: ShowcaseService[] = [
   {
     id: 'boulevard-clamp',
     title: 'BOULEVARD CLAMP (14 & 16 GA)',
-    image: productBoulevardClampImg,
+    image: assetUrl('5-boulevard-clamp-14-ga-and-16-ga-line-rail-clamp.jpg'),
     icon: Hammer,
     tag: 'Line Rail Clamp',
     category: 'Line Rail Hardware',
@@ -75,7 +66,7 @@ export const SHOWCASE_SERVICES: ShowcaseService[] = [
   {
     id: 'barbed-arm-vertical',
     title: 'VERTICAL BARBED ARM (16 GA)',
-    image: productBarbedArmVerticalImg,
+    image: assetUrl('2-barbed-arm-vertical-16-ga.jpg'),
     icon: Shield,
     tag: 'High Security',
     category: 'Perimeter Security',
@@ -85,7 +76,7 @@ export const SHOWCASE_SERVICES: ShowcaseService[] = [
   {
     id: 'post-cap',
     title: 'POST CAP (PRESSED STEEL)',
-    image: productPostCapSteelImg,
+    image: assetUrl('33-post-cap-pressed-steel.jpg'),
     icon: Layers,
     tag: 'Pressed Steel',
     category: 'Terminal Fittings',
@@ -95,7 +86,7 @@ export const SHOWCASE_SERVICES: ShowcaseService[] = [
   {
     id: 'carriage-bolt',
     title: 'CARRIAGE BOLT & NUT',
-    image: productCarriageBoltImg,
+    image: assetUrl('11-carriage-bolt-and-nut.jpg'),
     icon: Drill,
     tag: 'ASTM Fasteners',
     category: 'Hardware & Fasteners',
@@ -105,7 +96,7 @@ export const SHOWCASE_SERVICES: ShowcaseService[] = [
   {
     id: 'rail-end',
     title: 'RAIL END (1 HOLE)',
-    image: productRailEnd1HoleImg,
+    image: assetUrl('37-rail-end-1-hole-pressed-steel.jpg'),
     icon: Wrench,
     tag: 'ASTM A153',
     category: 'Line Rail Fittings',
@@ -115,7 +106,7 @@ export const SHOWCASE_SERVICES: ShowcaseService[] = [
   {
     id: 'sleeve-top-rail',
     title: 'TOP RAIL SLEEVE',
-    image: productSleeveTopRailImg,
+    image: assetUrl('44-sleeve-top-rail.jpg'),
     icon: Lock,
     tag: 'Commercial',
     category: 'Rail Hardware',

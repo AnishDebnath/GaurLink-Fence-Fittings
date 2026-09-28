@@ -1,3 +1,4 @@
+import logoImg from '../../assets/logo.png';
 import React from 'react';
 
 interface LogoProps {
@@ -6,7 +7,6 @@ interface LogoProps {
   showSubtitle?: boolean;
 }
 
-import logo from '../../assets/logo.png';
 
 export const GaurLinkLogo: React.FC<LogoProps> = ({
   className = '',
@@ -22,7 +22,7 @@ export const GaurLinkLogo: React.FC<LogoProps> = ({
   return (
     <div className={`flex items-center gap-3 select-none ${className}`}>
       <img
-        src={logo}
+        src={logoImg}
         alt="Gaur Link Fence & Fittings"
         className={sizeClasses}
         loading="lazy"

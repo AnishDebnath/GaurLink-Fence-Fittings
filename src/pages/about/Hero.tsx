@@ -1,4 +1,4 @@
-import bannerImg from '../../assets/banner/banner-about.jpg';
+import { assetUrl } from '../../lib/cdn';
 import React from 'react';
 import { ArrowRight, ChevronRight, Package } from 'lucide-react';
 
@@ -11,7 +11,7 @@ export const Hero: React.FC<HeroProps> = ({ onNavigatePage }) => {
     <section className="relative bg-[#071910] text-white pt-28 sm:pt-36 lg:pt-40 pb-14 sm:pb-16 lg:pb-20 overflow-hidden">
       <div className="absolute inset-0 z-0 opacity-25">
         <img
-          src={bannerImg}
+          src={assetUrl('banner-about.jpg')}
           alt="GaurLink USA Fence and Fittings Manufacturing"
           className="w-full h-full object-cover"
         />

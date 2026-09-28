@@ -1,4 +1,4 @@
-import bannerImg from '../../assets/banner/banner.jpeg';
+import bannerImg from '../../assets/banner.jpeg';
 import React from 'react';
 import { Phone, ArrowRight } from 'lucide-react';
 

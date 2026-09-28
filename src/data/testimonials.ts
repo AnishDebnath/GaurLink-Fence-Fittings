@@ -1,7 +1,4 @@
-import clientSatisfaction1Img from '../assets/client-reviews/client-satisfaction-1.jpg';
-import clientSatisfaction2Img from '../assets/client-reviews/client-satisfaction-2.jpg';
-import clientSatisfaction3Img from '../assets/client-reviews/client-satisfaction-3.jpg';
-import clientSatisfaction4Img from '../assets/client-reviews/client-satisfaction-4.jpg';
+import { assetUrl } from '../lib/cdn';
 
 export interface Testimonial {
   name: string;
@@ -65,8 +62,8 @@ export interface ReviewPhoto {
 }
 
 export const FEATURED_REVIEW_PHOTOS: ReviewPhoto[] = [
-  { image: clientSatisfaction1Img, alt: 'Client satisfaction review 1' },
-  { image: clientSatisfaction2Img, alt: 'Client satisfaction review 2' },
-  { image: clientSatisfaction3Img, alt: 'Client satisfaction review 3' },
-  { image: clientSatisfaction4Img, alt: 'Client satisfaction review 4' },
+  { image: assetUrl('client-satisfaction-1.jpg'), alt: 'Client satisfaction review 1' },
+  { image: assetUrl('client-satisfaction-2.jpg'), alt: 'Client satisfaction review 2' },
+  { image: assetUrl('client-satisfaction-3.jpg'), alt: 'Client satisfaction review 3' },
+  { image: assetUrl('client-satisfaction-4.jpg'), alt: 'Client satisfaction review 4' },
 ];

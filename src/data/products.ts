@@ -1,61 +1,4 @@
-import productBarbedArm14Img from '../assets/product-image/1-barbed-arm-14-ga-and-16-ga.jpg';
-import productBarbedArmVerticalImg from '../assets/product-image/2-barbed-arm-vertical-16-ga.jpg';
-import productBarbedArmCupImg from '../assets/product-image/3-barbed-arm-cup-type.jpg';
-import productBarbedYArmImg from '../assets/product-image/4-barbed-y-arm-14-ga-and-16-ga.jpg';
-import productBoulevardClampImg from '../assets/product-image/5-boulevard-clamp-14-ga-and-16-ga-line-rail-clamp.jpg';
-import productBoxHingeMalleableImg from '../assets/product-image/6-box-hinge-malleable.jpg';
-import productBoxHingeSteelImg from '../assets/product-image/7-box-hinge-press-steel.jpg';
-import productBraceBandImg from '../assets/product-image/8-brace-band-regular-34-x-12-ga.jpg';
-import productBullDogHingeImg from '../assets/product-image/9-bull-dog-hinge-pressed-steel.jpg';
-import productBulletCapImg from '../assets/product-image/10-bullet-cap-aluminium.jpg';
-import productCarriageBoltImg from '../assets/product-image/11-carriage-bolt-and-nut.jpg';
-import productCantileverRollerImg from '../assets/product-image/12-cantilever-roller-nylon-pressed-steel-with-cover.jpg';
-import productCantileverRollerNoCoverImg from '../assets/product-image/13-cantilever-roller-nylon-pressed-steel-without-cover.jpg';
-import productCantileverMalleableImg from '../assets/product-image/14-cantilever-malleable.jpg';
-import productCollarImg from '../assets/product-image/15-collar.jpg';
-import productDropRodImg from '../assets/product-image/16-drop-rod.jpg';
-import productEndClampImg from '../assets/product-image/17-end-clamp.jpg';
-import productFemaleHingeImg from '../assets/product-image/18-female-hinge.jpg';
-import productFlangePlateImg from '../assets/product-image/19-flange-plate.jpg';
-import productFloorFlangeImg from '../assets/product-image/20-floor-flange-malleable.jpg';
-import productForkImg from '../assets/product-image/21-fork.jpg';
-import productForkCollarAssemblyImg from '../assets/product-image/22-fork-and-collar-assambly.jpg';
-import productGateClipImg from '../assets/product-image/23-gate-clip.jpg';
-import productGateCornerSteelImg from '../assets/product-image/24-gate-corner-pressed-steel.jpg';
-import productGateCornerAluminiumImg from '../assets/product-image/25-gate-corner-aluminium.jpg';
-import productHogRingImg from '../assets/product-image/26-hog-ring-aluminium.jpg';
-import productIndustrialOffsetMalleableImg from '../assets/product-image/27-industrial-offset-hinge-malleable-180.jpg';
-import productIndustrialOffsetSteelImg from '../assets/product-image/28-industrial-offset-hinge-pressed-steel-180.jpg';
-import productKennelClampImg from '../assets/product-image/29-kennel-clamp.jpg';
-import productLoopCapAluminiumImg from '../assets/product-image/30-loop-cap-aluminium.jpg';
-import productLoopCapSteelImg from '../assets/product-image/31-loop-cap-pressed-steel.jpg';
-import productMaleHingeImg from '../assets/product-image/32-male-hinge.jpg';
-import productPostCapSteelImg from '../assets/product-image/33-post-cap-pressed-steel.jpg';
-import productPostCapAluminiumImg from '../assets/product-image/34-post-cap-aluminium.jpg';
-import productPurlinBracketImg from '../assets/product-image/35-purlin-bracket.jpg';
-import productRailEndAluminiumImg from '../assets/product-image/36-rail-end-aluminium.jpg';
-import productRailEnd1HoleImg from '../assets/product-image/37-rail-end-1-hole-pressed-steel.jpg';
-import productRailEnd2HoleImg from '../assets/product-image/38-rail-end-2-hole-pressed-steel.jpg';
-import productRailEndHalfMoonImg from '../assets/product-image/39-rail-end-half-moon-pressed-steel.jpg';
-import productRailEndMalleableImg from '../assets/product-image/40-rail-end-malleable.jpg';
-import productRatchetWinderImg from '../assets/product-image/41-ratchet-winder-with-malleable-shaft.jpg';
-import productSlidingGateKitImg from '../assets/product-image/42-sliding-gate-kit-parts.jpg';
-import productSaddleClampImg from '../assets/product-image/43-saddle-clamp.jpg';
-import productSleeveTopRailImg from '../assets/product-image/44-sleeve-top-rail.jpg';
-import productSingleWheelImg from '../assets/product-image/45-single-wheel.jpg';
-import productTensionBandImg from '../assets/product-image/46-TENSION-BAND-REGULAR-34X-14-GA.jpg';
-import productTensionBarImg from '../assets/product-image/47-tension-bar.jpg';
-import productTieWireImg from '../assets/product-image/48-tie-wire-aluminium.jpg';
-import productTrackImg from '../assets/product-image/49-track-10.jpg';
-import productTrussRodImg from '../assets/product-image/50-truss-rod.jpg';
-import productTrussRodTightenerImg from '../assets/product-image/51-truss-rod-tightener.jpg';
-import productUniversalTrackBracketImg from '../assets/product-image/52-universal-line-track-bracket.jpg';
-import productWallSpikeImg from '../assets/product-image/53-wall-spike-740mm.jpg';
-import productWireWinderImg from '../assets/product-image/54-wire-winder.jpg';
-import productWoodSteelAdapterImg from '../assets/product-image/55-wood-steel-adapter.jpg';
-import productWalkGateSingleImg from '../assets/product-image/56-walk-gate-set-single.jpg';
-import productWalkGateDoubleImg from '../assets/product-image/57-walk-gate-set-double.jpg';
-import productSlidingGateWheelsImg from '../assets/product-image/58-WHEELS-FOR-SLIDING-GATES-DOUBLE-WHEEL-GATE-CARRIER-W-6-SOLID-RUBBER.jpg';
+import { assetUrl } from '../lib/cdn';
 import { ProductItem } from '../types';
 
 export const PRODUCTS_DATA: ProductItem[] = [
@@ -76,7 +19,7 @@ export const PRODUCTS_DATA: ProductItem[] = [
     commonSizes: ['Standard'],
     applications: ['Industrial Facilities', 'Commercial Storage Yards'],
     imagePlaceholderId: 'barbed-arm-14',
-    imageSrc: productBarbedArm14Img,
+    imageSrc: assetUrl('1-barbed-arm-14-ga-and-16-ga.jpg'),
     astmCompliance: 'ASTM A153',
     tag: 'Best Seller',
   },
@@ -97,7 +40,7 @@ export const PRODUCTS_DATA: ProductItem[] = [
     commonSizes: ['Standard'],
     applications: ['Security Perimeters', 'Correctional Facilities'],
     imagePlaceholderId: 'barbed-arm-vertical',
-    imageSrc: productBarbedArmVerticalImg,
+    imageSrc: assetUrl('2-barbed-arm-vertical-16-ga.jpg'),
     astmCompliance: 'ASTM A153',
   },
   {
@@ -117,7 +60,7 @@ export const PRODUCTS_DATA: ProductItem[] = [
     commonSizes: ['Standard'],
     applications: ['High-Security Perimeters'],
     imagePlaceholderId: 'barbed-arm-cup',
-    imageSrc: productBarbedArmCupImg,
+    imageSrc: assetUrl('3-barbed-arm-cup-type.jpg'),
     astmCompliance: 'ASTM A153',
   },
   {
@@ -137,7 +80,7 @@ export const PRODUCTS_DATA: ProductItem[] = [
     commonSizes: ['Standard'],
     applications: ['Correctional Facilities', 'Military Installations'],
     imagePlaceholderId: 'barbed-y-arm',
-    imageSrc: productBarbedYArmImg,
+    imageSrc: assetUrl('4-barbed-y-arm-14-ga-and-16-ga.jpg'),
     astmCompliance: 'ASTM A153',
     tag: 'High Security',
   },
@@ -158,7 +101,7 @@ export const PRODUCTS_DATA: ProductItem[] = [
     commonSizes: ['Standard'],
     applications: ['Chain Link Fencing', 'Rail Systems'],
     imagePlaceholderId: 'boulevard-clamp',
-    imageSrc: productBoulevardClampImg,
+    imageSrc: assetUrl('5-boulevard-clamp-14-ga-and-16-ga-line-rail-clamp.jpg'),
     astmCompliance: 'ASTM A153',
   },
   {
@@ -178,7 +121,7 @@ export const PRODUCTS_DATA: ProductItem[] = [
     commonSizes: ['2-7/8" x 2"', '4" x 2"'],
     applications: ['Industrial Driveway Gates', 'Heavy Equipment Storage'],
     imagePlaceholderId: 'box-hinge-malleable',
-    imageSrc: productBoxHingeMalleableImg,
+    imageSrc: assetUrl('6-box-hinge-malleable.jpg'),
     astmCompliance: 'ASTM A47',
     tag: 'Extreme Heavy Duty',
   },
@@ -199,7 +142,7 @@ export const PRODUCTS_DATA: ProductItem[] = [
     commonSizes: ['2-3/8" x 1-5/8"', '2-7/8" x 1-7/8"'],
     applications: ['School Perimeter Fencing', 'Sports Facilities'],
     imagePlaceholderId: 'box-hinge-steel',
-    imageSrc: productBoxHingeSteelImg,
+    imageSrc: assetUrl('7-box-hinge-press-steel.jpg'),
     astmCompliance: 'ASTM F626',
     tag: 'Contractor Favorite',
   },
@@ -220,7 +163,7 @@ export const PRODUCTS_DATA: ProductItem[] = [
     commonSizes: ['Standard'],
     applications: ['Chain Link Framework', 'Industrial Enclosures'],
     imagePlaceholderId: 'brace-band',
-    imageSrc: productBraceBandImg,
+    imageSrc: assetUrl('8-brace-band-regular-34-x-12-ga.jpg'),
     astmCompliance: 'ASTM F626',
   },
   {
@@ -240,7 +183,7 @@ export const PRODUCTS_DATA: ProductItem[] = [
     commonSizes: ['4" Post x 2" Frame', '6-5/8" Post x 2" Frame'],
     applications: ['High-Security Automated Gates', 'Airport Service Portals'],
     imagePlaceholderId: 'bull-dog-hinge',
-    imageSrc: productBullDogHingeImg,
+    imageSrc: assetUrl('9-bull-dog-hinge-pressed-steel.jpg'),
     astmCompliance: 'ASTM F900 Class 2',
     tag: 'Heavy Security',
   },
@@ -261,7 +204,7 @@ export const PRODUCTS_DATA: ProductItem[] = [
     commonSizes: ['1-5/8"', '2"', '2-3/8"', '2-7/8"'],
     applications: ['Residential Fencing', 'Commercial Perimeter'],
     imagePlaceholderId: 'bullet-cap',
-    imageSrc: productBulletCapImg,
+    imageSrc: assetUrl('10-bullet-cap-aluminium.jpg'),
   },
   {
     id: 'carriage-bolt',
@@ -280,7 +223,7 @@ export const PRODUCTS_DATA: ProductItem[] = [
     commonSizes: ['3/8" x 2"', '5/16" x 1-3/4"'],
     applications: ['All Fence Fitting Installations'],
     imagePlaceholderId: 'carriage-bolt',
-    imageSrc: productCarriageBoltImg,
+    imageSrc: assetUrl('11-carriage-bolt-and-nut.jpg'),
   },
   {
     id: 'cantilever-roller',
@@ -299,7 +242,7 @@ export const PRODUCTS_DATA: ProductItem[] = [
     commonSizes: ['4" Round Post x 2-3/8" Pipe'],
     applications: ['Automated Commercial Access', 'Distribution Centers'],
     imagePlaceholderId: 'cantilever-roller',
-    imageSrc: productCantileverRollerImg,
+    imageSrc: assetUrl('12-cantilever-roller-nylon-pressed-steel-with-cover.jpg'),
     astmCompliance: 'ASTM F2200',
     tag: 'Automated Gate Spec',
   },
@@ -320,7 +263,7 @@ export const PRODUCTS_DATA: ProductItem[] = [
     commonSizes: ['4" Round Post x 2-3/8" Pipe'],
     applications: ['Automated Commercial Access'],
     imagePlaceholderId: 'cantilever-roller-no-cover',
-    imageSrc: productCantileverRollerNoCoverImg,
+    imageSrc: assetUrl('13-cantilever-roller-nylon-pressed-steel-without-cover.jpg'),
     astmCompliance: 'ASTM F2200',
   },
   {
@@ -340,7 +283,7 @@ export const PRODUCTS_DATA: ProductItem[] = [
     commonSizes: ['Standard'],
     applications: ['Heavy Slide Gates', 'Industrial Perimeter'],
     imagePlaceholderId: 'cantilever-malleable',
-    imageSrc: productCantileverMalleableImg,
+    imageSrc: assetUrl('14-cantilever-malleable.jpg'),
     astmCompliance: 'ASTM A47',
   },
   {
@@ -360,7 +303,7 @@ export const PRODUCTS_DATA: ProductItem[] = [
     commonSizes: ['1-5/8"', '2"', '2-3/8"'],
     applications: ['Gate Hardware Assembly', 'Rail Connections'],
     imagePlaceholderId: 'collar',
-    imageSrc: productCollarImg,
+    imageSrc: assetUrl('15-collar.jpg'),
   },
   {
     id: 'drop-rod',
@@ -379,7 +322,7 @@ export const PRODUCTS_DATA: ProductItem[] = [
     commonSizes: ['Standard', 'Heavy Duty'],
     applications: ['Swing Gate Latching', 'Dual Gate Systems'],
     imagePlaceholderId: 'drop-rod',
-    imageSrc: productDropRodImg,
+    imageSrc: assetUrl('16-drop-rod.jpg'),
   },
   {
     id: 'end-clamp',
@@ -398,7 +341,7 @@ export const PRODUCTS_DATA: ProductItem[] = [
     commonSizes: ['Standard'],
     applications: ['Rail Termination', 'Fence End Sections'],
     imagePlaceholderId: 'end-clamp',
-    imageSrc: productEndClampImg,
+    imageSrc: assetUrl('17-end-clamp.jpg'),
   },
   {
     id: 'female-hinge',
@@ -417,7 +360,7 @@ export const PRODUCTS_DATA: ProductItem[] = [
     commonSizes: ['1-3/8" x 5/8"', '1-5/8" x 5/8"'],
     applications: ['Residential Walk Gates', 'Commercial Access Gates'],
     imagePlaceholderId: 'female-hinge',
-    imageSrc: productFemaleHingeImg,
+    imageSrc: assetUrl('18-female-hinge.jpg'),
     astmCompliance: 'ASTM F900',
   },
   {
@@ -437,7 +380,7 @@ export const PRODUCTS_DATA: ProductItem[] = [
     commonSizes: ['Standard'],
     applications: ['Post Base Mounting', 'Surface Mount Installations'],
     imagePlaceholderId: 'flange-plate',
-    imageSrc: productFlangePlateImg,
+    imageSrc: assetUrl('19-flange-plate.jpg'),
   },
   {
     id: 'floor-flange',
@@ -456,7 +399,7 @@ export const PRODUCTS_DATA: ProductItem[] = [
     commonSizes: ['Standard'],
     applications: ['Surface Mount Posts', 'Indoor Rail Systems'],
     imagePlaceholderId: 'floor-flange',
-    imageSrc: productFloorFlangeImg,
+    imageSrc: assetUrl('20-floor-flange-malleable.jpg'),
     astmCompliance: 'ASTM A47',
   },
   {
@@ -476,7 +419,7 @@ export const PRODUCTS_DATA: ProductItem[] = [
     commonSizes: ['Standard'],
     applications: ['Gate Hinge Assembly', 'Pivot Connections'],
     imagePlaceholderId: 'fork',
-    imageSrc: productForkImg,
+    imageSrc: assetUrl('21-fork.jpg'),
   },
   {
     id: 'fork-collar-assembly',
@@ -495,7 +438,7 @@ export const PRODUCTS_DATA: ProductItem[] = [
     commonSizes: ['Standard'],
     applications: ['Gate Hinge Installation', 'Quick-Deploy Systems'],
     imagePlaceholderId: 'fork-collar-assembly',
-    imageSrc: productForkCollarAssemblyImg,
+    imageSrc: assetUrl('22-fork-and-collar-assambly.jpg'),
   },
   {
     id: 'gate-clip',
@@ -514,7 +457,7 @@ export const PRODUCTS_DATA: ProductItem[] = [
     commonSizes: ['Standard'],
     applications: ['Gate Latch Systems', 'Strike Plate Mounting'],
     imagePlaceholderId: 'gate-clip',
-    imageSrc: productGateClipImg,
+    imageSrc: assetUrl('23-gate-clip.jpg'),
   },
   {
     id: 'gate-corner-steel',
@@ -533,7 +476,7 @@ export const PRODUCTS_DATA: ProductItem[] = [
     commonSizes: ['Standard'],
     applications: ['Gate Frame Construction', 'Corner Reinforcement'],
     imagePlaceholderId: 'gate-corner-steel',
-    imageSrc: productGateCornerSteelImg,
+    imageSrc: assetUrl('24-gate-corner-pressed-steel.jpg'),
   },
   {
     id: 'gate-corner-aluminium',
@@ -552,7 +495,7 @@ export const PRODUCTS_DATA: ProductItem[] = [
     commonSizes: ['Standard'],
     applications: ['Decorative Gates', 'Light-Duty Frames'],
     imagePlaceholderId: 'gate-corner-aluminium',
-    imageSrc: productGateCornerAluminiumImg,
+    imageSrc: assetUrl('25-gate-corner-aluminium.jpg'),
   },
   {
     id: 'hog-ring',
@@ -571,7 +514,7 @@ export const PRODUCTS_DATA: ProductItem[] = [
     commonSizes: ['Standard'],
     applications: ['Chain Link Fabric Attachment', 'Wire Connections'],
     imagePlaceholderId: 'hog-ring',
-    imageSrc: productHogRingImg,
+    imageSrc: assetUrl('26-hog-ring-aluminium.jpg'),
   },
   {
     id: 'industrial-offset-malleable',
@@ -590,7 +533,7 @@ export const PRODUCTS_DATA: ProductItem[] = [
     commonSizes: ['2-7/8" Post x 1-7/8" Frame'],
     applications: ['Warehouse Loading Docks', 'Commercial Yards'],
     imagePlaceholderId: 'industrial-offset-malleable',
-    imageSrc: productIndustrialOffsetMalleableImg,
+    imageSrc: assetUrl('27-industrial-offset-hinge-malleable-180.jpg'),
     astmCompliance: 'ASTM A47',
     tag: 'Industrial Grade',
   },
@@ -611,7 +554,7 @@ export const PRODUCTS_DATA: ProductItem[] = [
     commonSizes: ['4" Post x 2" Frame'],
     applications: ['Warehouse Loading Docks', 'Military Facilities'],
     imagePlaceholderId: 'industrial-offset-steel',
-    imageSrc: productIndustrialOffsetSteelImg,
+    imageSrc: assetUrl('28-industrial-offset-hinge-pressed-steel-180.jpg'),
     astmCompliance: 'ASTM F900 / ASTM A123',
     tag: 'Industrial Grade',
   },
@@ -632,7 +575,7 @@ export const PRODUCTS_DATA: ProductItem[] = [
     commonSizes: ['Standard'],
     applications: ['Animal Kennels', 'Pet Enclosures'],
     imagePlaceholderId: 'kennel-clamp',
-    imageSrc: productKennelClampImg,
+    imageSrc: assetUrl('29-kennel-clamp.jpg'),
   },
   {
     id: 'loop-cap-aluminium',
@@ -651,7 +594,7 @@ export const PRODUCTS_DATA: ProductItem[] = [
     commonSizes: ['1-5/8"', '2"', '2-3/8"'],
     applications: ['Top Rail Connections', 'Decorative Fencing'],
     imagePlaceholderId: 'loop-cap-aluminium',
-    imageSrc: productLoopCapAluminiumImg,
+    imageSrc: assetUrl('30-loop-cap-aluminium.jpg'),
   },
   {
     id: 'loop-cap-steel',
@@ -670,7 +613,7 @@ export const PRODUCTS_DATA: ProductItem[] = [
     commonSizes: ['1-5/8"', '2"', '2-3/8"'],
     applications: ['Commercial Fencing', 'Security Perimeters'],
     imagePlaceholderId: 'loop-cap-steel',
-    imageSrc: productLoopCapSteelImg,
+    imageSrc: assetUrl('31-loop-cap-pressed-steel.jpg'),
   },
   {
     id: 'male-hinge-product',
@@ -689,7 +632,7 @@ export const PRODUCTS_DATA: ProductItem[] = [
     commonSizes: ['1-3/8" x 5/8"', '1-5/8" x 5/8"', '2" x 3/4"'],
     applications: ['Residential Walk Gates', 'Commercial Access Gates'],
     imagePlaceholderId: 'male-hinge',
-    imageSrc: productMaleHingeImg,
+    imageSrc: assetUrl('32-male-hinge.jpg'),
     astmCompliance: 'ASTM F900',
     tag: 'Core Fitting',
   },
@@ -710,7 +653,7 @@ export const PRODUCTS_DATA: ProductItem[] = [
     commonSizes: ['1-5/8"', '2"', '2-3/8"', '2-7/8"'],
     applications: ['Commercial Fencing', 'Security Perimeters'],
     imagePlaceholderId: 'post-cap-steel',
-    imageSrc: productPostCapSteelImg,
+    imageSrc: assetUrl('33-post-cap-pressed-steel.jpg'),
   },
   {
     id: 'post-cap-aluminium',
@@ -729,7 +672,7 @@ export const PRODUCTS_DATA: ProductItem[] = [
     commonSizes: ['1-5/8"', '2"', '2-3/8"', '2-7/8"'],
     applications: ['Residential Fencing', 'Decorative Applications'],
     imagePlaceholderId: 'post-cap-aluminium',
-    imageSrc: productPostCapAluminiumImg,
+    imageSrc: assetUrl('34-post-cap-aluminium.jpg'),
   },
   {
     id: 'purlin-bracket',
@@ -748,7 +691,7 @@ export const PRODUCTS_DATA: ProductItem[] = [
     commonSizes: ['Standard'],
     applications: ['Structural Framing', 'Pipe Structures'],
     imagePlaceholderId: 'purlin-bracket',
-    imageSrc: productPurlinBracketImg,
+    imageSrc: assetUrl('35-purlin-bracket.jpg'),
   },
   {
     id: 'rail-end-aluminium',
@@ -767,7 +710,7 @@ export const PRODUCTS_DATA: ProductItem[] = [
     commonSizes: ['Standard'],
     applications: ['Decorative Fencing', 'Light-Duty Rails'],
     imagePlaceholderId: 'rail-end-aluminium',
-    imageSrc: productRailEndAluminiumImg,
+    imageSrc: assetUrl('36-rail-end-aluminium.jpg'),
   },
   {
     id: 'rail-end-1-hole',
@@ -786,7 +729,7 @@ export const PRODUCTS_DATA: ProductItem[] = [
     commonSizes: ['Standard'],
     applications: ['Rail Termination', 'Pipe Connections'],
     imagePlaceholderId: 'rail-end-1-hole',
-    imageSrc: productRailEnd1HoleImg,
+    imageSrc: assetUrl('37-rail-end-1-hole-pressed-steel.jpg'),
   },
   {
     id: 'rail-end-2-hole',
@@ -805,7 +748,7 @@ export const PRODUCTS_DATA: ProductItem[] = [
     commonSizes: ['Standard'],
     applications: ['Heavy-Duty Rail Systems', 'Industrial Fencing'],
     imagePlaceholderId: 'rail-end-2-hole',
-    imageSrc: productRailEnd2HoleImg,
+    imageSrc: assetUrl('38-rail-end-2-hole-pressed-steel.jpg'),
   },
   {
     id: 'rail-end-half-moon',
@@ -824,7 +767,7 @@ export const PRODUCTS_DATA: ProductItem[] = [
     commonSizes: ['Standard'],
     applications: ['Angled Rail Connections', 'Curved Fence Sections'],
     imagePlaceholderId: 'rail-end-half-moon',
-    imageSrc: productRailEndHalfMoonImg,
+    imageSrc: assetUrl('39-rail-end-half-moon-pressed-steel.jpg'),
   },
   {
     id: 'rail-end-malleable',
@@ -843,7 +786,7 @@ export const PRODUCTS_DATA: ProductItem[] = [
     commonSizes: ['Standard'],
     applications: ['Industrial Fencing', 'Heavy Commercial'],
     imagePlaceholderId: 'rail-end-malleable',
-    imageSrc: productRailEndMalleableImg,
+    imageSrc: assetUrl('40-rail-end-malleable.jpg'),
     astmCompliance: 'ASTM A47',
   },
   {
@@ -863,7 +806,7 @@ export const PRODUCTS_DATA: ProductItem[] = [
     commonSizes: ['Standard'],
     applications: ['Tension Wire Systems', 'Cable Tightening'],
     imagePlaceholderId: 'ratchet-winder',
-    imageSrc: productRatchetWinderImg,
+    imageSrc: assetUrl('41-ratchet-winder-with-malleable-shaft.jpg'),
   },
   {
     id: 'sliding-gate-kit',
@@ -882,7 +825,7 @@ export const PRODUCTS_DATA: ProductItem[] = [
     commonSizes: ['Standard'],
     applications: ['Sliding Gate Systems', 'Commercial Driveways'],
     imagePlaceholderId: 'sliding-gate-kit',
-    imageSrc: productSlidingGateKitImg,
+    imageSrc: assetUrl('42-sliding-gate-kit-parts.jpg'),
   },
   {
     id: 'saddle-clamp',
@@ -901,7 +844,7 @@ export const PRODUCTS_DATA: ProductItem[] = [
     commonSizes: ['Standard'],
     applications: ['Pipe Framework', 'Rail Connections'],
     imagePlaceholderId: 'saddle-clamp',
-    imageSrc: productSaddleClampImg,
+    imageSrc: assetUrl('43-saddle-clamp.jpg'),
   },
   {
     id: 'sleeve-top-rail',
@@ -920,7 +863,7 @@ export const PRODUCTS_DATA: ProductItem[] = [
     commonSizes: ['Standard'],
     applications: ['Rail Extension', 'Long Span Fencing'],
     imagePlaceholderId: 'sleeve-top-rail',
-    imageSrc: productSleeveTopRailImg,
+    imageSrc: assetUrl('44-sleeve-top-rail.jpg'),
   },
   {
     id: 'single-wheel',
@@ -939,7 +882,7 @@ export const PRODUCTS_DATA: ProductItem[] = [
     commonSizes: ['Standard'],
     applications: ['Sliding Gate Systems', 'Replacement Parts'],
     imagePlaceholderId: 'single-wheel',
-    imageSrc: productSingleWheelImg,
+    imageSrc: assetUrl('45-single-wheel.jpg'),
   },
   {
     id: 'tension-band',
@@ -958,7 +901,7 @@ export const PRODUCTS_DATA: ProductItem[] = [
     commonSizes: ['Standard'],
     applications: ['Chain Link Tensioning', 'Fabric Attachment'],
     imagePlaceholderId: 'tension-band',
-    imageSrc: productTensionBandImg,
+    imageSrc: assetUrl('46-TENSION-BAND-REGULAR-34X-14-GA.jpg'),
     astmCompliance: 'ASTM A153',
   },
   {
@@ -978,7 +921,7 @@ export const PRODUCTS_DATA: ProductItem[] = [
     commonSizes: ['6ft', '8ft', '10ft'],
     applications: ['DOT Highway Fencing', 'Sports Facilities'],
     imagePlaceholderId: 'tension-bar',
-    imageSrc: productTensionBarImg,
+    imageSrc: assetUrl('47-tension-bar.jpg'),
     astmCompliance: 'ASTM F626',
     tag: 'High Volume',
   },
@@ -999,7 +942,7 @@ export const PRODUCTS_DATA: ProductItem[] = [
     commonSizes: ['Standard'],
     applications: ['Chain Link Fabric Tying', 'General Fencing'],
     imagePlaceholderId: 'tie-wire',
-    imageSrc: productTieWireImg,
+    imageSrc: assetUrl('48-tie-wire-aluminium.jpg'),
   },
   {
     id: 'track',
@@ -1018,7 +961,7 @@ export const PRODUCTS_DATA: ProductItem[] = [
     commonSizes: ['10ft'],
     applications: ['Sliding Gate Systems', 'Track-Mounted Gates'],
     imagePlaceholderId: 'track',
-    imageSrc: productTrackImg,
+    imageSrc: assetUrl('49-track-10.jpg'),
   },
   {
     id: 'truss-rod',
@@ -1037,7 +980,7 @@ export const PRODUCTS_DATA: ProductItem[] = [
     commonSizes: ['Standard'],
     applications: ['Gate Anti-Sag', 'Diagonal Bracing'],
     imagePlaceholderId: 'truss-rod',
-    imageSrc: productTrussRodImg,
+    imageSrc: assetUrl('50-truss-rod.jpg'),
   },
   {
     id: 'truss-rod-tightener',
@@ -1056,7 +999,7 @@ export const PRODUCTS_DATA: ProductItem[] = [
     commonSizes: ['Standard'],
     applications: ['Gate Anti-Sag Systems', 'Brace Tensioning'],
     imagePlaceholderId: 'truss-rod-tightener',
-    imageSrc: productTrussRodTightenerImg,
+    imageSrc: assetUrl('51-truss-rod-tightener.jpg'),
   },
   {
     id: 'universal-track-bracket',
@@ -1075,7 +1018,7 @@ export const PRODUCTS_DATA: ProductItem[] = [
     commonSizes: ['Standard'],
     applications: ['Track Gate Systems', 'Multi-Profile Posts'],
     imagePlaceholderId: 'universal-track-bracket',
-    imageSrc: productUniversalTrackBracketImg,
+    imageSrc: assetUrl('52-universal-line-track-bracket.jpg'),
   },
   {
     id: 'wall-spike',
@@ -1094,7 +1037,7 @@ export const PRODUCTS_DATA: ProductItem[] = [
     commonSizes: ['740mm'],
     applications: ['Perimeter Security', 'Anti-Climb Protection'],
     imagePlaceholderId: 'wall-spike',
-    imageSrc: productWallSpikeImg,
+    imageSrc: assetUrl('53-wall-spike-740mm.jpg'),
     tag: 'Security',
   },
   {
@@ -1114,7 +1057,7 @@ export const PRODUCTS_DATA: ProductItem[] = [
     commonSizes: ['Standard'],
     applications: ['Cable Management', 'Tension Wire Systems'],
     imagePlaceholderId: 'wire-winder',
-    imageSrc: productWireWinderImg,
+    imageSrc: assetUrl('54-wire-winder.jpg'),
   },
   {
     id: 'wood-steel-adapter',
@@ -1133,7 +1076,7 @@ export const PRODUCTS_DATA: ProductItem[] = [
     commonSizes: ['Standard'],
     applications: ['Mixed Material Fencing', 'Post Transitions'],
     imagePlaceholderId: 'wood-steel-adapter',
-    imageSrc: productWoodSteelAdapterImg,
+    imageSrc: assetUrl('55-wood-steel-adapter.jpg'),
   },
   {
     id: 'walk-gate-single',
@@ -1152,7 +1095,7 @@ export const PRODUCTS_DATA: ProductItem[] = [
     commonSizes: ['Single Gate'],
     applications: ['Walk Gate Installation', 'Residential Entry'],
     imagePlaceholderId: 'walk-gate-single',
-    imageSrc: productWalkGateSingleImg,
+    imageSrc: assetUrl('56-walk-gate-set-single.jpg'),
     tag: 'Complete Set',
   },
   {
@@ -1172,7 +1115,7 @@ export const PRODUCTS_DATA: ProductItem[] = [
     commonSizes: ['Double Gate'],
     applications: ['Double Walk Gate Installation', 'Commercial Entry'],
     imagePlaceholderId: 'walk-gate-double',
-    imageSrc: productWalkGateDoubleImg,
+    imageSrc: assetUrl('57-walk-gate-set-double.jpg'),
     tag: 'Complete Set',
   },
   {
@@ -1192,7 +1135,7 @@ export const PRODUCTS_DATA: ProductItem[] = [
     commonSizes: ['Standard'],
     applications: ['Sliding Gate Systems', 'Commercial Driveways'],
     imagePlaceholderId: 'sliding-gate-wheels',
-    imageSrc: productSlidingGateWheelsImg,
+    imageSrc: assetUrl('58-WHEELS-FOR-SLIDING-GATES-DOUBLE-WHEEL-GATE-CARRIER-W-6-SOLID-RUBBER.jpg'),
   },
 ];
 
