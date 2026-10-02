@@ -2,6 +2,7 @@ import logoImg from '../../assets/logo.png';
 import React, { useState } from 'react';
 import { Phone, Mail, MapPin, Plus, Minus } from 'lucide-react';
 import { FOOTER_QUICK_LINKS, FOOTER_PRODUCT_CATEGORIES } from '../../data/footer';
+import { Watermark } from '../Watermark';
 
 interface FooterProps {
   onNavigateSection: (sectionId: string) => void;
@@ -248,6 +249,8 @@ export const Footer: React.FC<FooterProps> = ({ onNavigateSection, onOpenSchedul
             </button>
           </div>
         </div>
+
+        <Watermark />
 
       </div>
     </footer>
